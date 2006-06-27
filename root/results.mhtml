@@ -1,0 +1,7 @@
+<%init>
+use Data::Dumper;
+my $ref = $c->stash->{records};
+
+</%init>
+test
+<% Dumper($ref) %>

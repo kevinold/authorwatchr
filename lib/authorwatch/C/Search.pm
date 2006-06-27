@@ -1,4 +1,4 @@
-package authorwatch::C::Root;
+package authorwatch::C::Search;
 
 use strict;
 use warnings;
@@ -6,23 +6,17 @@ use base 'Catalyst::Controller';
 use LWP::Simple qw($ua get);
 use XML::XPath;
 
-#
-# Sets the actions in this controller to be registered with no prefix
-# so they function identically to actions created in MyApp.pm
-#
-__PACKAGE__->config->{namespace} = '';
-
 =head1 NAME
 
-authorwatch::C::Root - Root Controller for this Catalyst based application
+authorwatch::C::Search - Catalyst Controller
 
 =head1 SYNOPSIS
 
-See L<authorwatch>.
+See L<authorwatch>
 
 =head1 DESCRIPTION
 
-Root Controller for this Catalyst based application.
+Catalyst Controller.
 
 =head1 METHODS
 
@@ -43,7 +37,7 @@ sub default : Private {
     $c->response->redirect("index.html");
 }
 
-sub aws_search : Local {
+sub aws : Local {
     my ( $self, $c ) = @_;
 
     my $svalue = $c->req->param("svalue");
@@ -67,9 +61,9 @@ sub aws_search : Local {
 
         if ( $xp->find("//Error") ) {
             $c->stash->{error_msg}
-                = "There was an error processing your request:\n",
-                "  Error code: ", $xp->findvalue("//Error/Code"), "\n", "  ",
-                $xp->findvalue("//Error/Message"), "\n\n";
+                = "There was an error processing your request:\n" .
+                "  Error code: ", $xp->findvalue("//Error/Code") .  "\n" . "  " .
+                $xp->findvalue("//Error/Message") . "\n\n";
         }
         else {
             for ( my $i = 1; $i <= 10; $i++ ) {
@@ -135,10 +129,10 @@ sub end : Private {
     my ( $self, $c ) = @_;
 
     # Forward to View unless response body is already defined
-    $c->forward( $c->view('Mason') ) unless $c->response->body;
+    $c->forward( $c->view('V::Mason') ) unless $c->response->body;
 }
 
-sub query_aws {
+sub query_aws : Private {
     my $keywords = shift;
 
     # Define parts of the REST request.
@@ -167,6 +161,8 @@ sub query_aws {
 
     return $response;
 }
+
+
 
 =head1 AUTHOR
 

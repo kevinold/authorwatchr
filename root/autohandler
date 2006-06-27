@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+
+<title>
+
+</title>
+
+<!-- Meta Tags -->
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<meta name="robots" content="index, follow" />
+
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<meta name="author" content="" />
+
+<!-- Favicon -->
+<link rel="shortcut icon" href="" />
+
+<!-- CSS -->
+<link rel="stylesheet" href="" media="screen,projection" type="text/css" />
+<link rel="stylesheet" href="" media="print" type="text/css" />
+
+<!-- RSS -->
+<link rel="alternate" href="" title="RSS Feed" type="application/rss+xml" />
+
+<!-- JavaScript : Include and embedded version -->
+<script src="" type="text/javascript"></script>
+
+</head>
+
+<body>
+
+<div id="container">
+
+<div id="navigation">
+
+</div><!-- navigation -->
+
+<hr />
+
+<div id="primaryContent">
+% $m->call_next;
+</div><!-- primaryContent -->
+
+<hr />
+
+<div id="secondaryContent">
+
+</div><!-- secondaryContent -->
+
+<hr />
+
+<div id="footer">
+
+</div><!-- footer -->
+
+</div><!-- container -->
+
+</body>
+</html>
