@@ -7,6 +7,7 @@ use LWP::Simple qw($ua get);
 use XML::XPath;
 use DateTime;
 use POSIX qw(strftime);
+use URI::Escape;
 
 =head1 NAME
 
@@ -44,22 +45,21 @@ sub aws : Local {
 
     my $svalue = $c->req->param("svalue");
 
-    $c->debug("**********svalue is: $svalue");
-    #$c->log("**********svalue is: $svalue");
+    $c->log->debug("**********svalue is: $svalue");
 
     if ($svalue) {
 
         #Get search terms urlified
         my @search = split / /, $svalue;
-        my $keywords = join "%20", @search;
+        my $keywords = join " ", @search;
 
         my $today = strftime "%Y-%m-%d", localtime;
-        my $pw_search = "author: $keywords and after pubdate: $today";
-
+        my $pw_search = uri_escape("author: $keywords and after pubdate: $today");
+        
         # Perform search
         my $response = query_aws($pw_search);
 
-        $c->debug("Response: $response");
+        $c->log->debug("Response: $response");
 
         # Process XML response with XPath.
         my $xp = XML::XPath->new( xml => $response );
@@ -67,10 +67,10 @@ sub aws : Local {
         my %records;
 
         if ( $xp->find("//Error") ) {
-            $c->stash->{error_msg}
-                = "There was an error processing your request:\n" .
-                "  Error code: ", $xp->findvalue("//Error/Code") .  "\n" . "  " .
-                $xp->findvalue("//Error/Message") . "\n\n";
+            my $ec = $xp->findvalue("//Error/Code");
+            my $em = $xp->findvalue("//Error/Message");
+
+            $c->stash->{error_msg} = "$ec: $em" ;
         }
         else {
             for ( my $i = 1; $i <= 10; $i++ ) {
@@ -142,7 +142,7 @@ sub query_aws : Private {
     my $baseurl       = "http://webservices.amazon.com/onca/xml";
     my $service       = "AWSECommerceService";
     my $accesskey     = "1GNG6V387CH1FWX4H182";
-    my $operation     = "Power";
+    my $operation     = "ItemSearch";
     my $searchindex   = "Books";
     my $responsegroup = "Request,Medium";
     #my $version       = "2006-05-17";
@@ -152,14 +152,16 @@ sub query_aws : Private {
         . "Service=$service&"
         . "AWSAccessKeyId=$accesskey&"
         . "Operation=$operation&"
-        . "Keywords=$keywords&"
+        . "Power=$keywords&"
         . "SearchIndex=$searchindex&"
         . "ResponseGroup=$responsegroup";
+    #    . "Keywords=$keywords&"
     #    . "Version=$version";
 
     # Send the request using HTTP GET.
     my $ua = new LWP::UserAgent;
     $ua->timeout(30);
+    #warn "URL Sent:", $request;
     my $response = get($request);
 
     return $response;

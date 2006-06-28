@@ -4,6 +4,8 @@ my $ref = $c->stash->{records};
 
 </%init>
 
+<% $c->stash->{error_msg} %>
+
 % foreach my $rec ( keys %{$ref} ) {
     <% $rec %>
     <% $ref->{$rec}->{title} %>
