@@ -5,6 +5,8 @@ use warnings;
 use base 'Catalyst::Controller';
 use LWP::Simple qw($ua get);
 use XML::XPath;
+use DateTime;
+use POSIX qw(strftime);
 
 =head1 NAME
 
@@ -51,8 +53,13 @@ sub aws : Local {
         my @search = split / /, $svalue;
         my $keywords = join "%20", @search;
 
+        my $today = strftime "%Y-%m-%d", localtime;
+        my $pw_search = "author: $keywords and after pubdate: $today";
+
         # Perform search
-        my $response = query_aws($keywords);
+        my $response = query_aws($pw_search);
+
+        $c->debug("Response: $response");
 
         # Process XML response with XPath.
         my $xp = XML::XPath->new( xml => $response );
@@ -85,21 +92,17 @@ sub aws : Local {
                         );
                 }
 
-                my $pubdate = $xp->findvalue(
-                    "/ItemSearchResponse/Items/Item[$i]/ItemAttributes/PublicationDate"
-                );
-                my $reldate = $xp->findvalue(
-                    "/ItemSearchResponse/Items/Item[$i]/ItemAttributes/ReleaseDate"
-                );
 
-                $records{$pubdate}{title} = $xp->findvalue(
+                my $asin = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ASIN");
+
+                $records{$asin}{title} = $xp->findvalue(
                     "/ItemSearchResponse/Items/Item[$i]/ItemAttributes/PublicationDate"
                 );
-                $records{$pubdate}{title} = $xp->findvalue(
+                $records{$asin}{title} = $xp->findvalue(
                     "/ItemSearchResponse/Items/Item[$i]/ItemAttributes/Title");
-                $records{$pubdate}{author} = join( ", ", @authors );
-                $records{$pubdate}{asin}
-                    = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ASIN"),
+                $records{$asin}{author} = join( ", ", @authors );
+                $records{$asin}{pubdate} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ItemAttributes/PublicationDate");
+                $records{$asin}{reldate} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ItemAttributes/ReleaseDate");
 
                 #print "Title: ",
                 #    $xp->findvalue(
@@ -129,7 +132,7 @@ sub end : Private {
     my ( $self, $c ) = @_;
 
     # Forward to View unless response body is already defined
-    $c->forward( $c->view('V::Mason') ) unless $c->response->body;
+    $c->forward( $c->view('Mason') ) unless $c->response->body;
 }
 
 sub query_aws : Private {
@@ -139,10 +142,10 @@ sub query_aws : Private {
     my $baseurl       = "http://webservices.amazon.com/onca/xml";
     my $service       = "AWSECommerceService";
     my $accesskey     = "1GNG6V387CH1FWX4H182";
-    my $operation     = "ItemSearch";
+    my $operation     = "Power";
     my $searchindex   = "Books";
-    my $responsegroup = "Request,Small";
-    my $version       = "2005-10-13";
+    my $responsegroup = "Request,Medium";
+    #my $version       = "2006-05-17";
 
     # Assemble the REST request URL.
     my $request = "$baseurl?"
@@ -151,8 +154,8 @@ sub query_aws : Private {
         . "Operation=$operation&"
         . "Keywords=$keywords&"
         . "SearchIndex=$searchindex&"
-        . "ResponseGroup=$responsegroup&"
-        . "Version=$version";
+        . "ResponseGroup=$responsegroup";
+    #    . "Version=$version";
 
     # Send the request using HTTP GET.
     my $ua = new LWP::UserAgent;

@@ -3,5 +3,12 @@ use Data::Dumper;
 my $ref = $c->stash->{records};
 
 </%init>
-test
-<% Dumper($ref) %>
+
+% foreach my $rec ( keys %{$ref} ) {
+    <% $rec %>
+    <% $ref->{$rec}->{title} %>
+    <% $ref->{$rec}->{author} %>
+    <% $ref->{$rec}->{pubdate} %>
+    <% $ref->{$rec}->{reldate} %>
+    <br/>
+% }

@@ -1,29 +1,28 @@
 package authorwatch::V::Mason;
 
 use strict;
-use warnings;
-use base 'Catalyst::View';
+use base 'Catalyst::View::Mason';
 
 =head1 NAME
 
-authorwatch::V::Mason - Catalyst View
+authorwatch::V::Mason - Mason View Component
 
 =head1 SYNOPSIS
 
-See L<authorwatch>
+    Very simple to use
 
 =head1 DESCRIPTION
 
-Catalyst View.
+Very nice component.
 
 =head1 AUTHOR
 
-Kevin Old
+Clever guy
 
 =head1 LICENSE
 
-This library is free software, you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This library is free software . You can redistribute it and/or modify it under
+the same terms as perl itself.
 
 =cut
 
