@@ -95,21 +95,29 @@ sub aws : Local {
 
                 my $asin = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ASIN");
 
-                $records{$asin}{title} = $xp->findvalue(
-                    "/ItemSearchResponse/Items/Item[$i]/ItemAttributes/PublicationDate"
-                );
-                $records{$asin}{title} = $xp->findvalue(
-                    "/ItemSearchResponse/Items/Item[$i]/ItemAttributes/Title");
+                $records{$asin}{detailpageurl} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/DetailPageURL");
+
+                $records{$asin}{smallimage} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/SmallImage/URL");
+                $records{$asin}{smallimageheight} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/SmallImage/Height");
+                $records{$asin}{smallimagewidth} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/SmallImage/Width");
+
+                $records{$asin}{mediumimage} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/MediumImage/URL");
+                $records{$asin}{mediumimageheight} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/MediumImage/Height");
+                $records{$asin}{mediumimagewidth} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/MediumImage/Width");
+
+                $records{$asin}{largeimage} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/LargeImage/URL");
+                $records{$asin}{largeimageheight} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/LargeImage/Height");
+                $records{$asin}{largeimagewidth} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/LargeImage/Width");
+
+                $records{$asin}{editorialreview} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/EditorialReviews/EditorialReview/Content");
+
+                $records{$asin}{formattedprice} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/OfferSummary/LowestNewPrice/FormattedPrice");
+
+                $records{$asin}{title} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ItemAttributes/Title");
                 $records{$asin}{author} = join( ", ", @authors );
                 $records{$asin}{pubdate} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ItemAttributes/PublicationDate");
                 $records{$asin}{reldate} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ItemAttributes/ReleaseDate");
 
-                #print "Title: ",
-                #    $xp->findvalue(
-                #    "/ItemSearchResponse/Items/Item[$i]/ItemAttributes/Title"),
-                #    "\n", "Author: ", join( ", ", @authors ), "\n", "ASIN: ",
-                #    $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ASIN"),
-                #    "\n\n";
             }
         }
 

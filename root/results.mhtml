@@ -6,11 +6,20 @@ my $ref = $c->stash->{records};
 
 <% $c->stash->{error_msg} %>
 
+
 % foreach my $rec ( keys %{$ref} ) {
+<div id="book_container" style="display:block;padding10px">
+    <span id="img_<% $rec %>" style="float:left">
+    <img src="<% $ref->{$rec}->{smallimage} %>" height="<% $ref->{$rec}->{smallimageheight} %>" width="<% $ref->{$rec}->{smallimagewidth} %>"/>
+    </span>
+    <span id="details_<% $rec %>" style="float:right">
     <% $rec %>
-    <% $ref->{$rec}->{title} %>
-    <% $ref->{$rec}->{author} %>
-    <% $ref->{$rec}->{pubdate} %>
-    <% $ref->{$rec}->{reldate} %>
-    <br/>
+    <b><% $ref->{$rec}->{title} %></b><br/>
+    <% $ref->{$rec}->{author} %><br/>
+
+    Publish Date: <% $ref->{$rec}->{pubdate} %><br/>
+    Newest Low Price: <% $ref->{$rec}->{formattedprice} %><br/>
+    <a href="<% $ref->{$rec}->{detailpageurl} %>">View Details</a>
+    </span>
+</div>
 % }
