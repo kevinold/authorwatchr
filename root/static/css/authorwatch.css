@@ -9,44 +9,51 @@ Description : AuthorWatcher Main CSS
 Created : 2006-06-29
 Modified : $LastChangedDate$
 
+Colors:
+#6F82B8 - Light Blueish/Purple
+#404C6B - Slate/Dark Blue
+#B8B8B8 - Lightest Gray
+#6B6B6B - Med Dark Gray
+#474747 - Dark Gray
+
 - - - - - - - - - - - - - - - - - - - - - */
 
 /* ----- CSS ----- */
 
 *{
-margin:;
-padding:;
-font-family:;
-font-size:;
+margin: 0;
+padding: 0;
+font-family: Verdana;
+font-size: 12px;
 }
 html{
-margin:;
-padding:;
-background:;
+margin: 0;
+padding: 0;
+background: #fff;
 }
 body{
-margin:;
-padding:;
-background:;
+margin: 0;
+padding: 0;
+background: #fff;
 }
 
 /* ----- IDS ----- */
 
 #container{
-width:;
-margin:;
-padding:;
-background:;
-text-align:;
+width: 90%;
+margin: 10px;
+padding: 10px;
+background: #B8B8B8;
+text-align: left;
 }
 #primaryContent{
-position:;
-float:;
-width:;
-margin:;
-padding:;
-background:;
-text-align:;
+position: absolute;
+float: left;
+width: auto;
+margin: 0;
+padding: 10px;
+background: #fff;
+text-align: left;
 }
 #secondaryContent{
 position:;
@@ -62,9 +69,9 @@ margin:;
 padding:;
 }
 #footer{
-margin:;
-padding:;
-clear:;
+margin: 0;
+padding: 0;
+/*clear:;*/
 }
 
 /* ----- CLASSES ----- */

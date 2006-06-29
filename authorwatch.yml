@@ -1,6 +1,8 @@
 ---
 name: authorwatch
 static:
+  dirs:
+    - static
   ignore_extensions:
     - tmpl
     - xhtml
