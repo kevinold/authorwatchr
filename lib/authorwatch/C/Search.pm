@@ -43,10 +43,11 @@ sub default : Private {
 sub aws : Local {
     my ( $self, $c ) = @_;
 
+    $c->stash->{template} = 'results.mhtml';
     my $svalue = $c->req->param("svalue");
 
     $c->log->debug("**********svalue is: $svalue");
-
+=pod
     if ($svalue) {
 
         #Get search terms urlified
@@ -59,7 +60,7 @@ sub aws : Local {
         # Perform search
         my $response = query_aws($pw_search);
 
-        $c->log->debug("Response: $response");
+        #$c->log->debug("Response: $response");
 
         # Process XML response with XPath.
         my $xp = XML::XPath->new( xml => $response );
@@ -126,8 +127,7 @@ sub aws : Local {
     else {
         $c->stash->{error_msg} = "No search parameters entered.";
     }
-
-    $c->stash->{template} = 'results.mhtml';
+=cut
 }
 
 =head2 end
