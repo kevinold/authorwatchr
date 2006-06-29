@@ -1,0 +1,424 @@
+/* - - - - - - - - - - - - - - - - - - - - -
+
+Title : 
+Author : 
+URL : 
+
+Description : 
+
+Created : 
+Modified : 
+
+- - - - - - - - - - - - - - - - - - - - - */
+
+/* ----- CSS ----- */
+
+*{
+margin:;
+padding:;
+font-family:;
+font-size:;
+}
+html{
+margin:;
+padding:;
+background:;
+}
+body{
+margin:;
+padding:;
+background:;
+}
+
+/* ----- IDS ----- */
+
+#container{
+width:;
+margin:;
+padding:;
+background:;
+text-align:;
+}
+#primaryContent{
+position:;
+float:;
+width:;
+margin:;
+padding:;
+background:;
+text-align:;
+}
+#secondaryContent{
+position:;
+float:;
+width:;
+margin:;
+padding:;
+background:;
+text-align:;
+}
+#navigation{
+margin:;
+padding:;
+}
+#footer{
+margin:;
+padding:;
+clear:;
+}
+
+/* ----- CLASSES ----- */
+
+.hide{
+/* display:none; */
+}
+.show{
+/* display:block; */
+}
+
+/* ----- HEADINGS ----- */
+
+h1{
+font:;
+font-size:;
+font-weight:;
+color:;
+margin:;
+padding:;
+}
+h2{
+font:;
+font-size:;
+font-weight:;
+color:;
+margin:;
+padding:;
+}
+h3{
+font:;
+font-size:;
+font-weight:;
+color:;
+margin:;
+padding:;
+}
+h4{
+font:;
+font-size:;
+font-weight:;
+color:;
+margin:;
+padding:;
+}
+
+/* ----- PARAGRAPHS ----- */
+
+p{
+font:;
+color:;
+
+font-size:;
+font-family:;
+font-style:;
+font-weight:;
+font-variant:;
+
+text-align:;
+text-indent:;
+text-decoration:;
+text-shadow:;
+text-transform:;
+
+letter-spacing:;
+word-spacing:;
+}
+#primaryContent p{
+}
+#secondaryContent p{
+}
+
+/* ----- QUOTES ----- */
+
+blockquote{
+margin:;
+padding:;
+background-color:;
+font:;
+color:;
+}
+blockquote p{
+}
+cite{
+font:;
+color:;
+}
+blockquote cite{
+}
+
+/* ----- CODE ----- */
+
+pre{
+margin:;
+padding:;
+background-color:;
+border:;
+font-size:;
+overflow:;
+}
+code{
+font-size:;
+}
+p code{
+}
+pre code{
+}
+
+/* ----- LISTS ----- */
+
+li{
+list-style:;
+
+list-style-type:;
+list-style-image:;
+list-style-position:;
+float:;
+margin:;
+padding:;
+}
+li p{
+}
+ol{
+width:;
+margin:;
+padding:;
+}
+ul{
+width:;
+margin:;
+padding:;
+}
+ol li{
+}
+ul li{
+}
+
+#navigation li{
+}
+
+#navigation ul{
+}
+
+#navigation ul li{
+}
+
+#navigation ol{
+}
+
+#navigation ol li{
+}
+
+/* ----- IMAGES ----- */
+
+img{
+border:;
+}
+img a{
+border:;
+text-decoration:;
+}
+img a:hover{
+border:;
+}
+
+/* BREAK */
+
+hr{
+/* display:none; */
+}
+
+/* ----- TEXT FORMATTING ----- */
+
+strong{
+}
+em{
+}
+b{
+}
+i{
+}
+
+/* ----- LINKS ----- */
+
+a{
+font:;
+color:;
+text-decoration:;
+border-bottom:;
+}
+a:hover{
+color:;
+background-color:;
+border-bottom:;
+}
+a:visited, a:active, a:focus{
+color:;
+background-color:;
+border-bottom:;
+}
+a:visited{
+color:;
+background-color:;
+border-bottom:;
+}
+a:active{
+color:;
+background-color:;
+border-bottom:;
+}
+a:focus{
+color:;
+background-color:;
+border-bottom:;
+}
+
+p a{
+}
+cite a{
+}
+li a{
+}
+dt a{
+}
+dd a{
+}
+
+/* ----- TABLES ----- */
+
+table{
+width:;
+margin:;
+padding:;
+frame:;
+text-align:;
+}
+caption{
+font:;
+color:;
+position:;
+text-align:;
+display:;
+}
+thead{
+font:;
+color:;
+text-align:;
+background-color:;
+margin:;
+padding:;
+}
+tbody{
+font:;
+color:;
+text-align:;
+background-color:;
+margin:;
+padding:;
+}
+tfoot{
+font:;
+color:;
+text-align:;
+background-color:;
+margin:;
+padding:;
+}
+tr{
+font:;
+color:;
+background-color:;
+}
+tr .alt{
+font:;
+color:;
+background-color:;
+}
+th{
+}
+td{
+width:;
+margin:;
+padding:;
+}
+
+/* ----- FORMS ----- */
+
+form{
+width:;
+margin:;
+padding:;
+}
+fieldset{
+border:;
+width:;
+margin:;
+padding:;
+}
+legend{
+font:;
+color:;
+margin:;
+padding:;
+}
+label{
+margin:;
+padding:;
+font-size:;
+font-family:;
+}
+input{
+border:;
+margin:;
+padding:;
+font-size:;
+font-family:;
+}
+textarea{
+border:;
+margin:;
+padding:;
+font-size:;
+font-family:;
+}
+input, textarea{
+}
+select{
+border:;
+margin:;
+padding:;
+font-size:;
+font-family:;
+}
+optgroup{
+font:;
+}
+option{
+font:;
+}
+
+/* ----- DEFINITIONS ----- */
+
+dl{
+font-size:;
+margin:;
+padding:;
+}
+dt{
+color:;
+margin:;
+padding:;
+}
+dd{
+color:;
+margin:;
+padding:;
+}
