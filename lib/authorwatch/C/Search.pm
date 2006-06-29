@@ -32,13 +32,13 @@ Catalyst Controller.
 #
 # Output a friendly welcome message
 #
-sub default : Private {
-    my ( $self, $c ) = @_;
+#sub default : Private {
+#    my ( $self, $c ) = @_;
 
     # Hello World
     #$c->response->body( $c->welcome_message );
-    $c->response->redirect("index.html");
-}
+    #$c->response->redirect("index.html");
+#}
 
 sub aws : Local {
     my ( $self, $c ) = @_;
@@ -46,8 +46,8 @@ sub aws : Local {
     $c->stash->{template} = 'results.mhtml';
     my $svalue = $c->req->param("svalue");
 
-    $c->log->debug("**********svalue is: $svalue");
-=pod
+    #$c->log->debug("**********svalue is: $svalue");
+
     if ($svalue) {
 
         #Get search terms urlified
@@ -127,7 +127,7 @@ sub aws : Local {
     else {
         $c->stash->{error_msg} = "No search parameters entered.";
     }
-=cut
+
 }
 
 =head2 end
