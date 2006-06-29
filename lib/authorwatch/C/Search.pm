@@ -53,8 +53,8 @@ sub aws : Local {
         my @search = split / /, $svalue;
         my $keywords = join " ", @search;
 
-        my $today = strftime "%Y-%m-%d", localtime;
-        my $pw_search = uri_escape("author: $keywords and after pubdate: $today");
+        my $today = strftime "%m-%Y", localtime;
+        my $pw_search = uri_escape("author: $keywords and pubdate: after $today and binding: Hardcover");
         
         # Perform search
         my $response = query_aws($pw_search);
@@ -142,6 +142,7 @@ sub query_aws : Private {
     my $baseurl       = "http://webservices.amazon.com/onca/xml";
     my $service       = "AWSECommerceService";
     my $accesskey     = "1GNG6V387CH1FWX4H182";
+    #my $availability  = "New Release";
     my $operation     = "ItemSearch";
     my $searchindex   = "Books";
     my $responsegroup = "Request,Medium";
@@ -155,6 +156,7 @@ sub query_aws : Private {
         . "Power=$keywords&"
         . "SearchIndex=$searchindex&"
         . "ResponseGroup=$responsegroup";
+    #   . "Availability=$operation&"
     #    . "Keywords=$keywords&"
     #    . "Version=$version";
 
