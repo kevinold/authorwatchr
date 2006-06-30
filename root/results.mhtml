@@ -8,12 +8,12 @@ my $ref = $c->stash->{records};
 
 
 % foreach my $rec ( keys %{$ref} ) {
-<div id="book_container" style="display:block;padding10px">
+<div id="book_container">
     <span id="img_<% $rec %>" style="float:left">
-    <img src="<% $ref->{$rec}->{smallimage} %>" height="<% $ref->{$rec}->{smallimageheight} %>" width="<% $ref->{$rec}->{smallimagewidth} %>"/>
+    <img src="<% $ref->{$rec}->{smallimage} %>" height="<% $ref->{$rec}->{smallimageheight} %>" width="<% $ref->{$rec}->{smallimagewidth} %>" class="smallimg"/>
     </span>
     <span id="details_<% $rec %>" style="float:right">
-    <% $rec %>
+    <% $rec %><br/>
     <b><% $ref->{$rec}->{title} %></b><br/>
     <% $ref->{$rec}->{author} %><br/>
 
@@ -22,4 +22,5 @@ my $ref = $c->stash->{records};
     <a href="<% $ref->{$rec}->{detailpageurl} %>">View Details</a>
     </span>
 </div>
+<br clear="all"/>
 % }

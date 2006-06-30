@@ -1,0 +1,73 @@
+ZipCSS -- A CSS FRAMEWORK
+==========================
+
+ZipCSS is a structured CSS framework aimed at simplifying your stylesheets and making them easier to maintain. The concept is not new or original but just packaged up to make things nice and easy. It's easy as dirt to use and doesn't lock you into any special way of doing things.
+
+Contact -> feedback@zipcss.com
+
+
+QUICKSTART GUIDE
+=================
+
+1. Have a look at the four basic files in the global/ directory.  Nothing magical here, just sensibly structured stylesheets.
+2. Start hacking at the stylesheets and see how they affect the sample.html in your browser.
+
+
+WHAT'S WHAT
+============
+
+There are two subdirectories in ZipCSS.
+
+**  global/
+    
+    Contains site-wide stylesheets including:
+    
+      - base.css
+        Really basic site-wide rules that are generally the same for every 
+        site. These rules hardly ever need to be touched, so let's not clutter 
+        up our main stylesheet with them.
+      
+      - layout.css
+        Defines the basic layout of the site including background colors and 
+        background images. File is divided into sections such as header, content, 
+        sidebar, etc. No typography or navigation rules here, just basic layout 
+        and backgrounds.
+      
+      - nav.css
+        Even though the navbar is actually part of the layout, I think it's 
+        important enough and usually verbose enough that it deserves to be broken 
+        out into its own file. This also makes your navbars more easily portable 
+        across projects.
+        
+      - style.css
+        This is the main stylesheet which should be linked from your HTML pages. 
+        The very first thing this file does is to import the base, layout, and 
+        nav stylesheets (so that means you don't have to link to those from your 
+        HTML). The rest of the file is divided into sections for defining site-wide 
+        styles such as typography, forms, tables, etc.
+
+**  pages/
+
+    Contains whatever stylesheets you put in there for page specific styles
+    
+
+
+NAMING CONVENTIONS
+==================
+
+We start with a few very standard naming conventions in your HTML.  Of course, you can change whatever you don't like.  But here's what ZipCSS uses by default.
+
+* Body: <body id="this-page">  (name your pages)
+* Page Wrapper: <div id="wrapper">
+* Header: <div id="header">
+* Nav: <div id="nav">
+* Page Content: <div id="content">
+* Sidebar: <div id="sidebar">
+* Footer: <div id="footer">
+
+
+CHANGE WHATEVER YOU WANT
+========================
+
+Remember, the whole point of ZipCSS is to suggest a logical structure for your stylesheets.  So if you like the framework but for example don't like my naming conventions --  Just change it!  Probably some folks already have their own way of structuring CSS and won't want to adapt to a new way of doing things.  ZipCSS is for everyone else ;)
+

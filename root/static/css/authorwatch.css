@@ -40,16 +40,16 @@ background: #fff;
 /* ----- IDS ----- */
 
 #container{
-width: 90%;
+width: 850px;
 margin: 10px;
 padding: 10px;
-background: #B8B8B8;
+background: #fff;
 text-align: left;
 }
 #primaryContent{
-position: absolute;
+position: relative;
 float: left;
-width: auto;
+width: 350px;
 margin: 0;
 padding: 10px;
 background: #fff;
@@ -65,8 +65,10 @@ background:;
 text-align:;
 }
 #navigation{
-margin:;
-padding:;
+width: 880px;
+height: 145px;
+margin: 0 0 0 20px;
+padding: 0;
 }
 #footer{
 margin: 0;
@@ -226,8 +228,13 @@ ul li{
 
 /* ----- IMAGES ----- */
 
-img{
-border:;
+img {
+border: 0;
+}
+img .smallimg {
+border: 0;
+float: left;
+padding: 20px;
 }
 img a{
 border:;

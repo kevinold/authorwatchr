@@ -1,0 +1,146 @@
+/*================================================================
+The MAIN stylesheet for the website.
+
+Define SITE-WIDE styles:
+  - General Typography
+  - Header Content
+  - Sidebar Content
+  - Forms
+  - Tables
+  - Footer
+  - Sitewide Custom Definitions
+  
+================================================================*/
+
+@import url("base.css");
+@import url("layout.css");
+@import url("nav.css");
+
+
+/* GENERAL TYPOGRAPHY (Standard HTML tags)
+----------------------------------------------------------------*/
+html, body {
+  font-family: verdana, helvetica, sans-serif;
+  color: black;
+}
+
+h1 {
+  color: green;
+  margin: 26px 0 16px 0;
+  padding: 3px 0;
+  font-size: 26px;
+  border-bottom: 1px dotted #666;
+}
+
+h2 {
+  color: #999;
+  margin: 26px 0 6px 0;
+  font-size: 18px;
+}
+
+p {
+  margin: 10px 0 6px 0;
+  font-size: small;
+}
+
+a:link, a:visited {
+  color: blue;
+}
+
+a:hover {
+  background: #EEE;
+}
+
+
+/* HEADER CONTENT
+----------------------------------------------------------------*/
+#header h1 {
+  margin: 0 20px;
+  padding: 20px 0; 
+  color: white;
+  font-weight: normal;
+  font-size: 24px;
+}
+#header h1 em {
+  color: yellow;
+  font-family: georgia;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+
+/* SIDEBAR CONTENT
+----------------------------------------------------------------*/
+#sidebar h2 {
+  color: #222;
+  margin-top: 0;
+}
+#sidebar p {
+  font-size: small;
+}
+
+/* FORMS
+----------------------------------------------------------------*/
+fieldset {
+  border: 1px solid #AAA;
+}
+
+fieldset p {
+  margin: 4px 0;
+}
+
+legend {
+  color: #999;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+label {
+  float: left;
+  width: 160px;
+  text-align: right;
+  font-size: medium;
+  margin-right: 14px;
+}
+
+input.text {
+  width: 290px;
+} 
+
+input.textShort {
+  width: 80px;
+}
+
+input.submit {
+  float: right;
+}
+
+
+/* TABLES
+----------------------------------------------------------------*/
+table {
+  clear: both;
+  border-collapse: collapse;
+  text-align: left;
+}
+td {
+  padding: 2px 3px;
+  font-size: small;
+}
+
+
+/* FOOTER CONTENT
+----------------------------------------------------------------*/
+#footer p {
+  text-align: right;
+  color: #555;
+  font-size: 13px;
+  padding: 10px 20px;
+}
+
+
+/* SITE-WIDE CUSTOM STYLES (Your own id's and classes)
+----------------------------------------------------------------*/
+p.error {
+  color: red;
+}

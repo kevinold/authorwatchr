@@ -1,0 +1,66 @@
+/*================================================================
+NAV stylesheet for the website.
+
+Define all aspects (layout AND typography) of:
+  - Nav (ul)
+  - Nav List Items (li)
+  - Nav Links
+  - Current Page Definitions
+  
+================================================================*/
+
+
+/* NAV (ul)
+----------------------------------------------------------------*/
+#nav ul {
+  list-style: none;
+	display: block;
+	background: #CCC;
+	margin: 0;
+	padding: 0;
+}
+
+
+/* NAV LIST ITEMS (li)
+----------------------------------------------------------------*/
+#nav li {
+	width: 120px;
+	margin: 0;
+	padding: 0;
+  display: block;
+  float: left;
+  position: relative;
+}
+
+
+/* NAV LINKS
+----------------------------------------------------------------*/
+#nav a:link, 
+#nav a:visited { 
+  display: block;
+	height: 20px;
+	font-weight: bold;
+	font-size: 13px;
+	padding-top: 3px;
+	color: #222;
+	text-decoration: none;
+	text-align: center;
+	border-right: 1px solid #999;
+}
+
+#nav a:hover {
+  background: #EEE;
+}
+  
+
+/* CURRENT PAGE INDICATORS
+-----------------------------------------------------------------
+ If you define your body id's and also set each nav link to a 
+ class of the same name, then you have a very handy method of
+ defining the style for nav buttons relative to the current page.
+----------------------------------------------------------------*/
+body#home a:link.home, body#home a:visited.home,
+body#contact a:link.contact, body#contact a:visited.contact {
+  background: white;
+  color: #666;
+}
