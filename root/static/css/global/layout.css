@@ -18,7 +18,7 @@ Define layout and backgrounds for:
 /* BODY 
 ----------------------------------------------------------------*/
 body {
-  background: #eee;
+  background: #fff;
 }
 
 
@@ -26,10 +26,10 @@ body {
 ----------------------------------------------------------------*/
 #wrapper {
   clear: both; 
-  width: 780px;
+  width: 880px;
   margin: 0 auto;
-  border-left: 1px solid #CCC;
-  border-right: 1px solid #CCC;
+  /*border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;*/
   background: white;
 }
 
@@ -37,8 +37,8 @@ body {
 /* HEADER
 ----------------------------------------------------------------*/
 #header {
-  background: #666;
-  height: 80px;
+  /*background: #fff;*/
+  height: 180px;
 }
 
 
@@ -46,7 +46,7 @@ body {
 ----------------------------------------------------------------*/
 #sidebar {
   float: left;
-  background: #EEE;
+  background: #e8e8ea;
   width: 170px;
   padding: 16px;
   margin: 40px 20px 0 0;
@@ -57,7 +57,7 @@ body {
 ----------------------------------------------------------------*/
 #content {
   float: left;
-  width: 520px;
+  width: 850px;
   margin: 0 auto 20px auto;
   padding: 16px 0;
   text-align: left;
@@ -68,6 +68,6 @@ body {
 ----------------------------------------------------------------*/
 #footer {
   clear: both;
-  background: #BBB;
-  height: 60px;
+  background: #fff;
+  height: 20px;
 }

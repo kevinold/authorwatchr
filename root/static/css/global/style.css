@@ -9,7 +9,20 @@ Define SITE-WIDE styles:
   - Tables
   - Footer
   - Sitewide Custom Definitions
-  
+
+Colors from Authorwatcher logo
+#e8e8ea - Lightest Gray
+#0572C4 - "Authorwatcher" Blue
+
+From http://colorblender.com/?preloadblend=6F82B8404C6BB8B8B86B6B6B474747B8B8B8
+
+#0572C4 - "Authorwatcher" Blue
+#044578 - Darker Blue
+#C49806 - Burnt Orange/Yellow
+#784904 - Brown
+#3B3B3B - Dark Gray
+#C4C4C4 - Light Gray
+
 ================================================================*/
 
 @import url("base.css");
