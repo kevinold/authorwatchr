@@ -38,7 +38,8 @@ sub default : Private {
 
     # Hello World
     #$c->response->body( $c->welcome_message );
-    $c->response->redirect("index.html");
+    #$c->response->redirect("index.html");
+    $c->stash->{template} = 'index.html';
 }
 
 =head2 end
