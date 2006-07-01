@@ -14,10 +14,10 @@
   
   <!-- Header -->
   <div id="header">
-    <h1><em>ZipCSS</em> Sample Page</h1>
+   <img src="/static/images/logo_medium.jpg" style="float:left;"/> 
   </div>
   
-  <!-- Nav -->
+  <!-- Nav 
   <div id="nav">
     <ul class="clearfix">
       <li><a href="#" class="home">Home</a></li>
@@ -28,14 +28,16 @@
       <li><a href="#">Contact</a></li>
     </ul>
   </div>
+  -->
   
-  <!-- Sidebar -->
+  <!-- Sidebar 
   <div id="sidebar" class="clearfix">
     <h2>Sidebars are neat too!</h2>
     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut ac leo in lorem ultricies sollicitudin. Vivamus molestie elit nec nulla. Suspendisse potenti. Suspendisse at lorem.</p>
     <hr />
     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut ac leo in lorem ultricies sollicitudin. Vivamus molestie elit nec nulla. Suspendisse potenti. Suspendisse at lorem.</p>
   </div>
+  -->
   
   <!-- Content -->
   <div id="content" class="clearfix">
