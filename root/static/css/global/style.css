@@ -11,7 +11,8 @@ Define SITE-WIDE styles:
   - Sitewide Custom Definitions
 
 Colors from Authorwatcher logo
-#e8e8ea - Lightest Gray
+#f1f1f3 - Lightest Gray
+#e8e8ea - Light Gray
 #0572C4 - "Authorwatcher" Blue
 
 From http://colorblender.com/?preloadblend=6F82B8404C6BB8B8B86B6B6B474747B8B8B8
@@ -92,6 +93,23 @@ a:hover {
   font-size: small;
 }
 
+/* CONTENT
+----------------------------------------------------------------*/
+#content p .author_results {
+    width: 70%;
+    /*float: right*/
+  /*font-size: small;*/
+}
+
+#content .author_results img {
+    float: left;
+    padding-right: 20px;
+}
+
+#content #author_results {
+    background: #f1f1f3;
+    padding: 10px;
+}
 /* FORMS
 ----------------------------------------------------------------*/
 fieldset {

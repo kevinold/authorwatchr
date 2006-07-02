@@ -1,9 +1,85 @@
+
+<!--
 <form id="test" action="/search/aws" method="post">
-<fieldset>
-    <legend>Test Search</legend>
-    <div class="form-row">
-        <div class="field-label"><label for="svalue">Search</label>:</div>
-        <div class="field-widget"><input name="svalue" id="svalue" class="required validate-email" title="Enter Search Terms" /></div>
-    </div>
+        <label for="svalue">Author Name</label>:
+        <input name="svalue" id="svalue" class="" title="Enter Author Name" />
 </fieldset>
 </form>
+-->
+
+<style type="text/css">
+div.autocomplete {
+  position:absolute;
+  width:250px;
+  background-color:white;
+  border:1px solid #888;
+  margin:0px;
+  padding:0px;
+}
+div.autocomplete ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+}
+div.autocomplete ul li.selected { background-color: #ffb;}
+div.autocomplete ul li {
+  list-style-type:none;
+  display:block;
+  margin:0;
+  padding:2px;
+  height:32px;
+  cursor:pointer;
+}
+</style>
+
+<input type="text" id="autocomplete" name="autocomplete_parameter"/>
+<div id="autocomplete_choices" class="autocomplete"></div>
+<br clear="all"/>
+
+<span id="loading_results" style="display:none">
+<img src="/static/images/indicator_mozilla_blu.gif"/> Loading Results...
+<!--
+<img src="/static/images/indicator_wheel1.gif"/>
+<img src="/static/images/indicator_arrows.gif"/>
+<img src="/static/images/indicator_snake.gif"/>
+<img src="/static/images/indicator_wheel2.gif"/>
+-->
+</span>
+<br clear="all"/>
+<div id="author_results"></div>
+
+
+<script type="text/javascript">
+
+new Ajax.Autocompleter("autocomplete", "autocomplete_choices", "/authors", {paramName: "value", minChars: 2, afterUpdateElement: runSearch});
+
+function runSearch (field) {
+    //jslog.info("field: " + field.value);
+    //var s = $F('autocomplete');
+
+    var s = field.value
+    if ( s.length == 0 ) {
+        return;
+    }
+    else {
+        jslog.info("search is: " + s);
+
+        Element.show('loading_results');
+        var url = '/search/aws';
+        var pars = 'svalue=' + s;
+        new Ajax.Updater(
+            'author_results',
+            url,
+            {
+                method: 'post',
+                parameters: pars,
+                onComplete: function () { Element.hide('loading_results'); }
+            });
+    }
+
+}
+
+//Event.observe('svalue', 'keyup', check_search, false);
+</script>
+
+
