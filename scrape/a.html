@@ -1,0 +1,593 @@
+
+<html>
+<head>
+<title>Author Yellow Pages</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+<META HTTP-EQUIV="imagetoolbar" CONTENT="no">
+
+<SCRIPT Language="JavaScript">
+//<!--hide me
+
+if((navigator.userAgent.indexOf("AOL") != -1) && (navigator.appVersion.indexOf("Mac") != -1))
+	{
+  	document.writeln('<LINK REL=stylesheet HREF="css/mac_aol.css" TYPE="text/css">');
+  	}
+
+else if((navigator.appName.indexOf("Netscape") != -1) && (navigator.appVersion.indexOf("Mac") != -1) && (parseInt(navigator.appVersion) < 5))
+	{
+  	document.writeln('<LINK REL=stylesheet HREF="css/mac_ns.css" TYPE="text/css">');
+  	}
+  	  	
+else if((navigator.appName.indexOf("Netscape") >= -1) && (navigator.appVersion.indexOf("Mac") != -1) && (parseInt(navigator.appVersion) >= 5))
+	{
+  	document.writeln('<LINK REL=stylesheet HREF="css/mac_ns6.css" TYPE="text/css">');
+  	}
+  	  	
+else if((navigator.appName.indexOf("Explorer") != -1) && (navigator.appVersion.indexOf("Mac") != -1))
+	{
+  	document.writeln('<LINK REL=stylesheet HREF="css/mac_ie.css" TYPE="text/css">');
+  	}
+  	  	
+else if((navigator.appName.indexOf("Netscape") >= -1) && (navigator.appVersion.indexOf("Win") != -1) && (parseInt(navigator.appVersion) >= 5))
+	{
+  	document.writeln('<LINK REL=stylesheet HREF="css/win_net6.css" TYPE="text/css">');
+  	}
+
+else if((navigator.appName.indexOf("Netscape") != -1) && (navigator.appVersion.indexOf("Win") != -1) && (parseInt(navigator.appVersion) < 5))
+	{
+  	document.writeln('<LINK REL=stylesheet HREF="css/win_net.css" TYPE="text/css">');
+  	}
+
+else if((navigator.appName.indexOf("Explorer") != -1) && (navigator.appVersion.indexOf("Win") != -1))
+	{
+  	document.writeln('<LINK REL=stylesheet HREF="css/default.css" TYPE="text/css">');
+  	}
+
+else 
+	{
+	document.writeln('<LINK REL=stylesheet HREF="css/default.css" TYPE="text/css">');
+	}
+	
+  	
+// show me-->
+</script>
+
+<script language="javascript">
+<!--
+var myimages=new Array()
+function preloadimages(){
+for (i=0;i<preloadimages.arguments.length;i++){
+myimages[i]=new Image()
+myimages[i].src=preloadimages.arguments[i]
+}
+}
+preloadimages('images/header/nav_about_on.gif', 'images/header/nav_get_listed_on.gif');
+//--></script>
+
+
+
+
+</head>
+
+<body marginwidth="0" marginheight="0" leftmargin="0" topmargin="0" bgcolor="#FFFFFF">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="518" height="82"><a href="/"><img src="images/header/top.gif" border=0 width="518" height="82"></a></td>
+    <td width="182" align="center" valign="middle" background="images/header/bg_quick_link.gif"><br><!img src="images/header/spacer.gif" width="182" height="20"><form name="a295">
+              <select name="pulldown" onChange="nav_pulldown(this)">
+                <option selected value="#">Select a site</option>
+                <option value="http://www.bookreporter.com">Bookreporter.com</option>
+                <option value="http://www.authorsontheweb.com">Authors On The Web</option>
+                <option value="http://www.readinggroupguides.com">Reading Group Guides</option>
+                <option value="http://www.kidsreads.com">Kidsreads.com</option>
+                <option value="http://www.teenreads.com">Teenreads.com</option>
+              </select>
+            </form>
+	</td>
+    <td width="100%" background="images/header/bg_top.gif"><img src="images/header/bg_top.gif" width="20" height="82"></td>
+  </tr>
+</table>
+
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+  <tr>
+	<td width="391" height="82" align="center" valign="middle" background="images/header/bg_browse_authors.gif">
+<table width="391" height="82" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+	<td width="391" height="82" align="center" valign="middle"><img src="images/header/spacer.gif" width="391" height="1"><br>
+    &nbsp;&nbsp;&nbsp;
+    <table border="0"><tr><td>
+    <form name="b295" action="name.asp" method=POST ID="Form1">
+    <input name="stype" value="letter" type="hidden">
+              <select name="letter" onchange="submit()">
+                <option selected value="#">Alphabetically...</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="G">G</option>
+                <option value="H">H</option>
+                <option value="I">I</option>
+                <option value="J">J</option>
+                <option value="K">K</option>
+                <option value="L">L</option>
+                <option value="M">M</option>
+                <option value="N">N</option>
+                <option value="O">O</option>
+                <option value="P">P</option>
+                <option value="Q">Q</option>
+                <option value="R">R</option>
+                <option value="S">S</option>
+                <option value="T">T</option>
+                <option value="U">U</option>
+                <option value="V">V</option>
+                <option value="W">W</option>
+                <option value="X">X</option>
+                <option value="Y">Y</option>
+                <option value="Z">Z</option>
+               </select>
+&nbsp;&nbsp;&nbsp;</form></td>
+<td>
+<form name="c295" action="name.asp" method=post ID="Form1">
+      <input name="stype" value="genre" type="hidden" ID="Hidden1">
+			  <select name="genre" onchange="submit()" ID="Select1">
+			  <option value="#">By Genre...</option>
+			  
+                <option value="3">African American</option>
+              
+                <option value="36">Arts</option>
+              
+                <option value="4">Asian</option>
+              
+                <option value="24">Biography</option>
+              
+                <option value="25">Business</option>
+              
+                <option value="37">Children</option>
+              
+                <option value="39">Christianity</option>
+              
+                <option value="5">Erotica</option>
+              
+                <option value="34">Family/Parenting</option>
+              
+                <option value="6">Fiction</option>
+              
+                <option value="7">Gay/Lesbian</option>
+              
+                <option value="9">Graphic Novels</option>
+              
+                <option value="31">Health and Fitness</option>
+              
+                <option value="8">Historical Fiction</option>
+              
+                <option value="10">History</option>
+              
+                <option value="35">Home and Garden</option>
+              
+                <option value="11">Horror</option>
+              
+                <option value="12">Humor</option>
+              
+                <option value="13">Latin/Hispanic</option>
+              
+                <option value="14">Mystery</option>
+              
+                <option value="15">Poetry</option>
+              
+                <option value="32">Psychology</option>
+              
+                <option value="28">Reference</option>
+              
+                <option value="30">Religion</option>
+              
+                <option value="16">Romance</option>
+              
+                <option value="17">Science Fiction</option>
+              
+                <option value="33">Self-Help</option>
+              
+                <option value="18">Social Sciences</option>
+              
+                <option value="27">Sports/Recreation</option>
+              
+                <option value="26">Technology</option>
+              
+                <option value="38">Teen/Young Adult</option>
+              
+                <option value="19">Thriller/Suspense</option>
+              
+                <option value="29">Travel</option>
+              
+                <option value="20">True Crime</option>
+              
+                <option value="21">Western</option>
+              
+               </select>  
+    </form></td></tr></table>          
+	</td>
+  </tr>
+</table></td>
+	<td width="309" height="82" align="left" valign="top">
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="75" height="20"><img src="images/header/nav_left.gif" width="75" height="20"></td>
+          <td width="96" height="20"><a href="about.asp" onMouseOver="document.about.src='images/header/nav_about_on.gif';" onMouseOut="document.about.src='images/header/nav_about.gif';">
+<img src="images/header/nav_about.gif" width="96" height="20" border="0" name="about"></a></td>
+          <td width="100" height="20"><a href="RegType.asp" onMouseOver="document.listed.src='images/header/nav_get_listed_on.gif';" onMouseOut="document.listed.src='images/header/nav_get_listed.gif';">
+<img src="images/header/nav_get_listed.gif" width="100" height="20" border="0" name="listed"></a></td>
+          <td width="38" height="20"><img src="images/header/nav_right.gif" width="38" height="20"></td>
+        </tr>
+        <tr> 
+          <td colspan="4"><img src="images/header/featured_blank.gif" width="309" height="17"></td>
+        </tr>
+        <tr> 
+          <td colspan="4" width="309" height="45">&nbsp;<!-- include file="header_scroll.asp" --></td>
+        </tr>
+      </table></td>
+	<td width="100%" height="82" align="left" valign="top"> 
+      <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td width="100%" height="20" background="images/header/nav_right.gif"><img src="images/header/nav_right.gif" width="38" height="20"></td>
+		</tr>
+		<tr>
+          <td width="100%" height="62"><img src="images/header/spacer.gif" width="5" height="62"></td>
+        </tr>
+      </table>      
+</tr>
+</table>
+
+<table width="700" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="198" align="left" valign="top">
+    <table width="198" border="0" cellspacing="0" cellpadding="0">
+        <tr> 
+          <td colspan="3" width="198" height="40"><img src="images/featured/top.gif" width="198" height="40"></td>
+        </tr>
+        <tr> 
+          <td width="38" align="left" valign="top" background="images/featured/bg_left.gif"><img src="images/featured/arrow.gif" width="38" height="24"></td>
+          <td width="134">
+<font class="small-text">
+Check out this month's featured websites. <a href="featureslist.asp" class="small">See them here!</a>
+</font><br><img src="images/header/spacer.gif" width="134" height="1">
+		  </td>
+          <td width="26" align="left" valign="top" background="images/featured/bg_right.gif"><img src="images/featured/bg_right.gif" width="26" height="14"></td>
+        </tr>
+        <tr> 
+          <td colspan="3"><img src="images/featured/between.gif" width="198" height="17"></td>
+        </tr>
+<!--
+        <tr> 
+          <td width="38" align="left" valign="top" background="images/featured/bg_left.gif"><img src="images/featured/arrow.gif" width="38" height="24"></td>
+          <td width="134">
+<font class="small-text">
+Text, a;lj;af alkjf fkla afjlkj alk fjfkalkja fjkdlkaj flakjf alj flaj aslakja  alakjlaskdoienvonf
+</font><br><img src="images/header/spacer.gif" width="134" height="1">
+		  </td>
+          <td width="26" align="left" valign="top" background="images/featured/bg_right.gif"><img src="images/featured/bg_right.gif" width="26" height="14"></td>
+        </tr>
+        <tr> 
+          <td colspan="3"><img src="images/featured/between.gif" width="198" height="17"></td>
+        </tr>
+-->
+        <tr> 
+          <td width="38" align="left" valign="top" background="images/featured/bg_left.gif"><img src="images/featured/arrow.gif" width="38" height="24"></td>
+          <td width="134">
+<font class="small-text">
+<a href="NewsSearch.asp" class="small">Find Author Newsletters</a><br>Seach by author name or genre to sign up for author newsletters from your favorite authors!
+</font><br><img src="images/header/spacer.gif" width="134" height="1">
+		  </td>
+          <td width="26" align="left" valign="top" background="images/featured/bg_right.gif"><img src="images/featured/bg_right.gif" width="26" height="14"></td>
+        </tr>
+        <tr> 
+          <td colspan="3"><img src="images/featured/between.gif" width="198" height="17"></td>
+        </tr>
+        <tr> 
+          <td width="38" align="left" valign="top" background="images/featured/bg_left.gif"><img src="images/featured/arrow.gif" width="38" height="24"></td>
+          <td width="134">
+				<font class="small-text"><b>Top Searches</b></font>
+				<table border="0" cellspacing="0" cellpadding="0" ID="Table1">
+				<tr><td><font class="small-text">1. <a href="name.asp?stype=id&authorid=9163" class="small"><b>Snicket, Lemony</b></a></font></td></tr><tr><td><font class="small-text">2. <a href="name.asp?stype=id&authorid=35" class="small"><b>Sparks, Nicholas </b></a></font></td></tr><tr><td><font class="small-text">3. <a href="name.asp?stype=id&authorid=7368" class="small"><b>Kingsolver, Barbara</b></a></font></td></tr><tr><td><font class="small-text">4. <a href="name.asp?stype=id&authorid=5858" class="small"><b>Cornwell, Patricia D.</b></a></font></td></tr><tr><td><font class="small-text">5. <a href="name.asp?stype=id&authorid=38" class="small"><b>Connelly, Michael</b></a></font></td></tr><tr><td><font class="small-text">6. <a href="name.asp?stype=id&authorid=5585" class="small"><b>Cabot, Meggin</b></a></font></td></tr><tr><td><font class="small-text">7. <a href="name.asp?stype=id&authorid=6271" class="small"><b>Erdrich, Louise</b></a></font></td></tr><tr><td><font class="small-text">8. <a href="name.asp?stype=id&authorid=6489" class="small"><b>Gaiman, Neil</b></a></font></td></tr><tr><td><font class="small-text">9. <a href="name.asp?stype=id&authorid=5107" class="small"><b>Archer, Jeffrey</b></a></font></td></tr><tr><td><font class="small-text">10. <a href="name.asp?stype=id&authorid=5967" class="small"><b>Datlow, Ellen</b></a></font></td></tr>
+				</table>
+		  </td>
+          <td width="26" align="left" valign="top" background="images/featured/bg_right.gif"><img src="images/featured/bg_right.gif" width="26" height="14"></td>
+        </tr>
+        <tr> 
+          <td colspan="3" width="198" height="24"><img src="images/featured/bottom.gif" width="198" height="24"></td>
+        </tr>
+        
+ 
+      </table>
+    </td>
+          
+
+    <td width="330" align="left" valign="top">
+<img src="images/alphabet/A.gif" width="330" height="62"><font class="text"><P> <B>175 authors found.</B><BR> Page 1 of 9</P>Aaro-Adam | <A HREF=name.asp?page=2&recs=20&stype=letter&letter=A>Adam-Agne</A> | <A HREF=name.asp?page=3&recs=20&stype=letter&letter=A>Agui-Alga</A> | <A HREF=name.asp?page=4&recs=20&stype=letter&letter=A>Alle-Amid</A> | <A HREF=name.asp?page=5&recs=20&stype=letter&letter=A>Amos-Ande</A> | <A HREF=name.asp?page=6&recs=20&stype=letter&letter=A>Ande-Anth</A> | <A HREF=name.asp?page=7&recs=20&stype=letter&letter=A>Anth-Arms</A> | <A HREF=name.asp?page=8&recs=20&stype=letter&letter=A>Arno-Atki</A> | <A HREF=name.asp?page=9&recs=20&stype=letter&letter=A>Atki-Avil</A><br><br><hr size="1"><font class="title">
+		<b>Aaron, Hank</b></font><br>
+		<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4977&target=http://www.harpercollins.com/rd_om/aypcom/author/12');">www.harpercollins.com/rd_om/aypcom/author/12
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4977&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=12#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Aarons, Leroy</b></font><br>
+		<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4978&target=http://www.harpercollins.com/rd_om/aypcom/author/15');">www.harpercollins.com/rd_om/aypcom/author/15
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4978&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=15#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Abagnale, Frank</b></font><br>
+		True Crime<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4979&target=http://www.harpercollins.com/rd_om/aypcom/author/25399');">www.harpercollins.com/rd_om/aypcom/author/25399
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4979&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=25399#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Abbey, Edward</b></font><br>
+		Fiction<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4980&target=http://www.harpercollins.com/rd_om/aypcom/author/17');">www.harpercollins.com/rd_om/aypcom/author/17
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4980&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=17#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Abbott, Tony</b></font><br>
+		Children<br><br>Official Site:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4981&target=http://www.tonyabbottbooks.com');">www.tonyabbottbooks.com
+						</a><br>
+			<br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4981&target=http://www.harperchildrens.com/rd/aypcom/author/11710');">www.harperchildrens.com/rd/aypcom/author/11710
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4981&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=11710#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Abdul-Jabbar, Kareem</b></font><br>
+		Biography, History<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4982&target=http://www.harpercollins.com/rd_om/aypcom/author/15467');">www.harpercollins.com/rd_om/aypcom/author/15467
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4982&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=15467#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Abegg, Martin</b></font><br>
+		Religion<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4983&target=http://www.harpercollins.com/rd_om/aypcom/author/14692');">www.harpercollins.com/rd_om/aypcom/author/14692
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4983&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=14692#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Abells, Chana</b></font><br>
+		Children<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4984&target=http://www.harperchildrens.com/rd/aypcom/author/15468');">www.harperchildrens.com/rd/aypcom/author/15468
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4984&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=15468#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Abolafia, Yossi</b></font><br>
+		Children<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4985&target=http://www.harperchildrens.com/rd/aypcom/author/15469');">www.harperchildrens.com/rd/aypcom/author/15469
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4985&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=15469#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Abraham, Ralph</b></font><br>
+		Religion<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4986&target=http://www.harpercollins.com/rd_om/aypcom/author/32');">www.harpercollins.com/rd_om/aypcom/author/32
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4986&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=32#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Abrams, Douglas</b></font><br>
+		<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4987&target=http://www.harpercollins.com/rd_om/aypcom/author/14190');">www.harpercollins.com/rd_om/aypcom/author/14190
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4987&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=14190#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Acevedo, Melanie</b></font><br>
+		Home and Garden<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4988&target=http://www.harpercollins.com/rd_om/aypcom/author/15471');">www.harpercollins.com/rd_om/aypcom/author/15471
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4988&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=15471#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Achtemeier, Paul</b></font><br>
+		Religion, Reference<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4989&target=http://www.harpercollins.com/rd_om/aypcom/author/47');">www.harpercollins.com/rd_om/aypcom/author/47
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4989&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=47#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Ackerman, Diane</b></font><br>
+		Technology, Home and Garden, Arts<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4990&target=http://www.harpercollins.com/rd_om/aypcom/author/20266');">www.harpercollins.com/rd_om/aypcom/author/20266
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4990&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=20266#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Acredolo, Linda</b></font><br>
+		Children, Family/Parenting, Social Sciences<br><br>Official Site:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4991&target=http://www.babysigns.com');">www.babysigns.com
+						</a><br>
+			<br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4991&target=http://www.harperchildrens.com/rd/aypcom/author/24371');">www.harperchildrens.com/rd/aypcom/author/24371
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4991&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=24371#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Ada, Alma</b></font><br>
+		Children<br><br>Official Site:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4992&target=http://www.almaada.com/');">www.almaada.com/
+						</a><br>
+			<br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4992&target=http://www.harperchildrens.com/rd/aypcom/author/15474');">www.harperchildrens.com/rd/aypcom/author/15474
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4992&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=15474#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Adair, Robert</b></font><br>
+		Technology, Sports/Recreation<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4993&target=http://www.harpercollins.com/rd_om/aypcom/author/53');">www.harpercollins.com/rd_om/aypcom/author/53
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4993&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=53#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Adams, Mike</b></font><br>
+		Sports/Recreation<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4997&target=http://www.harpercollins.com/rd_om/aypcom/author/60');">www.harpercollins.com/rd_om/aypcom/author/60
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4997&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=60#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Adams, Jody</b></font><br>
+		Home and Garden<br><br>Official Site:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4996&target=http://www.rialto-restaurant.com/');">www.rialto-restaurant.com/
+						</a><br>
+			<br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4996&target=http://www.harpercollins.com/rd_om/aypcom/author/19415');">www.harpercollins.com/rd_om/aypcom/author/19415
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4996&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=19415#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		<font class="title">
+		<b>Adams, Richard</b></font><br>
+		Science Fiction, Fiction<br><br>Publisher Sites:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4998&target=http://www.harpercollins.com/rd_om/aypcom/author/15482');">www.harpercollins.com/rd_om/aypcom/author/15482
+						</a><br>
+			<br>Newsletter:<br>
+					<a href="#" onclick="return popwindow('ProcessReDir.asp?id=4998&target=http://www.harpercollins.com/catalog/author_xml.asp?authorID=15482#tracker');">www.harpercollins.com/catalog/author_xml.asp?autho...
+						</a><br>
+			
+
+		<hr size="1">
+		<br><br>
+		Aaro-Adam | <A HREF=name.asp?page=2&recs=20&stype=letter&letter=A>Adam-Agne</A> | <A HREF=name.asp?page=3&recs=20&stype=letter&letter=A>Agui-Alga</A> | <A HREF=name.asp?page=4&recs=20&stype=letter&letter=A>Alle-Amid</A> | <A HREF=name.asp?page=5&recs=20&stype=letter&letter=A>Amos-Ande</A> | <A HREF=name.asp?page=6&recs=20&stype=letter&letter=A>Ande-Anth</A> | <A HREF=name.asp?page=7&recs=20&stype=letter&letter=A>Anth-Arms</A> | <A HREF=name.asp?page=8&recs=20&stype=letter&letter=A>Arno-Atki</A> | <A HREF=name.asp?page=9&recs=20&stype=letter&letter=A>Atki-Avil</A>
+ </font>
+
+<br><br>
+    </td>
+    <td align="center" valign="top">
+        <table width="172" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+	<td align="center" valign="top"><br>
+      <a href="RegType.asp"><img src="images/125/getlisted.gif" width="125" height="58" border="0"></a><br>
+      <br>
+      <a href="advertise.asp"><img src="images/125/advertise2.gif" width="125" height="47" border="0"></a><br>
+      <br>
+      <a href="http://www.lightwedge.com/tbrn.html" target="blank"><img src="images/125/lightwedge.gif" width="150" height="240" border="0"></a><br><br>
+      <a href="http://www.bookreporter.com/suspense_thriller/index.asp" target="blank"><img src="images/125/Suspense_Thriller.gif" width="125" height="125" border="0"></a><br><br>
+      <a href="http://www.bookreporter.com/mystery_mayhem/index.asp" target="blank"><img src="images/125/mystery_mayhem.gif" width="125" height="125" border="0"></a><br><br>
+<!--      <a href="http://www.authorsontheweb.com/features/authormonth/2004_authors/feb_silva_daniel.asp" target="blank"><img src="images/125/author_month_mar.gif" width="125" height="125" border="0"></a><br><br>
+-->
+      <a href="http://www.bookreporter.com/suspense_thriller/debut_authors.asp" target="blank"><img src="images/125/debut_suspense.gif" width="125" height="125" border="0"></a><br><br>
+      <a href="http://www.bookreporter.com/one_to_watch/index.asp" target="blank"><img src="images/125/brc_onetowatch.gif" width="125" height="125" border="0"></a><br><br>
+<br>
+      <br>
+	</td>
+  </tr>
+</table></td>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+	<td width="680" height="84"><img src="images/footer.gif" width="680" height="84"></td>
+	<td width="100%" background="images/bg_footer.gif"><img src="images/bg_footer.gif" width="20" height="84"></td>
+  </tr>
+</table> 
+</body>
+</html>
