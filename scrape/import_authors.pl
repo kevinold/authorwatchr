@@ -59,7 +59,7 @@ sub process_page {
         if ($af) {
             #print $text, "\n";
             my ($lname, $fname) = split /,/, $text;
-            map { s/^\s+//g; s/\s+$//g; }, $lname, $fname;
+            map { s/^\s+//g; s/\s+$//g; } $lname, $fname;
             $schema->resultset('Authors')->find_or_create({ first_name => $fname, last_name => $lname });
         }
         $af = 1 if $text =~ /authors found/;
