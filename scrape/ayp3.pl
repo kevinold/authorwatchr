@@ -4,6 +4,11 @@ use WWW::Mechanize;
 use WWW::Mechanize::FormFiller;
 use URI::URL;
 use HTML::TokeParser;
+use lib ('/home/kevin/projects/authorwatch/lib');
+use AwDB;
+
+my $schema = AwDB->connect('dbi:mysql:database=authorwatch;host=kold.homelinux.com;port=3306','root','kevin');
+
 
 my $agent = WWW::Mechanize->new( autocheck => 1 );
 my $formfiller = WWW::Mechanize::FormFiller->new();
@@ -52,7 +57,10 @@ sub process_page {
     while ( my $token = $p->get_tag("b") ) {
         my $text = $p->get_trimmed_text("/b");
         if ($af) {
-            print $text, "\n";
+            #print $text, "\n";
+            my ($lname, $fname) = split /,/, $text;
+            map { s/^\s+//g; s/\s+$//g; }, $lname, $fname;
+            $schema->resultset('Authors')->find_or_create({ first_name => $fname, last_name => $lname });
         }
         $af = 1 if $text =~ /authors found/;
     }
