@@ -12,9 +12,12 @@ while ( my $token = $p->get_token) {
 	print $token->as_is;
 }
 =cut
-
-my $p = HTML::TokeParser->new("a.html");
+my $af = 0;
+my $p = HTML::TokeParser->new("A_1.html");
 while ( my $token = $p->get_tag("b") ) {
     my $text = $p->get_trimmed_text("/b");
-    print $text, "\n";
+    if ( $af ) {
+        print $text, "\n";
+    }
+    $af = 1 if $text =~ /authors found/;
 }
