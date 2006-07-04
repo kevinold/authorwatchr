@@ -42,7 +42,13 @@ sub suggest : Local {
 
     my $html;
     my @authors;
-    @authors = $c->model('AwDB::Authors')->search_like({ first_name => "%$term%", last_name => "%$term%" });
+    @authors = $c->model('AwDB::Authors')->search(
+        {   -or => {
+                first_name => { -like => "%$term%" },
+                last_name  => { -like => "%$term%" }
+            }
+        }
+    );
 
     my @elements;
     # if returned, parse through them and build html
