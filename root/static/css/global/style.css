@@ -95,6 +95,30 @@ a:hover {
 
 /* CONTENT
 ----------------------------------------------------------------*/
+#content #search_bar {
+    height: 43px;
+    width: 595px;
+    color: #3B3B3B;
+    background: #fff url("/static/images/searchbar_no_go.jpg") no-repeat left;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Verdana;
+    letter-spacing: .06em;
+    text-align: right;
+    vertical-align: middle;
+}
+
+#content #search_bar input {
+    border: 2px solid #0572C4;
+    height: 25px;
+    width: 300px;
+    margin: 8px 10px 0 25px;
+    font-weight: bolder;
+    font-size: 16px;
+    font-family: Verdana;
+    padding-left: 5px;
+}
+
 #content p .author_results {
     width: 70%;
     /*float: right*/

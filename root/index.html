@@ -7,6 +7,7 @@
 </form>
 -->
 
+
 <style type="text/css">
 div.autocomplete {
   position:absolute;
@@ -32,36 +33,39 @@ div.autocomplete ul li {
 }
 </style>
 
-<input type="text" id="autocomplete" name="autocomplete_parameter"/>
+
+<div id="search_bar">
+Author's Name <input type="text" id="autocomplete" name="autocomplete_parameter"/>
+</div>
+
+<br clear="all"/>
 <div id="autocomplete_choices" class="autocomplete"></div>
 <br clear="all"/>
 
 <span id="loading_results" style="display:none">
 <img src="/static/images/indicator_mozilla_blu.gif"/> Loading Results...
-<!--
-<img src="/static/images/indicator_wheel1.gif"/>
-<img src="/static/images/indicator_arrows.gif"/>
-<img src="/static/images/indicator_snake.gif"/>
-<img src="/static/images/indicator_wheel2.gif"/>
--->
 </span>
+
 <br clear="all"/>
+
 <div id="author_results"></div>
 
 
 <script type="text/javascript">
 
-new Ajax.Autocompleter("autocomplete", "autocomplete_choices", "/authors", {paramName: "value", minChars: 2, afterUpdateElement: runSearch});
+new Ajax.Autocompleter("autocomplete", "autocomplete_choices", "/authors/suggest", {paramName: "value", minChars: 2});
+//new Ajax.Autocompleter("autocomplete", "autocomplete_choices", "/authors", {paramName: "value", minChars: 2, afterUpdateElement: runSearch});
 
-function runSearch (field) {
+function runSearch () {
     //jslog.info("field: " + field.value);
-    //var s = $F('autocomplete');
+    //var s = field.value
 
-    var s = field.value
+    var s = $F('autocomplete');
+
     if ( s.length == 0 ) {
         return;
     }
-    else {
+    else if ( s.length >= 2 )  {
         jslog.info("search is: " + s);
 
         Element.show('loading_results');
@@ -79,7 +83,7 @@ function runSearch (field) {
 
 }
 
-//Event.observe('svalue', 'keyup', check_search, false);
+//Event.observe('autocomplete', 'keyup', runSearch, false);
 </script>
 
 
