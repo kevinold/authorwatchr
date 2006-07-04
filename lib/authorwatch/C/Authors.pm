@@ -60,9 +60,9 @@ sub suggest : Local {
         }
 
         $c->res->body( HTML::Element->new('ul')->push_content(@elements)->as_HTML );
+    } else {
+        $c->response->body("<ul></ul>");
     }
-
-    #$c->response->body($html);
 }
 
 
