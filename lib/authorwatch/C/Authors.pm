@@ -3,6 +3,7 @@ package authorwatch::C::Authors;
 use strict;
 use warnings;
 use base 'Catalyst::Controller';
+use HTML::Element;
 
 =head1 NAME
 
@@ -28,19 +29,34 @@ Catalyst Controller.
 
 sub default : Private {
     my ( $self, $c ) = @_;
+    $c->response->body("This is the authors module");
+}
 
-    my $html =<<END;
-<ul>
-<li>James Patteson</li>
-<li>John Grisham</li>
-<li>Joseph Finder</li>
-<li>Patricia Cornwell</li>
-<li>Harlan Coben</li>
-<li>Dean Koontz</li>
-</ul>
-END
-    # Hello World
-    $c->response->body($html);
+sub suggest : Local {
+    my ( $self, $c ) = @_;
+
+    $c->model('AwDB')->storage->debug(1);
+
+    my $term = $c->req->param("value");
+    $term =~ s/[^A-Za-z0-9 ]//g;
+
+    my $html;
+    my @authors;
+    @authors = $c->model('AwDB::Authors')->search_like({ first_name => "%$term%", last_name => "%$term%" });
+
+    my @elements;
+    # if returned, parse through them and build html
+    if ( @authors ) {
+
+        foreach my $auth ( @authors ) {
+            my $name = $auth->first_name . ' ' . $auth->last_name;
+            push @elements, HTML::Element->new('li')->push_content($name);    
+        }
+
+        $c->res->body( HTML::Element->new('ul')->push_content(@elements)->as_HTML );
+    }
+
+    #$c->response->body($html);
 }
 
 
