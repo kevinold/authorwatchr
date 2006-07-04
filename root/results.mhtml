@@ -22,6 +22,8 @@ my $ref = $c->stash->{records};
 <br clear="all"/>
 % }
 
+<%doc>
 <%flags>
 inherit => undef
 </%flags>
+</%doc>

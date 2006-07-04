@@ -62,7 +62,7 @@ a:link, a:visited {
 }
 
 a:hover {
-  background: #EEE;
+  /*background: #EEE;*/
 }
 
 
@@ -95,11 +95,11 @@ a:hover {
 
 /* CONTENT
 ----------------------------------------------------------------*/
-#content #search_bar {
+#content #searchbar {
     height: 43px;
     width: 595px;
     color: #3B3B3B;
-    background: #fff url("/static/images/searchbar_no_go.jpg") no-repeat left;
+    background: #fff url("/static/images/searchbar_for_go.jpg") no-repeat left;
     font-weight: bold;
     font-size: 18px;
     font-family: Verdana;
@@ -108,7 +108,7 @@ a:hover {
     vertical-align: middle;
 }
 
-#content #search_bar input {
+#content #searchbar input {
     border: 2px solid #0572C4;
     height: 25px;
     width: 300px;
@@ -117,6 +117,14 @@ a:hover {
     font-size: 16px;
     font-family: Verdana;
     padding-left: 5px;
+}
+#content #searchbar_go {
+    width: 62px;
+    height: 43px;
+    background: #fff url("/static/images/searchbar_go_over.jpg") no-repeat right;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: Verdana;
 }
 
 #content p .author_results {
@@ -188,9 +196,11 @@ td {
 ----------------------------------------------------------------*/
 #footer p {
   text-align: right;
-  color: #555;
+  /*color: #C49806;*/
+  color: #fff;
   font-size: 13px;
-  padding: 10px 20px;
+  /*font-weight: bold;*/
+  padding: 2px 5px 3px 0;
 }
 
 

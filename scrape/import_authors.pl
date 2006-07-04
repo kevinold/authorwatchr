@@ -14,7 +14,7 @@ my $agent = WWW::Mechanize->new( autocheck => 1 );
 my $formfiller = WWW::Mechanize::FormFiller->new();
 $agent->env_proxy();
 
-my @letters = qw(A);
+my @letters = qw(L M N O P Q R S T U V W X Y Z);
 
 # foreach letter A-Z
 foreach my $letter (@letters) {

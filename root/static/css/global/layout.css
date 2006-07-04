@@ -45,11 +45,11 @@ body {
 /* SIDEBAR
 ----------------------------------------------------------------*/
 #sidebar {
-  float: left;
+  float: right;
   background: #e8e8ea;
-  width: 170px;
+  width: 100px;
   padding: 16px;
-  margin: 40px 20px 0 0;
+  margin: 40px 20px 0 20px;
 }
 
 
@@ -57,7 +57,7 @@ body {
 ----------------------------------------------------------------*/
 #content {
   float: left;
-  width: 850px;
+  width: 700px;
   margin: 0 auto 20px auto;
   padding: 16px 0;
   text-align: left;
@@ -68,6 +68,6 @@ body {
 ----------------------------------------------------------------*/
 #footer {
   clear: both;
-  background: #fff;
-  height: 20px;
+  background: #0572C4;
+  height: 25px;
 }

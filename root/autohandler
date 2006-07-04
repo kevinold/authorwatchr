@@ -17,30 +17,26 @@
   
   <!-- Header -->
   <div id="header">
-   <img src="/static/images/logo_large.jpg" style="float:left;"/> 
-  </div>
   
-  <!-- Nav 
+  <!-- Nav -->
   <div id="nav">
     <ul class="clearfix">
       <li><a href="#" class="home">Home</a></li>
-      <li><a href="#">About Us</a></li>
-      <li><a href="#">Products</a></li>
-      <li><a href="#">Gallery</a></li>
-      <li><a href="#">Company</a></li>
-      <li><a href="#">Contact</a></li>
+      <li><a href="#">Sign In</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Feedback</a></li>
     </ul>
   </div>
-  -->
   
-  <!-- Sidebar 
+   <img src="/static/images/logo_large.jpg" style="float:left;"/> 
+  </div>
+  <!-- End Header -->
+  
+  <!-- Sidebar -->
   <div id="sidebar" class="clearfix">
     <h2>Sidebars are neat too!</h2>
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut ac leo in lorem ultricies sollicitudin. Vivamus molestie elit nec nulla. Suspendisse potenti. Suspendisse at lorem.</p>
-    <hr />
-    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Ut ac leo in lorem ultricies sollicitudin. Vivamus molestie elit nec nulla. Suspendisse potenti. Suspendisse at lorem.</p>
   </div>
-  -->
+  
   
   <!-- Content -->
   <div id="content" class="clearfix">

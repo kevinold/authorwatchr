@@ -7,6 +7,13 @@ Define all aspects (layout AND typography) of:
   - Nav Links
   - Current Page Definitions
   
+#0572C4 - "Authorwatcher" Blue
+#044578 - Darker Blue
+#C49806 - Burnt Orange/Yellow
+#784904 - Brown
+#3B3B3B - Dark Gray
+#C4C4C4 - Light Gray
+
 ================================================================*/
 
 
@@ -14,17 +21,18 @@ Define all aspects (layout AND typography) of:
 ----------------------------------------------------------------*/
 #nav ul {
   list-style: none;
-	display: block;
-	background: #CCC;
+	display: inline;
+    float: right;
+	/*background: #C4C4C4;*/
 	margin: 0;
-	padding: 0;
+	padding-right: 20px;
 }
 
 
 /* NAV LIST ITEMS (li)
 ----------------------------------------------------------------*/
 #nav li {
-	width: 120px;
+	width: 70px;
 	margin: 0;
 	padding: 0;
   display: block;
@@ -34,6 +42,8 @@ Define all aspects (layout AND typography) of:
 
 
 /* NAV LINKS
+#784904 - Brown
+#3B3B3B - Dark Gray
 ----------------------------------------------------------------*/
 #nav a:link, 
 #nav a:visited { 
@@ -41,15 +51,17 @@ Define all aspects (layout AND typography) of:
 	height: 20px;
 	font-weight: bold;
 	font-size: 13px;
-	padding-top: 3px;
-	color: #222;
+	padding-top: 2px;
+	color: #784904;
 	text-decoration: none;
 	text-align: center;
-	border-right: 1px solid #999;
+	border-bottom: 1px dashed #C4C4C4;
+    padding: 2px;
 }
 
 #nav a:hover {
-  background: #EEE;
+  /*background: #EEE;*/
+  color: #C49806;
 }
   
 
