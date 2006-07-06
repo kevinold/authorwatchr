@@ -98,8 +98,12 @@ a:hover {
 #content #searchbar {
     height: 43px;
     width: 595px;
-    color: #3B3B3B;
     background: #fff url("/static/images/searchbar_for_go.jpg") no-repeat left;
+    float: left;
+}
+
+#content #searchbar label {
+    color: #3B3B3B;
     font-weight: bold;
     font-size: 18px;
     font-family: Verdana;
@@ -125,6 +129,7 @@ a:hover {
     font-weight: bold;
     font-size: 18px;
     font-family: Verdana;
+    float: left;
 }
 
 #content p .author_results {
