@@ -3,21 +3,37 @@ package authorwatch;
 use strict;
 use warnings;
 
+use Catalyst::Runtime '5.70';
+
 #
 # Set flags and add plugins for the application
 #
 #         -Debug: activates the debug mode for very useful log messages
 #   ConfigLoader: will load the configuration from a YAML file in the
 #                 application's home directory
-# Static::Simple: will serve static files from the application's root 
+# Static::Simple: will serve static files from the application's root
 #                 directory
 #
-use Catalyst qw/-Debug ConfigLoader Static::Simple/;
+#    Authorization::ACL
+#    Authorization::Roles
+use Catalyst qw/-Debug
+    ConfigLoader
+    Static::Simple
+    StackTrace
+
+    Authentication
+    Authentication::Store::DBIC
+    Authentication::Credential::Password
+
+    Session
+    Session::Store::FastMmap
+    Session::State::Cookie
+    /;
 
 our $VERSION = '0.01';
 
 #
-# Configure the application 
+# Configure the application
 #
 __PACKAGE__->config( name => 'authorwatch' );
 
@@ -25,6 +41,22 @@ __PACKAGE__->config( name => 'authorwatch' );
 # Start the application
 #
 __PACKAGE__->setup;
+
+=pod
+# Authorization::ACL Rules
+__PACKAGE__->deny_access_unless(
+        "/books/form_create",
+        [qw/admin/],
+    );
+__PACKAGE__->deny_access_unless(
+        "/books/form_create_do",
+        [qw/admin/],
+    );
+__PACKAGE__->deny_access_unless(
+        "/books/delete",
+        [qw/user admin/],
+    );
+=cut
 
 #
 # IMPORTANT: Please look into authorwatch::C::Root for more
