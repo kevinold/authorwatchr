@@ -36,7 +36,8 @@ sub index : Private {
         # Attempt to log the user in
         if ($c->login($username, $password)) {
             # If successful, then let them use the application
-            $c->response->redirect($c->uri_for('/books/list'));
+            #$c->response->redirect($c->uri_for('/test.mhtml'));
+            $c->stash->{template} = 'test.mhtml';
             return;
         } else {
             # Set an error message
@@ -45,7 +46,7 @@ sub index : Private {
     }
 
     # If either of above don't work out, send to the login page
-    $c->stash->{template} = 'login.tt2';
+    $c->stash->{template} = 'login.mhtml';
 }
 
 

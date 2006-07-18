@@ -26,9 +26,9 @@ authentication:
         password_field: password
         # Other options can go here for hashed passwords
         # Enabled hashed passwords
-        password_type: hashed
+        #password_type: hashed
         # Use the SHA-1 hashing algorithm
-        password_hash_type: SHA-1
+        #password_hash_type: SHA-1
 
 
 #authorization:

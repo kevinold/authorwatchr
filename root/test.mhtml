@@ -1,0 +1,6 @@
+<%init>
+my $uobj = $c->user->obj;
+</%init>
+
+username: <% $uobj->username %><br/>
+active: <% $uobj->active %><br/>
