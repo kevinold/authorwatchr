@@ -34,17 +34,17 @@ div.autocomplete ul li {
 </style>
 
 
+<form id="test" action="/search/aws" method="post">
 <div id="searchbar">
 <label for="autocomplete">Author's Name</label> <input type="text" id="autocomplete" name="autocomplete_parameter"/>
 </div>
-<div id="searchbar_go">
-Go
-</div>
+<input type="image" src="/static/images/searchbar_go_over.jpg"/>
 
+</form>
 <br clear="all"/>
-<div id="autocomplete_choices" class="autocomplete"></div>
 <br clear="all"/>
 
+<!--
 <span id="loading_results" style="display:none">
 <img src="/static/images/indicator_mozilla_blu.gif"/> Loading Results...
 </span>
@@ -88,5 +88,4 @@ function runSearch () {
 
 //Event.observe('autocomplete', 'keyup', runSearch, false);
 </script>
-
-
+-->

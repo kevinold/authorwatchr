@@ -44,7 +44,7 @@ sub aws : Local {
     my ( $self, $c ) = @_;
 
     $c->stash->{template} = 'results.mhtml';
-    my $svalue = $c->req->param("svalue");
+    my $svalue = $c->req->param("autocomplete_parameter");
 
     #$c->log->debug("**********svalue is: $svalue");
 

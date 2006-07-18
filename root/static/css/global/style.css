@@ -122,7 +122,7 @@ a:hover {
     font-family: Verdana;
     padding-left: 5px;
 }
-#content #searchbar_go {
+#content #searchbar_go input {
     width: 62px;
     height: 43px;
     background: #fff url("/static/images/searchbar_go_over.jpg") no-repeat right;
