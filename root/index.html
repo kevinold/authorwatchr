@@ -1,91 +1,31 @@
 
-<!--
-<form id="test" action="/search/aws" method="post">
-        <label for="svalue">Author Name</label>:
-        <input name="svalue" id="svalue" class="" title="Enter Author Name" />
-</fieldset>
-</form>
--->
-
-
-<style type="text/css">
-div.autocomplete {
-  position:absolute;
-  width:250px;
-  background-color:white;
-  border:1px solid #888;
-  margin:0px;
-  padding:0px;
-}
-div.autocomplete ul {
-  list-style-type:none;
-  margin:0px;
-  padding:0px;
-}
-div.autocomplete ul li.selected { background-color: #ffb;}
-div.autocomplete ul li {
-  list-style-type:none;
-  display:block;
-  margin:0;
-  padding:2px;
-  height:32px;
-  cursor:pointer;
-}
-</style>
-
 
 <form id="test" action="/search/aws" method="post">
 <div id="searchbar">
-<label for="autocomplete">Author's Name</label> <input type="text" id="autocomplete" name="autocomplete_parameter"/>
+<label for="autocomplete">Author's Name</label> <input type="text" id="autocomplete" name="autocomplete_parameter"/> 
 </div>
-<input type="image" src="/static/images/searchbar_go_over.jpg"/>
-
+<div id="searchbar_go"><a href="#" id="go">GO!</></div>
 </form>
-<br clear="all"/>
-<br clear="all"/>
-
-<!--
-<span id="loading_results" style="display:none">
-<img src="/static/images/indicator_mozilla_blu.gif"/> Loading Results...
-</span>
-
-<br clear="all"/>
-
-<div id="author_results"></div>
-
 
 <script type="text/javascript">
-
-new Ajax.Autocompleter("autocomplete", "autocomplete_choices", "/authors/suggest", {paramName: "value", minChars: 2});
-//new Ajax.Autocompleter("autocomplete", "autocomplete_choices", "/authors", {paramName: "value", minChars: 2, afterUpdateElement: runSearch});
-
-function runSearch () {
-    //jslog.info("field: " + field.value);
-    //var s = field.value
-
-    var s = $F('autocomplete');
-
-    if ( s.length == 0 ) {
-        return;
-    }
-    else if ( s.length >= 2 )  {
-        jslog.info("search is: " + s);
-
-        Element.show('loading_results');
-        var url = '/search/aws';
-        var pars = 'svalue=' + s;
-        new Ajax.Updater(
-            'author_results',
-            url,
-            {
-                method: 'post',
-                parameters: pars,
-                onComplete: function () { Element.hide('loading_results'); }
-            });
-    }
-
-}
-
-//Event.observe('autocomplete', 'keyup', runSearch, false);
+//Event.observe('check', 'click', check_all, false);
+/*
+Event.observe (
+    window,
+    'load',
+    function ( e ) {
+        Event.observe (
+            'go',
+            'click',
+            function ( e ) {
+                $('test').submit();
+            },
+            false
+        );
+        Event.stop ( e );   
+    },
+    false
+);*/
 </script>
--->
+
+<!-- <input type="image" src="/static/images/searchbar_go_over.jpg"/> -->

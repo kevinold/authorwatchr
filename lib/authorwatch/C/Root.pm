@@ -59,6 +59,7 @@ Check if there is a user and, if not, forward to login page
 
 # Note that 'auto' runs after 'begin' but before your actions and that
 # 'auto' "chain" (all from application path to most specific class are run)
+=pod
 sub auto : Private {
     my ($self, $c) = @_;
 
@@ -80,7 +81,7 @@ sub auto : Private {
     # User found, so return 1 to continue with processing after this 'auto'
     return 1;
 }
-
+=cut
 
 =head1 AUTHOR
 

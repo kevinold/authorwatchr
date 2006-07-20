@@ -97,7 +97,7 @@ a:hover {
 ----------------------------------------------------------------*/
 #content #searchbar {
     height: 43px;
-    width: 595px;
+    width: 533px;
     background: #fff url("/static/images/searchbar_for_go.jpg") no-repeat left;
     float: left;
 }
@@ -109,10 +109,10 @@ a:hover {
     font-family: Verdana;
     letter-spacing: .06em;
     text-align: right;
-    vertical-align: middle;
+    padding-top: 7px;
 }
 
-#content #searchbar input {
+#content #searchbar input[type="text"] {
     border: 2px solid #0572C4;
     height: 25px;
     width: 300px;
@@ -122,14 +122,21 @@ a:hover {
     font-family: Verdana;
     padding-left: 5px;
 }
-#content #searchbar_go input {
+#content #searchbar_go {
     width: 62px;
     height: 43px;
     background: #fff url("/static/images/searchbar_go_over.jpg") no-repeat right;
+    float: left;
+}
+
+#content #searchbar_go a {
+    border: 1px solid #fff;
+    margin: 10px;
     font-weight: bold;
     font-size: 18px;
     font-family: Verdana;
-    float: left;
+    color: #fff;
+    text-decoration: none;
 }
 
 #content p .author_results {
