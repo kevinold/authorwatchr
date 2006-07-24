@@ -9,7 +9,20 @@
   <link href="/static/css/pages/sample.css" media="screen" rel="Stylesheet" type="text/css" />
   <script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/lib/prototype.js"></script>
   <script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/src/scriptaculous.js"></script>
-  <script type="text/javascript" src="/static/js/jslog.js"></script>
+  <script type="text/javascript" src="/static/js/jquery.js"></script>
+  <script type="text/javascript" src="/static/js/jq-corner.js"></script>
+  <script type="text/javascript">
+  /*
+        $("#box1").corner();
+        $("#box2").corner("bevel 16px");
+        $("#box3").corner("bevel top 8px");
+        $("#box4").corner("round tl br 20px").corner("bevel tr bl 10px");
+        $("#box6").corner("bevel tr 16px");
+  */
+  $(document).bind("load", function(){
+        $("#footer").corner("round bottom 15px");
+    });
+  </script>
 </head>
 
 <body id="home">

@@ -69,6 +69,6 @@ body {
 #footer {
   clear: both;
   background: #0572C4;
-  height: 25px;
-  margin-bottom: 10px;
+  height: 30px;
+  /*margin-bottom: 5px;*/
 }
