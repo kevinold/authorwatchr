@@ -20,7 +20,7 @@
         $("#box6").corner("bevel tr 16px");
   */
   $(document).bind("load", function(){
-        $("#footer").corner("round bottom 15px");
+        $("#footer").corner();
     });
   </script>
 </head>
