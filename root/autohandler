@@ -47,7 +47,9 @@
   
   <!-- Sidebar -->
   <div id="sidebar" class="clearfix">
-    <h2>Sidebars are neat too!</h2>
+
+    <& 'login.mhtml' &>
+
   </div>
   
   

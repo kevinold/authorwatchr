@@ -36,8 +36,8 @@ sub index : Private {
         # Attempt to log the user in
         if ($c->login($username, $password)) {
             # If successful, then let them use the application
-            #$c->response->redirect($c->uri_for('/test.mhtml'));
-            $c->stash->{template} = 'test.mhtml';
+            $c->response->redirect($c->uri_for('/'));
+            #$c->stash->{template} = 'test.mhtml';
             return;
         } else {
             # Set an error message

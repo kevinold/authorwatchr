@@ -110,6 +110,8 @@ a:hover {
     letter-spacing: .06em;
     text-align: right;
     padding-top: 7px;
+    width: 160px;
+    margin-right: 14px;
 }
 
 #content #searchbar input[type="text"] {
@@ -161,6 +163,7 @@ a:hover {
 ----------------------------------------------------------------*/
 fieldset {
   border: 1px solid #AAA;
+  padding: 7px;
 }
 
 fieldset p {
@@ -170,19 +173,20 @@ fieldset p {
 legend {
   color: #999;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 13px;
 }
 
 label {
   float: left;
-  width: 160px;
   text-align: right;
+  font-size: 13px;
+  /*width: 160px;
   font-size: medium;
-  margin-right: 14px;
+  margin-right: 14px;*/
 }
 
 input.text {
-  width: 290px;
+  /*width: 290px;*/
 } 
 
 input.textShort {

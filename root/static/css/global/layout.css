@@ -46,10 +46,10 @@ body {
 ----------------------------------------------------------------*/
 #sidebar {
   float: right;
-  background: #e8e8ea;
   width: 100px;
-  padding: 16px;
-  margin: 40px 20px 0 20px;
+  /*background: #e8e8ea;
+  padding: 16px;*/
+  margin: 40px 50px 0 0;
 }
 
 

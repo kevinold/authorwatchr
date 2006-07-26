@@ -1,27 +1,22 @@
-<!-- Login form -->
-<form method="post" action="<% $c->uri_for('/login') %>">
-  <table>
-    <tr>
-      <td>Username:</td>
-      <td><input type="text" name="username" size="40" /></td>
-    </tr>
-    <tr>
-      <td>Password:</td>
-      <td><input type="password" name="password" size="40" /></td>
-    </tr>
-    <tr>
-      <td colspan="2"><input type="submit" name="submit" value="Submit" /></td>
-    </tr>
-  </table>
-</form>
-
-<p>
 
 % if ( $c->user ) {
     Please Note: You are already logged in as '<% $c->user->username %>'.
     You can <a href="<% $c->uri_for('/logout') %>">logout</a> here.
+    <% $c->user->user->username %>
 % }
 % else {
-    You need to log in to use this application.
+<!-- Login form -->
+<form method="post" action="<% $c->uri_for('/login') %>">
+<fieldset>
+<legend>Login</legend>
+      <label for="username">Username:</label>
+      <input type="text" name="username" size="15" />
+
+      <label for="password">Password:</label>
+      <td><input type="password" name="password" size="15"/>
+
+      <input type="submit" name="submit" value="Submit" />
+</fieldset>
+</form>
 % }
 
