@@ -1,8 +1,13 @@
 
 % if ( $c->user ) {
-    Please Note: You are already logged in as '<% $c->user->username %>'.
+    <!--Please Note: You are already logged in as '<% $c->user->username %>'.
     You can <a href="<% $c->uri_for('/logout') %>">logout</a> here.
-    <% $c->user->user->username %>
+    <% $c->user->user->username %>-->
+    My Authors<br/>
+    <a href="<% $c->uri_for('/logout') %>">logout</a>
+
+    <div id="my_authors">
+    </div>
 % }
 % else {
 <!-- Login form -->

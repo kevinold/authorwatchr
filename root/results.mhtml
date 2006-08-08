@@ -6,6 +6,14 @@ my $ref = $c->stash->{records};
 
 <% $c->stash->{error_msg} %>
 
+<h2>Results for "<% $c->stash->{search_term} %>"</h2>
+
+% if ( $c->user ) {
+<!-- Show "save to list" -->
+<a href="">Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites</a>
+% } else {
+Login to Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites.
+% }
 
 % foreach my $rec ( keys %{$ref} ) {
     <p id="details_<% $rec %>" class="author_results">
