@@ -54,7 +54,7 @@ sub list_authors : Local {
     my ( $self, $c ) = @_;
 
     # Debug sql statements
-    $c->model('AwDB::UserAuthors')->storage->debug(1);
+    #$c->model('AwDB::UserAuthors')->storage->debug(1);
 
     my $user_id = $c->req->param("user_id");
 
