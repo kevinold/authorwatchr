@@ -45,6 +45,7 @@ sub aws : Local {
 
     $c->stash->{template} = 'results.mhtml';
     my $svalue = $c->req->param("autocomplete_parameter");
+    my $search_term = $c->req->param("autocomplete_parameter");
 
     #$c->log->debug("**********svalue is: $svalue");
 
@@ -72,6 +73,8 @@ sub aws : Local {
             my $em = $xp->findvalue("//Error/Message");
 
             $c->stash->{error_msg} = "$ec: $em" ;
+
+            #Put "Author Suggest" code here
         }
         else {
             for ( my $i = 1; $i <= 10; $i++ ) {
@@ -123,6 +126,7 @@ sub aws : Local {
         }
 
         $c->stash->{records} = \%records;
+        $c->stash->{search_term} = $search_term;
     }
     else {
         $c->stash->{error_msg} = "No search parameters entered.";
