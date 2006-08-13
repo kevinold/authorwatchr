@@ -56,7 +56,9 @@ sub list_authors : Local {
     # Debug sql statements
     #$c->model('AwDB::UserAuthors')->storage->debug(1);
 
-    my $user_id = $c->req->param("user_id");
+    #my $user_id = $c->req->param("user_id");
+    my $user_id = $c->user->user->id;
+    #$c->log->debug("**********user is: $user_id");
 
     # Lookup authors for User
     my @authors;
@@ -74,7 +76,7 @@ sub list_authors : Local {
     if ( @authors ) {
 
         foreach my $auth ( @authors ) {
-            my $name = $auth->first_name . ' ' . $auth->last_name;
+            my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
             push @elements, HTML::Element->new('li')->push_content($name);    
         }
 

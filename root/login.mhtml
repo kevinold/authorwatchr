@@ -8,6 +8,16 @@
 
     <div id="my_authors">
     </div>
+    <script>
+    function getHTML()
+    {
+        var url = '<% $c->uri_for("/user/list_authors/") %>';
+        
+    var myAjax = new Ajax.Updater( 'my_authors', url, { method: 'get' });
+
+    }
+    getHTML();
+    </script>
 % }
 % else {
 <!-- Login form -->
