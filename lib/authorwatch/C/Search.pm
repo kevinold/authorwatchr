@@ -115,7 +115,7 @@ sub aws : Local {
 
                 $records{$asin}{editorialreview} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/EditorialReviews/EditorialReview/Content");
 
-                $records{$asin}{formattedprice} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/OfferSummary/LowestNewPrice/FormattedPrice");
+                $records{$asin}{formattedprice} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/OfferSummary/LowestNewPrice/FormattedPrice") || 'N/A';
 
                 $records{$asin}{title} = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ItemAttributes/Title");
                 $records{$asin}{author} = join( ", ", @authors );

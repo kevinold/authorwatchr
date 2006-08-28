@@ -17,8 +17,11 @@ Login to Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites.
 
 % foreach my $rec ( keys %{$ref} ) {
     <p id="details_<% $rec %>" class="author_results">
+        <div style="float:left">
     <img src="<% $ref->{$rec}->{smallimage} %>" height="<% $ref->{$rec}->{smallimageheight} %>" width="<% $ref->{$rec}->{smallimagewidth} %>" />
+        </div>
 
+        <div style="float:right;width:400px;">
     <% $rec %><br/>
     <b><% $ref->{$rec}->{title} %></b><br/>
     <% $ref->{$rec}->{author} %><br/>
@@ -26,6 +29,7 @@ Login to Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites.
     Publish Date: <% $ref->{$rec}->{pubdate} %><br/>
     Newest Low Price: <% $ref->{$rec}->{formattedprice} %><br/>
     <a href="<% $ref->{$rec}->{detailpageurl} %>">View Details</a>
+        </div>
     </p>
 <br clear="all"/>
 % }
