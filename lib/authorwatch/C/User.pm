@@ -38,7 +38,47 @@ sub save_author : Local {
 
     #$c->stash->{template} = 'results.mhtml';
     #my $svalue = $c->req->param("autocomplete_parameter");
+    my $term = $c->req->param("value");
+    $term =~ s/[^A-Za-z0-9 ]//g;
 
+    my $user_id = $c->user->user->id;
+ 
+    #Separate name into first and last name
+    my ($lname, $fname) = split / /, $term;
+    map { s/^\s+//g; s/\s+$//g; } $lname, $fname;
+
+    # Find or create author trying to be added
+    my $author;
+    $author = $c->model('AwDB::Authors')->find_or_create(
+        {
+                first_name => $fname,
+                last_name  => $lname,
+        }
+    );
+
+    my $aid = $author->id;
+    $c->log->debug("**********author id is: $aid");
+
+    if ( $aid ) {
+        $c->response->body("1");
+    } else {
+        $c->response->body("0");
+    }
+=pod
+    my @elements;
+    # if returned, parse through them and build html
+    if ( @authors ) {
+
+        foreach my $auth ( @authors ) {
+            my $name = $auth->first_name . ' ' . $auth->last_name;
+            push @elements, HTML::Element->new('li')->push_content($name);    
+        }
+
+        $c->res->body( HTML::Element->new('ul')->push_content(@elements)->as_HTML );
+    } else {
+        @authors = $c->model('AwDB::UserAuthors')->search({ user_id => $user_id });
+    }
+=cut
 }
 
 
