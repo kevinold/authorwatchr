@@ -10,7 +10,14 @@ my $ref = $c->stash->{records};
 
 % if ( $c->user ) {
 <!-- Show "save to list" -->
-<a href="">Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites</a>
+<a id="save_author" href="#">Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites</a>
+
+<script type="text/javascript">
+$("#save_author").click(function(){
+  $(this).load('<% $c->uri_for("/user/save_author") %>', { value: "<% ucfirst $c->stash->{search_term} %>" });
+});
+</script>
+
 % } else {
 Login to Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites.
 % }

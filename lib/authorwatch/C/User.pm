@@ -60,9 +60,10 @@ sub save_author : Local {
     $c->log->debug("**********author id is: $aid");
 
     if ( $aid ) {
-        $c->response->body("1");
+        #$c->response->body("1");
+        $c->model('AwDB::UserAuthors')->create({ user_id => $user_id, author_id => $aid });
     } else {
-        $c->response->body("0");
+        #$c->response->body("0");
     }
 =pod
     my @elements;
