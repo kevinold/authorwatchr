@@ -16,7 +16,9 @@ use Catalyst::Runtime '5.70';
 #
 #    Authorization::ACL
 #    Authorization::Roles
-use Catalyst qw/-Debug
+#    Session::Store::FastMmap
+use Catalyst qw/
+    -Debug
     ConfigLoader
     Static::Simple
     StackTrace
@@ -26,7 +28,7 @@ use Catalyst qw/-Debug
     Authentication::Credential::Password
 
     Session
-    Session::Store::FastMmap
+    Session::Store::DBI
     Session::State::Cookie
     /;
 

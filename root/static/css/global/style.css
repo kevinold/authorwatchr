@@ -36,6 +36,7 @@ From http://colorblender.com/?preloadblend=6F82B8404C6BB8B8B86B6B6B474747B8B8B8
 html, body {
   /*font-family: verdana, helvetica, sans-serif;*/
   font-family: Arial, sans-serif;
+  font-size: 12px;
   color: black;
 }
 
@@ -86,10 +87,11 @@ a:hover {
 
 /* SIDEBAR CONTENT
 ----------------------------------------------------------------*/
-
+/*
 #sidebar {
     border: 1px solid #000;
 }
+*/
 
 #sidebar h2 {
   color: #222;
@@ -110,7 +112,7 @@ a:hover {
 
 #sidebar #my_authors li {
     width: 100px;
-    border: 1px solid #000;
+    /*border: 1px solid #000;*/
 }
 
 /* CONTENT

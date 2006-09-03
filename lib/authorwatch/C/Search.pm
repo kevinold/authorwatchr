@@ -72,7 +72,8 @@ sub aws : Local {
             my $ec = $xp->findvalue("//Error/Code");
             my $em = $xp->findvalue("//Error/Message");
 
-            $c->stash->{error_msg} = "$ec: $em" ;
+            #$c->stash->{error_msg} = "$ec: $em" ;
+            $c->stash->{error_msg} = "No Results Found." ;
 
             #Put "Author Suggest" code here
         }
@@ -96,6 +97,9 @@ sub aws : Local {
                         );
                 }
 
+                #Check pubdate and make sure year is a valid year and is not too far in the future
+                my $pd = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ItemAttributes/PublicationDate");
+                next unless $pd =~ /^200/;
 
                 my $asin = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ASIN");
 
@@ -125,7 +129,10 @@ sub aws : Local {
             }
         }
 
+        $c->stash->{error_msg} = "No Results Found." unless %records;
         $c->stash->{records} = \%records;
+        #Capitalize first and last name
+        $search_term =~ s/(\w+)/\u\L$1/g;
         $c->stash->{search_term} = $search_term;
     }
     else {

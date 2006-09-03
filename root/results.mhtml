@@ -10,16 +10,16 @@ my $ref = $c->stash->{records};
 
 % if ( $c->user ) {
 <!-- Show "save to list" -->
-<a id="save_author" href="#">Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites</a>
+<a id="save_author" href="#">Save <b><% $c->stash->{search_term} %></b> to your favorites</a>
 
 <script type="text/javascript">
 $("#save_author").click(function(){
-  $(this).load('<% $c->uri_for("/user/save_author") %>', { value: "<% ucfirst $c->stash->{search_term} %>" });
+  $(this).load('<% $c->uri_for("/user/save_author") %>', { value: "<% $c->stash->{search_term} %>" }, function() { $("#my_authors").load('<% $c->uri_for("/user/list_authors/json") %>') });
 });
 </script>
 
 % } else {
-Login to Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites.
+Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 % }
 
 % foreach my $rec ( keys %{$ref} ) {
@@ -28,7 +28,7 @@ Login to Save <b><% ucfirst $c->stash->{search_term} %></b> to your favorites.
     <img src="<% $ref->{$rec}->{smallimage} %>" height="<% $ref->{$rec}->{smallimageheight} %>" width="<% $ref->{$rec}->{smallimagewidth} %>" />
         </div>
 
-        <div style="float:right;width:400px;">
+        <div style="float:right;width:400px;background-color:#bdbdbd;">
     <% $rec %><br/>
     <b><% $ref->{$rec}->{title} %></b><br/>
     <% $ref->{$rec}->{author} %><br/>

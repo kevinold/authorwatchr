@@ -44,8 +44,8 @@ sub save_author : Local {
     my $user_id = $c->user->user->id;
  
     #Separate name into first and last name
-    my ($lname, $fname) = split / /, $term;
-    map { s/^\s+//g; s/\s+$//g; } $lname, $fname;
+    my ($fname, $lname) = split / /, $term;
+    map { s/^\s+//g; s/\s+$//g; } $fname, $lname;
 
     # Find or create author trying to be added
     my $author;
@@ -92,41 +92,23 @@ Show a users list of authors
 =cut
 
 sub list_authors : Local {
-    my ( $self, $c ) = @_;
+    my ( $self, $c, $is_json ) = @_;
 
     # Debug sql statements
     #$c->model('AwDB::UserAuthors')->storage->debug(1);
-
     #my $user_id = $c->req->param("user_id");
-    my $user_id = $c->user->user->id;
-    #$c->log->debug("**********user is: $user_id");
+    #$c->log->debug("**********is json: $is_json");
+   
+    # Lookup authors for this user 
+    $c->stash->{authors} = $c->user->my_authors;
 
-    # Lookup authors for User
-    my @authors;
-    @authors = $c->model('AwDB::UserAuthors')->search({ user_id => $user_id });
-=pod
-        {   -or => {
-                first_name => { -like => "%$term%" },
-                last_name  => { -like => "%$term%" }
-            }
-        }
-=cut
-
-    my @elements;
-    # if returned, parse through them and build html
-    if ( @authors ) {
-
-        foreach my $auth ( @authors ) {
-            my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
-            push @elements, HTML::Element->new('li')->push_content($name);    
-        }
-
-        $c->res->body( HTML::Element->new('ul')->push_content(@elements)->as_HTML );
+    if ( $is_json ) {
+        $c->forward( $c->view('JSON') );
     } else {
-        $c->response->body("<ul></ul>");
+        $c->stash->{template} = '/user/list_authors.mhtml';
+        #$c->forward( $c->view('Mason') );
     }
 
-    #$c->stash->{template} = 'list_authors.mhtml';
 }
 
 =head2 end
@@ -139,7 +121,7 @@ Forward to Mason View
 #    my ( $self, $c ) = @_;
 
     # Forward to View unless response body is already defined
-#    $c->forward( $c->view('Mason') ) unless $c->response->body;
+    #$c->forward( $c->view('Mason') ) unless $c->response->body;
 #}
 
 =head1 AUTHOR

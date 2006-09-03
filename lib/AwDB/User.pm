@@ -21,6 +21,7 @@ __PACKAGE__->set_primary_key('id');
 #     2) Name of the model class referenced by this relationship
 #     3) Column name in *foreign* table
 __PACKAGE__->has_many(map_user_role => 'AwDB::UserRole', 'user_id');
+__PACKAGE__->has_many(my_authors => 'AwDB::UserAuthors', 'user_id');
 
 
 =head1 NAME

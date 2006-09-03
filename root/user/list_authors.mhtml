@@ -1,0 +1,18 @@
+<%init>
+use HTML::Element;
+
+my $rs = $c->stash->{authors};
+
+my @elements;
+
+while ( my $auth = $rs->next ) {
+    my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
+    push @elements, HTML::Element->new('li')->push_content($name);    
+}
+</%init>
+
+<% HTML::Element->new('ul')->push_content(@elements)->as_HTML %>
+
+<%flags>
+inherit => undef
+</%flags>

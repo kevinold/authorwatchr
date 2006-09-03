@@ -34,14 +34,15 @@
   <!-- Nav -->
   <div id="nav">
     <ul class="clearfix">
-      <li><a href="#" class="home">Home</a></li>
-      <li><a href="#">Sign In</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Feedback</a></li>
+      <li><a href="<% $c->uri_for("/") %>" class="home">Home</a></li>
+      <li><a href="<% $c->uri_for("/signup") %>">Signup</a></li>
+      <li><a href="<% $c->uri_for("/login") %>">Login</a></li>
+      <li><a href="<% $c->uri_for("/about") %>">About</a></li>
+      <li><a href="<% $c->uri_for("/feedback") %>">Feedback</a></li>
     </ul>
   </div>
   
-   <img src="/static/images/logo_large.jpg" style="float:left;"/> 
+   <img src="/static/images/logo_large_new.jpg" style="float:left;"/> 
   </div>
   <!-- End Header -->
   
@@ -51,7 +52,7 @@
     <& 'login.mhtml' &>
 
   </div>
-  
+ 
   
   <!-- Content -->
   <div id="content" class="clearfix">
