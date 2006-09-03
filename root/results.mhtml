@@ -1,6 +1,16 @@
 <%init>
 use Data::Dumper;
 my $ref = $c->stash->{records};
+my $auth_is_saved;
+
+if ( $c->user ) {
+    my $auth_rs = $c->user->my_authors;
+    while ( my $auth = $auth_rs->next ) {
+        my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
+        my $st = $c->stash->{search_term};
+        $auth_is_saved = 1 if lc $st eq lc $name ;
+    }
+}
 
 </%init>
 
@@ -8,13 +18,13 @@ my $ref = $c->stash->{records};
 
 <h2>Results for "<% $c->stash->{search_term} %>"</h2>
 
-% if ( $c->user ) {
+% unless ( $auth_is_saved ) {
 <!-- Show "save to list" -->
 <a id="save_author" href="#">Save <b><% $c->stash->{search_term} %></b> to your favorites</a>
 
 <script type="text/javascript">
 $("#save_author").click(function(){
-  $(this).load('<% $c->uri_for("/user/save_author") %>', { value: "<% $c->stash->{search_term} %>" }, function() { $("#my_authors").load('<% $c->uri_for("/user/list_authors/json") %>') });
+  $(this).load('<% $c->uri_for("/user/save_author") %>', { value: "<% $c->stash->{search_term} %>" }, function() { $("#my_authors").load('<% $c->uri_for("/user/list_authors") %>') });
 });
 </script>
 
