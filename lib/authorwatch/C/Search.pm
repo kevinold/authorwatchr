@@ -99,7 +99,10 @@ sub aws : Local {
 
                 #Check pubdate and make sure year is a valid year and is not too far in the future
                 my $pd = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ItemAttributes/PublicationDate");
-                next unless $pd =~ /^200/;
+                my ($yr, $mon, $day) = split /-/, $pd;
+                next unless $yr =~ /^200/;
+                next unless $mon =~ /^[0|1][0-9]/;
+                next unless $day =~ /^[0|1|2|3][0-9]/;
 
                 my $asin = $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ASIN");
 
