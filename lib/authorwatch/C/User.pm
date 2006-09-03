@@ -92,7 +92,7 @@ Show a users list of authors
 =cut
 
 sub list_authors : Local {
-    my ( $self, $c, $is_json ) = @_;
+    my ( $self, $c ) = @_;
 
     # Debug sql statements
     #$c->model('AwDB::UserAuthors')->storage->debug(1);
@@ -101,13 +101,7 @@ sub list_authors : Local {
    
     # Lookup authors for this user 
     $c->stash->{authors} = $c->user->my_authors;
-
-    if ( $is_json ) {
-        $c->forward( $c->view('JSON') );
-    } else {
-        $c->stash->{template} = '/user/list_authors.mhtml';
-        #$c->forward( $c->view('Mason') );
-    }
+    $c->stash->{template} = '/user/list_authors.mhtml';
 
 }
 
