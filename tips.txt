@@ -1,0 +1,8 @@
+# Debug sql statements
+$c->model('AwDB::UserAuthors')->storage->debug(1);
+
+# Get param
+my $user_id = $c->req->param("user_id");
+
+# Debug message
+$c->log->debug("**********is json: $is_json");
