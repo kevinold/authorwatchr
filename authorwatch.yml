@@ -12,7 +12,7 @@ dsn: 'dbi:mysql:database=authorwatch;host=localhost'
 db_user: 'root'
 db_pass: ''
 session:
-  expires: 3600
+  expires: 86400
   dbi_dbh: 'authorwatch::M::AwDB'
   dbi_table: 'sessions'
 default_view: 'Mason'
