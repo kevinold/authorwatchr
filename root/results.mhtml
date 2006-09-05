@@ -1,5 +1,6 @@
 <%init>
 use Data::Dumper;
+use Lingua::EN::Sentence qw( get_sentences );
 my $ref = $c->stash->{records};
 my $auth_is_saved;
 
@@ -28,28 +29,61 @@ $("#save_author").click(function(){
 });
 </script>
 
-% } else {
+% } 
+
+% unless ( $c->user ) {
 Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 % }
 
+<div id="author_results">
+
 % foreach my $rec ( keys %{$ref} ) {
-    <p id="details_<% $rec %>" class="author_results">
-        <div style="float:left">
+% my $er = $ref->{$rec}->{editorialreview};
+% my $sentences = get_sentences($er);
+% my $first = shift @$sentences;
+
+    <div id="details_<% $rec %>" style="height:auto;">
+
+    <h2><% $ref->{$rec}->{title} %></h2> by <h3><% $ref->{$rec}->{author} %></h3><br clear="all"/>
+
     <img src="<% $ref->{$rec}->{smallimage} %>" height="<% $ref->{$rec}->{smallimageheight} %>" width="<% $ref->{$rec}->{smallimagewidth} %>" />
-        </div>
+    <div id="er_first_<% $rec %>">
+    <% $ref->{$rec}->{editorialreview} %>
+    </div>
 
-        <div style="float:right;width:400px;background-color:#bdbdbd;">
-    <% $rec %><br/>
-    <b><% $ref->{$rec}->{title} %></b><br/>
-    <% $ref->{$rec}->{author} %><br/>
+    <div style="margin-left:75px;">
 
-    Publish Date: <% $ref->{$rec}->{pubdate} %><br/>
-    Newest Low Price: <% $ref->{$rec}->{formattedprice} %><br/>
+    <div id="er_first_<% $rec %>">
+    <% $first %> 
+    <a id="more_<% $rec %>" href="#more_<% $rec %>">More...</a>
+
+    </div>
+
+    <div id="er_<% $rec %>" class="clear" style="display: none;">
+% foreach my $s ( @$sentences ) {
+    <% $s %>
+% }
+    </div>
+
+    </div>
+
+    <script type="text/javascript">
+    $("#more_<% $rec %>").click(function(){ $("#er_<% $rec %>").slideToggle("normal"); });
+    </script>
+    <br clear="all"/>
+    <br clear="all"/>
+
+    <div style="float:right;">
+    Publish Date: <% $ref->{$rec}->{pubdate} %>
+    Newest Low Price: <% $ref->{$rec}->{formattedprice} %>
     <a href="<% $ref->{$rec}->{detailpageurl} %>">View Details</a>
-        </div>
-    </p>
+    </div>
+
+    </div>
 <br clear="all"/>
 % }
+
+</div>
 
 <%doc>
 <%flags>
