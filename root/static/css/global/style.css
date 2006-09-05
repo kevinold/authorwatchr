@@ -166,22 +166,32 @@ a:hover {
     text-align: center;
 }
 
-#content p .author_results {
-    width: 70%;
-    /*float: right*/
-  /*font-size: small;*/
+#author_results {
+    width: 90%;
+    background: #f1f1f3;
+    padding: 10px;
 }
 
-#content p .author_results img {
+#author_results h2 {
+  display: inline;
+  margin: 0 0 10px 0;
+  color: #000;
+  font-size: 14px;
+}
+
+#author_results h3 {
+  display: inline;
+  margin: 0 0 10px 0;
+  color: #000;
+  font-size: 13px;
+}
+
+#author_results img {
     float: left;
     padding-right: 20px;
     border: 1px solid #f1f1f3;
 }
 
-#content #author_results {
-    background: #f1f1f3;
-    padding: 10px;
-}
 /* FORMS
 ----------------------------------------------------------------*/
 fieldset {
