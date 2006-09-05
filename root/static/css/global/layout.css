@@ -27,6 +27,7 @@ body {
 #wrapper {
   clear: both; 
   width: 880px;
+  height: auto;
   margin: 0 auto;
   /*border-left: 1px solid #CCC;
   border-right: 1px solid #CCC;*/
