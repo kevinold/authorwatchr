@@ -47,9 +47,6 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
     <h2><% $ref->{$rec}->{title} %></h2> by <h3><% $ref->{$rec}->{author} %></h3><br clear="all"/>
 
     <img src="<% $ref->{$rec}->{smallimage} %>" height="<% $ref->{$rec}->{smallimageheight} %>" width="<% $ref->{$rec}->{smallimagewidth} %>" />
-    <div id="er_first_<% $rec %>">
-    <% $ref->{$rec}->{editorialreview} %>
-    </div>
 
     <div style="margin-left:75px;">
 
@@ -68,7 +65,7 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
     </div>
 
     <script type="text/javascript">
-    $("#more_<% $rec %>").click(function(){ $("#er_<% $rec %>").slideToggle("normal"); });
+    $("#more_<% $rec %>").click(function(){ $("#er_<% $rec %>").slideToggle("normal", function(){ $(this).height("auto"); }); });
     </script>
     <br clear="all"/>
     <br clear="all"/>
