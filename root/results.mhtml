@@ -50,17 +50,17 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 
     <div style="margin-left:75px;">
 
-    <div id="er_first_<% $rec %>">
+    <p id="er_first_<% $rec %>">
     <% $first %> 
     <a id="more_<% $rec %>" href="#more_<% $rec %>">More...</a>
 
-    </div>
+    </p>
 
-    <div id="er_<% $rec %>" class="clear" style="display: none;">
+    <p id="er_<% $rec %>" style="display: none;">
 % foreach my $s ( @$sentences ) {
     <% $s %>
 % }
-    </div>
+    </p>
 
     </div>
 

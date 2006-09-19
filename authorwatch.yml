@@ -52,3 +52,19 @@ authentication:
         #role_rel: map_user_role
         # The name of the field in the user_role table that references the user
         #user_role_user_field: user_id
+captcha:
+  session_name: 'aUtHoRwAtChER'
+  new:
+    width: 150
+    height: 80
+    lines: 5
+    gd_font: 'giant'
+    ptsize: '20'
+    thickness: 2
+  create:
+    - normal
+    - rect
+  particle:
+    - 20
+  out:
+    force: 'jpeg'

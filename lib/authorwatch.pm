@@ -22,6 +22,7 @@ use Catalyst qw/
     ConfigLoader
     Static::Simple
     StackTrace
+    Captcha
 
     Authentication
     Authentication::Store::DBIC

@@ -42,14 +42,20 @@ sub default : Private {
     $c->stash->{template} = 'index.html';
 }
 
+
+sub captcha : Local {
+    my ( $self, $c ) = @_;
+    $c->create_captcha();
+}
+
 =head2 end
 
 Attempt to render a view, if needed.
 
 =cut 
 
-sub end : ActionClass('RenderView') {}
-
+sub end : ActionClass('RenderView') {
+}
 
 =head2 auto
 
@@ -59,6 +65,7 @@ Check if there is a user and, if not, forward to login page
 
 # Note that 'auto' runs after 'begin' but before your actions and that
 # 'auto' "chain" (all from application path to most specific class are run)
+
 =pod
 sub auto : Private {
     my ($self, $c) = @_;
@@ -82,6 +89,7 @@ sub auto : Private {
     return 1;
 }
 =cut
+
 
 =head1 AUTHOR
 
