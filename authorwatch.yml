@@ -6,11 +6,11 @@ static:
   ignore_extensions:
     - tmpl
     - xhtml
-#dsn: 'dbi:mysql:database=authorwatch;host=kold.homelinux.com;port=3306'
-#db_pass: 'kevin'
-dsn: 'dbi:mysql:database=authorwatch;host=localhost'
+dsn: 'dbi:mysql:database=authorwatch;host=kold.homelinux.com;port=3306'
 db_user: 'root'
-db_pass: ''
+db_pass: 'kevin'
+#dsn: 'dbi:mysql:database=authorwatch;host=localhost'
+#db_pass: ''
 session:
   expires: 86400
   dbi_dbh: 'authorwatch::M::AwDB'
