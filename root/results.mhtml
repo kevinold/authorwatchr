@@ -1,8 +1,10 @@
 <%init>
 use Data::Dumper;
-use Lingua::EN::Sentence qw( get_sentences );
-#Lingua::EN::Sentence::set_locale("en_US.ISO8859-1");
-use Encode qw(is_utf8 _utf8_on);
+use Text::Sentence qw( split_sentences );
+use locale;
+use POSIX qw( locale_h );
+setlocale( LC_CTYPE, 'iso_8859_1');
+
 my $ref = $c->stash->{records};
 my $auth_is_saved;
 
@@ -40,11 +42,8 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 <div id="author_results">
 % foreach my $rec ( keys %{$ref} ) {
 % my $er = $ref->{$rec}->{editorialreview};
-% _utf8_on($er);
-% warn "before get_sentences...";
-% my $sentences = get_sentences($er);
-% warn "after get_sentences...";
-% my $first = shift @$sentences;
+% my @sentences = split_sentences( $er );
+% my $first = shift @sentences;
 
     <div id="details_<% $rec %>" style="height:auto;">
 
@@ -61,7 +60,7 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
     </p>
 
     <p id="er_<% $rec %>" style="display: none;">
-% foreach my $s ( @$sentences ) {
+% foreach my $s ( @sentences ) {
     <% $s %>
 % }
     </p>
