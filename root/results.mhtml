@@ -55,21 +55,12 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 
     <p id="er_first_<% $rec %>">
     <% $first %> 
-    <a id="more_<% $rec %>" href="#more_<% $rec %>">More...</a>
+    <a href="<% $ref->{$rec}->{detailpageurl} %>">Read More...</a>
 
-    </p>
-
-    <p id="er_<% $rec %>" style="display: none;">
-% foreach my $s ( @sentences ) {
-    <% $s %>
-% }
     </p>
 
     </div>
 
-    <script type="text/javascript">
-    $("#more_<% $rec %>").click(function(){ $("#er_<% $rec %>").slideToggle("normal", function(){ $(this).height("auto"); }); });
-    </script>
     <br clear="all"/>
     <br clear="all"/>
 
