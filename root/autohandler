@@ -7,10 +7,11 @@
   <title>AuthorWatcher.com</title>
   <link href="/static/css/global/style.css" media="screen" rel="Stylesheet" type="text/css" />
   <link href="/static/css/pages/sample.css" media="screen" rel="Stylesheet" type="text/css" />
-  <script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/lib/prototype.js"></script>
-  <script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/src/scriptaculous.js"></script>
-  <script type="text/javascript" src="/static/js/jquery-1.0.1.js"></script>
+  <!--<script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/lib/prototype.js"></script>
+  <script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/src/scriptaculous.js"></script>-->
+  <script type="text/javascript" src="/static/js/jquery.js"></script>
   <script type="text/javascript" src="/static/js/jq-corner.js"></script>
+  <script type="text/javascript" src="/static/js/aw.js"></script>
   <script type="text/javascript">
   /*
         $("#box1").corner();

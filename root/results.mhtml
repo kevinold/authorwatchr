@@ -55,11 +55,18 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 
     <p id="er_first_<% $rec %>">
     <% $first %> 
-    <a href="<% $ref->{$rec}->{detailpageurl} %>">Read More...</a>
+    <button class="toggler">Read on...</button>
 
     </p>
 
+    <div class="moreInfo">
+% foreach my $s ( @sentences ) {
+    <% $s %>
+% }
     </div>
+
+    </div>
+
 
     <br clear="all"/>
     <br clear="all"/>

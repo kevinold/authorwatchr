@@ -56,8 +56,10 @@ sub aws : Local {
         my $keywords = join " ", @search;
 
         my $today = strftime "%m-%Y", localtime;
+            # Real search
+            #"author: $keywords and pubdate: after $today and binding: Hardcover"
         my $pw_search = uri_escape(
-            "author: $keywords and pubdate: after $today and binding: Hardcover"
+            "author: $keywords and binding: Hardcover"
         );
 
         # Perform search
