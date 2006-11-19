@@ -8,6 +8,7 @@ use XML::XPath;
 use DateTime;
 use POSIX qw(strftime);
 use URI::Escape;
+use HTML::Scrubber;
 
 =head1 NAME
 
@@ -138,9 +139,12 @@ sub aws : Local {
                 $records{$asin}{largeimagewidth} = $xp->findvalue(
                     "/ItemSearchResponse/Items/Item[$i]/LargeImage/Width");
 
-                $records{$asin}{editorialreview} = $xp->findvalue(
+                my $editorialreview = $xp->findvalue(
                     "/ItemSearchResponse/Items/Item[$i]/EditorialReviews/EditorialReview/Content"
                 );
+                
+                # Clean HTML from Editorial Review
+                $records{$asin}{editorialreview} = straighten_html($editorialreview);
 
                 $records{$asin}{formattedprice} = $xp->findvalue(
                     "/ItemSearchResponse/Items/Item[$i]/OfferSummary/LowestNewPrice/FormattedPrice"
@@ -224,6 +228,64 @@ sub query_aws : Private {
 
     return $response;
 }
+
+
+
+
+sub straighten_html {
+    my $body_content = shift;
+
+    #my @allow = qw[ strong em p br li ul i u ol b i];
+    my @allow = qw[ strong em ];
+
+    my @rules = ( script => 0, img => 0, );
+    my @default = (
+        0   =>    # default rule, deny all tags
+		   {
+            '*'           => 1, # default rule, allow all attributes
+            'href'        => qr{^(?!(?:java)?script)}i,
+            'src'         => qr{^(?!(?:java)?script)}i,
+    #   If your perl doesn't have qr
+    #   just use a string with length greater than 1
+            'cite'        => '(?i-xsm:^(?!(?:java)?script))',
+            'language'    => 0,
+            'name'        => 1, # could be sneaky, but hey ;)
+            'onblur'      => 0,
+            'onchange'    => 0,
+            'onclick'     => 0,
+            'ondblclick'  => 0,
+            'onerror'     => 0,
+            'onfocus'     => 0,
+            'onkeydown'   => 0,
+            'onkeypress'  => 0,
+            'onkeyup'     => 0,
+            'onload'      => 0,
+            'onmousedown' => 0,
+            'onmousemove' => 0,
+            'onmouseout'  => 0,
+            'onmouseover' => 0,
+            'onmouseup'   => 0,
+            'onreset'     => 0,
+            'onselect'    => 0,
+            'onsubmit'    => 0,
+            'onunload'    => 0,
+            'src'         => 0,
+            'type'        => 0,
+        }
+		   );
+     ## preferred way to create the same object
+    my $scrubber = HTML::Scrubber->new(
+                                       allow   => \@allow,
+                                       rules   => \@rules,
+                                       default => \@default,
+                                       comment => 1,
+                                       process => 0,
+                                       );
+    my $bc = $scrubber->scrub($body_content);
+    return $bc;
+}
+
+
 
 =head1 AUTHOR
 
