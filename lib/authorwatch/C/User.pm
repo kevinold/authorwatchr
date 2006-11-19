@@ -24,6 +24,7 @@ Catalyst Controller.
 sub index : Private {
     my ( $self, $c ) = @_;
 
+    $c->stash->{template} = 'user/index.html';
     #$c->response->body('Matched authorwatch::C::User in User.');
 }
 
@@ -118,6 +119,83 @@ sub list_authors : Local {
     $c->forward( $c->view('JSON') );
 
 }
+
+sub create_edit_profile_form : Local Form {
+    my ( $self, $c ) = @_;
+
+    my ( $id, $username, $password, $email_address, $first_name, $last_name, $active ) = "";
+    if ( defined $c->user ) {
+        $id       = $c->user->user->id;
+        $username = $c->user->username;
+        $password = $c->user->password;
+        $email_address = $c->user->email_address;
+        $first_name = $c->user->first_name;
+        $last_name = $c->user->last_name;
+        $active = $c->user->active;
+    }
+
+    $c->form->field(
+        name     => 'email_address',
+        required => 1,
+        label    => 'Email',
+        validate => 'EMAIL',
+        size     => 25,
+        value    => $email_address
+    );
+
+    $c->form->field(
+        name     => 'first_name',
+        required => 1,
+        label    => 'First Name',
+        size     => 25,
+        value    => $first_name
+    );
+
+    $c->form->field(
+        name     => 'last_name',
+        required => 1,
+        label    => 'Last Name',
+        size     => 25,
+        value    => $last_name
+    );
+
+
+    $c->form->action( '/user/edit_profile_commit/' . $id );
+    $c->form->method('post');
+}
+
+sub edit_profile : Local Form {
+    my ( $self, $c ) = @_;
+
+    $self->create_edit_profile_form($c);
+    $c->stash->{template} = "user/edit_profile.html";
+}
+
+sub edit_profile_commit : Local Form {
+    my ( $self, $c, $id ) = @_;
+
+    if ( $c->form->validate ) {
+        my $user;
+
+
+        if ( defined $id ) {
+            $user = $c->model('AwDB::User')->find($id);
+        }
+        else {
+            $user = $c->model('AwDB::User')->new( {} );
+        }
+
+        $user->email_address( $c->req->params->{email_address} );
+        $user->first_name( $c->req->params->{first_name} );
+        $user->last_name( $c->req->params->{last_name} );
+        $user->insert_or_update();
+
+        $c->res->redirect('/user');
+    }
+}
+
+
+
 
 =head2 end
 

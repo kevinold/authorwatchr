@@ -1,0 +1,9 @@
+<div id="account_toolbar">
+<ul>
+<li><a href="<% $c->uri_for("/user/edit_profile") %>">Edit Profile</a></li>
+<li><a href="<% $c->uri_for("/user/change_password") %>">Change Password</a></li>
+<li><a href="<% $c->uri_for("/user/edit_my_authors") %>">Edit My Authors</a></li>
+</ul>
+</div>
+
+% $m->call_next();
