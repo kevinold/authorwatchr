@@ -25,12 +25,28 @@ if ( $c->user ) {
 
 % unless ( $auth_is_saved ) {
 <!-- Show "save to list" -->
-<a id="save_author" href="#">Save <b><% $c->stash->{search_term} %></b> to your favorites</a>
+<button id="save_author">Save <b><% $c->stash->{search_term} %></b> to your favorites</button>
 
 <script type="text/javascript">
-$("#save_author").click(function(){
-  $(this).load('<% $c->uri_for("/user/save_author") %>', { value: "<% $c->stash->{search_term} %>" }, function() { $("#my_authors").load('<% $c->uri_for("/user/list_authors") %>') });
+/*$("#save_author")
+    .click( function(){
+                $(this).load(
+                    '<% $c->uri_for("/user/save_author") %>', 
+                    { value: "<% $c->stash->{search_term} %>" },
+                    function() { $("#my_authors").load('<% $c->uri_for("/user/list_authors") %>') }
+                )
+            }
+    );
+*/
+
+$("#save_author")
+.click( function(){
+    $(this).load('<% $c->uri_for("/user/save_author") %>', 
+                 { value: "<% $c->stash->{search_term} %>" },
+                 aw.loadMyAuthors
+    )
 });
+
 </script>
 
 % } 

@@ -8,9 +8,6 @@
 
     <div id="my_authors">
     </div>
-    <script>
-    $("#my_authors").load('<% $c->uri_for("/user/list_authors") %>');
-    </script>
 % }
 % else {
 <!-- Login form -->

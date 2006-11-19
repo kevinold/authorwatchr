@@ -98,10 +98,24 @@ sub list_authors : Local {
     #$c->model('AwDB::UserAuthors')->storage->debug(1);
     #my $user_id = $c->req->param("user_id");
     #$c->log->debug("**********is json: $is_json");
-   
+
     # Lookup authors for this user 
-    $c->stash->{authors} = $c->user->my_authors;
-    $c->stash->{template} = '/user/list_authors.mhtml';
+    my $authors = $c->user->my_authors;
+
+    my @myauthors;
+
+    while ( my $auth = $authors->next ) {
+            my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
+            my $aid = $auth->authors->id;
+            push @myauthors, {
+                           id => $aid,
+                           name => $name
+                        };
+    }
+    
+    #$c->stash->{template} = '/user/list_authors.mhtml';
+    $c->stash->{myauthors} = \@myauthors;
+    $c->forward( $c->view('JSON') );
 
 }
 
