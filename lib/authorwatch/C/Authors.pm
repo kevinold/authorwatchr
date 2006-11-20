@@ -32,6 +32,27 @@ sub default : Private {
     $c->response->body("This is the authors module");
 }
 
+sub isbnauthor : Local {
+    my ( $self, $c ) = @_;
+
+    my @authors = $c->model('ISBNDB')->search_authors({ name => 'John Grisham' });
+
+    my @elements;
+    # if returned, parse through them and build html
+    if ( @authors ) {
+
+        foreach my $auth ( @authors ) {
+            my $name = $auth->get_name;
+            push @elements, HTML::Element->new('li')->push_content($name);    
+        }
+
+        $c->res->body( HTML::Element->new('ul')->push_content(@elements)->as_HTML );
+    } else {
+        $c->response->body("<ul></ul>");
+    }
+}
+
+
 sub suggest : Local {
     my ( $self, $c ) = @_;
 
