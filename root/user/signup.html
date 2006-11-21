@@ -1,0 +1,51 @@
+<%doc>
+% if ( $c->user ) {
+    <!--Please Note: You are already logged in as '<% $c->user->username %>'.
+    You can <a href="<% $c->uri_for('/logout') %>">logout</a> here.
+    <% $c->user->user->username %>-->
+    My Authors<br/>
+    <a href="<% $c->uri_for('/logout') %>">logout</a>
+
+    <div id="my_authors">
+    </div>
+% }
+% else {
+</%doc>
+
+<!-- Signup form -->
+
+<script type="text/javascript" src="/static/js/validate.js"></script>
+<script type="text/javascript" src="/static/js/validate-rules.js"></script>
+<div class="error">
+<% $c->stash->{error_msg} ? $c->stash->{error_msg} : '' %>
+</div>
+
+<form method="post" action="<% $c->uri_for('/signup_commit') %>">
+<fieldset>
+<legend>Login</legend>
+      <label for="username">Username:</label>
+      <input type="text" name="username" size="15" validate="checkUserName" /><br/>
+      <label for="username" validate="required" class="error">Please enter a valid username</label>
+        
+      <label for="password">Password:</label>
+      <td><input type="password" name="password" size="15"/><br/>
+
+      <input type="submit" name="submit" value="Submit" />
+</fieldset>
+</form>
+% }
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        // validate the form when it is submitted
+        var options = {
+            debug: true,
+            focusInvalidElement: true
+        }
+        //$("#submit").click(function() {
+        $("#username").keyup(function() {
+            var res = $("#username").validate(options);
+        });
+    });
+</script>
+

@@ -257,6 +257,6 @@ td {
 
 /* SITE-WIDE CUSTOM STYLES (Your own id's and classes)
 ----------------------------------------------------------------*/
-p.error {
+.error {
   color: red;
 }

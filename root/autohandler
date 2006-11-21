@@ -36,7 +36,6 @@
   <div id="nav">
     <ul class="clearfix">
 % if ( $c->user ) {
-      <li>Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>!</li>
       <li><a href="<% $c->uri_for("/logout") %>">Logout</a></li>
       <li><a href="<% $c->uri_for("/") %>" class="home">Home</a></li>
 % } else {
@@ -46,16 +45,19 @@
       <li><a href="<% $c->uri_for("/about") %>">About</a></li>
       <li><a href="<% $c->uri_for("/feedback") %>">Feedback</a></li>
     </ul>
+    <br clear="all"/>
+     
   </div>
-  
+ 
+% if ( $c->user ) {
+  <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>!</span>
+% }
    <img src="/static/images/logo_large_new.jpg" style="float:left;"/> 
   </div>
   <!-- End Header -->
   
   <!-- Sidebar -->
   <div id="sidebar" class="clearfix">
-
-    <& 'login.mhtml' &>
 
   </div>
  

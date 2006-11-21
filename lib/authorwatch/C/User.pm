@@ -193,10 +193,34 @@ sub edit_profile_commit : Local Form {
         $user->first_name( $c->req->params->{first_name} );
         $user->last_name( $c->req->params->{last_name} );
         $user->insert_or_update();
+        
+        $c->session->{message} = 'Profile Updated';
 
         $c->res->redirect('/user');
     }
 }
+
+sub cu : Local {
+    my ( $self, $c ) = @_;
+
+    if ( $c->req->params->{username} ) {
+
+        my $user;
+        $user = $c->model('AwDB::User')->search({ username => $c->req->params->{username} });
+        warn $user; 
+        if ( $user ) {
+            $c->response->body('0');
+        } else {
+            $c->response->body('1');
+        }
+
+    }
+    else {
+        $c->response->body('0');
+    }
+
+}
+
 
 =head2 end
 

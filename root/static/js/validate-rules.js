@@ -147,4 +147,10 @@ jQuery.validator.rules = {
 	number: function(value) {
 		return isNaN(value);
 	}
+	/**
+	 * Return true, if the value is a valid username.
+	 */
+	checkUserName: function(value) {
+        $.post('/user/cu', { un: value }, function(data){ alert("data is: " + data) } );
+	}
 };
