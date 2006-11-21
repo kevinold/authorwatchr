@@ -151,6 +151,6 @@ jQuery.validator.rules = {
 	 * Return true, if the value is a valid username.
 	 */
 	checkUserName: function(value) {
-        $.post('/user/cu', { un: value }, function(data){ alert("data is: " + data) } );
+        $.post('/util/cu', { un: value }, function(data){ alert("data is: " + data) } );
 	}
 };
