@@ -15,25 +15,12 @@
 
 <!-- Signup form -->
 
+<html>
+
+<head>
+<script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" src="/static/js/validate.js"></script>
 <script type="text/javascript" src="/static/js/validate-rules.js"></script>
-<div class="error">
-<% $c->stash->{error_msg} ? $c->stash->{error_msg} : '' %>
-</div>
-
-<form method="post" action="<% $c->uri_for('/signup_commit') %>">
-<fieldset>
-<legend>Signup</legend>
-      <label for="username">Username:</label>
-      <input type="text" name="username" size="15" validate="checkUserName" /><br/>
-      <label for="username" validate="required" class="error">Please enter a valid username</label>
-        
-      <label for="password">Password:</label>
-      <td><input type="password" name="password" size="15"/><br/>
-
-      <input type="submit" name="submit" value="Submit" />
-</fieldset>
-</form>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -49,3 +36,40 @@
     });
 </script>
 
+<style type="text/css" media="screen">
+    label.error {
+        display: none;
+        color: red;
+    }
+</style>
+
+
+</head>
+
+
+<body>
+<div class="error">
+<% $c->stash->{error_msg} ? $c->stash->{error_msg} : '' %>
+</div>
+
+<form id="form1" method="post" action="<% $c->uri_for('/signup_commit') %>">
+<fieldset>
+<legend>Signup</legend>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" size="15" validate="checkUserName" /><br/>
+      <label for="username" validate="required" class="error">Please enter a valid username</label><br/>
+        
+      <label for="password">Password:</label>
+      <td><input type="password" id="password" name="password" size="15"/><br/>
+
+      <input type="submit" name="submit" value="Submit" />
+</fieldset>
+</form>
+
+
+</body>
+</html>
+
+<%flags>
+inherit => undef
+</%flags>

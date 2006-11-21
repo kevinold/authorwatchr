@@ -52,7 +52,7 @@
 % if ( $c->user ) {
   <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>!</span>
 % }
-   <img src="/static/images/logo_large_new.jpg" style="float:left;"/> 
+   <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/> -->
   </div>
   <!-- End Header -->
   
