@@ -46,4 +46,4 @@ var aw = {
 };
 
 $(aw.hideCompleteReviews);
-$(aw.loadMyAuthors);
+//$(aw.loadMyAuthors);
