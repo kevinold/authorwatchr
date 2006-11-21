@@ -16,7 +16,6 @@ Catalyst Controller.
 
 =cut
 
-
 =head2 index 
 
 =cut
@@ -25,6 +24,7 @@ sub index : Private {
     my ( $self, $c ) = @_;
 
     $c->stash->{template} = 'user/index.html';
+
     #$c->response->body('Matched authorwatch::C::User in User.');
 }
 
@@ -43,29 +43,33 @@ sub save_author : Local {
     $term =~ s/[^A-Za-z0-9 ]//g;
 
     my $user_id = $c->user->user->id;
- 
+
     #Separate name into first and last name
-    my ($fname, $lname) = split / /, $term;
+    my ( $fname, $lname ) = split / /, $term;
     map { s/^\s+//g; s/\s+$//g; } $fname, $lname;
 
     # Find or create author trying to be added
     my $author;
     $author = $c->model('AwDB::Authors')->find_or_create(
-        {
-                first_name => $fname,
-                last_name  => $lname,
+        {   first_name => $fname,
+            last_name  => $lname,
         }
     );
 
     my $aid = $author->id;
     $c->log->debug("**********author id is: $aid");
 
-    if ( $aid ) {
+    if ($aid) {
+
         #$c->response->body("1");
-        $c->model('AwDB::UserAuthors')->create({ user_id => $user_id, author_id => $aid });
-    } else {
+        $c->model('AwDB::UserAuthors')
+            ->create( { user_id => $user_id, author_id => $aid } );
+    }
+    else {
+
         #$c->response->body("0");
     }
+
 =pod
     my @elements;
     # if returned, parse through them and build html
@@ -81,10 +85,8 @@ sub save_author : Local {
         @authors = $c->model('AwDB::UserAuthors')->search({ user_id => $user_id });
     }
 =cut
+
 }
-
-
-
 
 =head2 list_authors
 
@@ -100,20 +102,22 @@ sub list_authors : Local {
     #my $user_id = $c->req->param("user_id");
     #$c->log->debug("**********is json: $is_json");
 
-    # Lookup authors for this user 
+    # Lookup authors for this user
     my $authors = $c->user->my_authors;
 
     my @myauthors;
 
     while ( my $auth = $authors->next ) {
-            my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
-            my $aid = $auth->authors->id;
-            push @myauthors, {
-                           id => $aid,
-                           name => $name
-                        };
+        my $name
+            = $auth->authors->first_name . " " . $auth->authors->last_name;
+        my $aid = $auth->authors->id;
+        push @myauthors,
+            {
+            id   => $aid,
+            name => $name
+            };
     }
-    
+
     #$c->stash->{template} = '/user/list_authors.mhtml';
     $c->stash->{myauthors} = \@myauthors;
     $c->forward( $c->view('JSON') );
@@ -123,15 +127,17 @@ sub list_authors : Local {
 sub create_edit_profile_form : Local Form {
     my ( $self, $c ) = @_;
 
-    my ( $id, $username, $password, $email_address, $first_name, $last_name, $active ) = "";
+    my ( $id, $username, $password, $email_address, $first_name, $last_name,
+        $active )
+        = "";
     if ( defined $c->user ) {
-        $id       = $c->user->user->id;
-        $username = $c->user->username;
-        $password = $c->user->password;
+        $id            = $c->user->user->id;
+        $username      = $c->user->username;
+        $password      = $c->user->password;
         $email_address = $c->user->email_address;
-        $first_name = $c->user->first_name;
-        $last_name = $c->user->last_name;
-        $active = $c->user->active;
+        $first_name    = $c->user->first_name;
+        $last_name     = $c->user->last_name;
+        $active        = $c->user->active;
     }
 
     $c->form->field(
@@ -159,7 +165,6 @@ sub create_edit_profile_form : Local Form {
         value    => $last_name
     );
 
-
     $c->form->action( '/user/edit_profile_commit/' . $id );
     $c->form->method('post');
 }
@@ -177,7 +182,6 @@ sub edit_profile_commit : Local Form {
     if ( $c->form->validate ) {
         my $user;
 
-
         if ( defined $id ) {
             $user = $c->model('AwDB::User')->find($id);
         }
@@ -194,9 +198,6 @@ sub edit_profile_commit : Local Form {
     }
 }
 
-
-
-
 =head2 end
 
 Forward to Mason View
@@ -206,8 +207,8 @@ Forward to Mason View
 #sub end : Private {
 #    my ( $self, $c ) = @_;
 
-    # Forward to View unless response body is already defined
-    #$c->forward( $c->view('Mason') ) unless $c->response->body;
+# Forward to View unless response body is already defined
+#$c->forward( $c->view('Mason') ) unless $c->response->body;
 #}
 
 =head1 AUTHOR
