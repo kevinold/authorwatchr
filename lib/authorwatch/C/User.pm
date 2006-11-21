@@ -200,29 +200,6 @@ sub edit_profile_commit : Local Form {
     }
 }
 
-sub cu : Local {
-    my ( $self, $c ) = @_;
-
-    my $user = 0;
-    if ( defined $c->req->params->{username} ) {
-
-        $user = $c->model('AwDB::User')->search({ username => $c->req->params->{username} });
-   
-        if ( $user == 0 ) {
-	    # Username is available
-            $c->response->body('0');
-        } else {
-	    # Username exists
-            $c->response->body('1');
-        }
-
-    }
-    else {
-	# Default to username is available
-        $c->response->body('0');
-    }
-
-}
 
 
 =head2 end
