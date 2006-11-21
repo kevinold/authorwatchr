@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Test for jQuery validate() plugin</title>
+
+<link rel="stylesheet" type="text/css" media="screen" href="css/screen.css" />
+<script src="js/jquery-svn.js" type="text/javascript"></script>
+<script src="js/cmxforms.js" type="text/javascript"></script>
+<script src="js/utilities.js" type="text/javascript"></script>
+<script src="js/validate.js" type="text/javascript"></script>
+<script src="js/validate-rules.js" type="text/javascript"></script>
+
+<style type="text/css">
+/* Lets style the extra markup around the error labels */
+div.nest { margin: 10px; padding: 10px; background-color: #eee; }
+div.nest div { border: 1px solid red; }
+
+/* with validating on blur, we have to hide errors by hand first */
+div.nest { display: none; }
+
+</style>
+
+</head>
+<body>
+
+<div id="texttests">
+
+	<h2>Some more tests with text and textarea and validating on blur</h2>
+	<p>All error labels are nested inside additional markup (might be necessary for presentation).
+	This markup is shown and hidden when neccessary by providing the selectErrorNests option.
+	Have a look at the source and the javascript below for details.</p>
+	
+	<div>
+	textarea
+	<textarea id="textarea" cols="25" rows="5" test="required;length-3-15;date"></textarea><br/>
+	<!-- label for required validation -->
+	<div class="nest"><div><label for="textarea" class="error" test="required">Please enter something</label></div></div>
+	<!-- label for other validations (in this case, length and date -->
+	<div class="nest"><div><label for="textarea" class="error">Please enter a date with at least 3 and max 15 characters! (length and date)</label></div></div>
+	</div>
+	
+	<div>
+	Text<input class="fwfw $rules(required;buga) fawif" id="text" /><br/>
+	<div class="nest"><div><label for="text" class="error required">Please enter text!</label></div></div>
+	<div class="nest"><div><label for="text" class="error" test="buga">Please enter "buga"!</label></div></div>
+	</div>
+	
+	<div>
+	7 + 4 = <input id="text2" test="equal-13" />
+	<div class="nest"><div><label for="text2" class="error" test="equal">Please enter the correct result!</label></div></div>
+	</div>
+
+</div>
+
+<h2>Please note:</h2>
+<p>Pay special attention to the customized markup and how its is configured via the options</p>
+<p>We even use two customized rules. They are very basic, but a good example of what can be done.</p>
+<p>For a description of a parameters of a rule, see the comments in validate-rules.js.</p>
+
+<script type="text/javascript">
+	
+	// extend the current rules with new groovy ones
+	
+	// this one requires the text "buga"
+	jQuery.validator.rules.buga = function(value) {
+		return value != "buga";
+	};
+	
+	// this one requires the value to be the same as the first parameter
+	// don't forget we do _client_ scripting, this should never ever
+	// be used as, say, a password check
+	jQuery.validator.rules.equal = function(value, element, parameters) {
+		return value != parameters[0];
+	};
+
+	$(document).ready(function() {
+		var options = {
+			debug: true,
+			rulesAttribute: "test",
+			rulesClassStart: "$rules(",
+			rulesDelimiter: ";",
+			parameterDelimiter: "-",
+			selectErrorNests: function(context) {
+				// hide and show the div & span elements, in which the labels are nested, too
+				return context.parent().parent();
+			}
+		};
+		
+		// validate on blur!
+		$("#texttests input, #texttests textarea").blur(function() {
+			$(this).validate(options);
+		});
+		
+	});
+</script>
+
+<a href="validateTest.html">Back to main page</a>
+
+</body>
+</html>
