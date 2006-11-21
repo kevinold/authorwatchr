@@ -11,14 +11,19 @@
 % }
 % else {
 <!-- Login form -->
+
+<div class="error">
+<% $c->stash->{error_msg} ? $c->stash->{error_msg} : '' %>
+</div>
+
 <form method="post" action="<% $c->uri_for('/login') %>">
 <fieldset>
 <legend>Login</legend>
       <label for="username">Username:</label>
-      <input type="text" name="username" size="15" />
-
+      <input type="text" name="username" size="15" /><br/>
+        
       <label for="password">Password:</label>
-      <td><input type="password" name="password" size="15"/>
+      <td><input type="password" name="password" size="15"/><br/>
 
       <input type="submit" name="submit" value="Submit" />
 </fieldset>
