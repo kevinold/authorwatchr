@@ -1,4 +1,15 @@
 var aw_signup = {
+   checkUserName : function() {
+        $("#signup #username")
+        .keyup(function(){
+            $.post('/signup/cu', { username: $(this).val() },
+                function(data) {
+                    //alert(data);
+                    //$("#my_authors").html('');
+                }
+            )
+        });
+   }
     /*
     loadMyAuthors : function() {
         $.getJSON('/user/list_authors',
@@ -15,4 +26,4 @@ var aw_signup = {
 };
 
 //$(aw.hideCompleteReviews);
-//$(aw.loadMyAuthors);
+//$(aw_signup.checkUserName);

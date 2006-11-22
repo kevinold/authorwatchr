@@ -19,23 +19,13 @@
 
 <head>
 <script type="text/javascript" src="/static/js/jquery.js"></script>
-<script type="text/javascript" src="/static/js/validate.js"></script>
-<script type="text/javascript" src="/static/js/validate-rules.js"></script>
+<script type="text/javascript" src="/static/js/aw_signup.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        // validate the form when it is submitted
-        var options = {
-            debug: true,
-            focusInvalidElement: true
-        }
-        //$("#submit").click(function() {
-        $("#username").keyup(function() {
-            var res = $("#username").validate(options);
-        });
+$(document).ready( function() {
+    $(aw_signup.checkUserName);
     });
 </script>
-
 <style type="text/css" media="screen">
     label.error {
         display: none;
@@ -52,12 +42,11 @@
 <% $c->stash->{error_msg} ? $c->stash->{error_msg} : '' %>
 </div>
 
-<form id="form1" method="post" action="<% $c->uri_for('/signup_commit') %>">
+<form id="signup" method="post" action="<% $c->uri_for('/signup_commit') %>">
 <fieldset>
 <legend>Signup</legend>
       <label for="username">Username:</label>
-      <input type="text" id="username" name="username" size="15" validate="checkUserName" /><br/>
-      <label for="username" validate="required" class="error">Please enter a valid username</label><br/>
+      <input type="text" id="username" name="username" size="15" value="kdo" /><br/>
         
       <label for="password">Password:</label>
       <td><input type="password" id="password" name="password" size="15"/><br/>
