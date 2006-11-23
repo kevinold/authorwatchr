@@ -24,6 +24,8 @@
 <script type="text/javascript">
 $(document).ready( function() {
     $(aw_signup.checkUserName);
+    $(aw_signup.checkPass);
+    $(aw_signup.confirmPass);
     });
 </script>
 <style type="text/css" media="screen">
@@ -53,8 +55,11 @@ $(document).ready( function() {
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" size="15" value="kdo" /><br/>
         
-      <label for="password">Password:</label><br/>
-      <td><input type="password" id="password" name="password" size="15"/><br/>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" size="15"/><br/>
+
+      <label for="confirm_password">Confirm Password:</label>
+      <input type="password" id="confirmpassword" name="confirmpassword" size="15"/><br/>
 
       <input type="submit" name="submit" value="Submit" />
 </fieldset>

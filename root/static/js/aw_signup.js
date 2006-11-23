@@ -30,6 +30,44 @@ var aw_signup = {
                 jqLabel.attr("class","error");
             }
         });
+   },
+
+   checkPass : function() {
+        $("#signup #password")
+        .blur(function(){
+            var jqLabel = $("#signup #password").prev('label');
+            if ( this.value.length > 2 ) {
+                jqLabel.html('Password: Ok');
+                jqLabel.attr("class","valid");
+            }
+            else {
+                jqLabel.html('Password: Minimum 3 characters');
+                jqLabel.attr("class","error");
+            }
+        });
+   },
+
+   confirmPass : function() {
+        $("#signup #confirmpassword")
+        .blur(function(){
+            var jqLabel = $("#signup #confirmpassword").prev('label');
+            if ( this.value.length > 2 ) {
+                var pw = $("#signup #password").val();
+                var cpw = $("#signup #confirmpassword").val();
+                if ( pw == cpw ) {
+                    jqLabel.html('Confirm Password: Ok');
+                    jqLabel.attr("class","valid");
+                }
+                else {
+                    jqLabel.html('Confirm Password: Passwords do not match');
+                    jqLabel.attr("class","error");
+                }
+            }
+            else {
+                jqLabel.html('Confirm Password: Passwords do not match');
+                jqLabel.attr("class","error");
+            }
+        });
    }
     /*
     loadMyAuthors : function() {
