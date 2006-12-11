@@ -137,7 +137,9 @@ CREATE TABLE `users` (
   `first_name` varchar(50) default NULL,
   `last_name` varchar(50) default NULL,
   `active` enum('0','1') default '0',
-  PRIMARY KEY  (`id`)
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `email_address_key` (`email_address`),
+  UNIQUE KEY `username_key` (`username`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
