@@ -14,11 +14,11 @@
 </%doc>
 
 <!-- Signup form -->
-<!--
+
 <html>
 
 <head>
--->
+
 <script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" src="/static/js/aw_signup.js"></script>
 
@@ -27,6 +27,9 @@ $(document).ready( function() {
     $(aw_signup.checkUserName);
     $(aw_signup.checkPass);
     $(aw_signup.confirmPass);
+    $(aw_signup.checkFirstName);
+    $(aw_signup.checkLastName);
+    $(aw_signup.checkEmailAddress);
     });
 </script>
 <style type="text/css" media="screen">
@@ -50,13 +53,21 @@ $(document).ready( function() {
 <% $c->stash->{error_msg} ? $c->stash->{error_msg} : '' %>
 </div>
 
-<form id="signup" method="post" action="<% $c->uri_for('/signup_commit') %>">
+<form id="signup" method="post" action="<% $c->uri_for('/signup/newuser') %>">
 <fieldset>
 <legend>Signup</legend>
     <ul>
         <li>
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" size="15" value="" />
+        </li>
+        <li>
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" size="15" value="" />
+        </li>
+        <li>
             <label for="username">Username:</label>
-            <input type="text" id="username" name="username" size="15" value="kdo" />
+            <input type="text" id="username" name="username" size="15" value="" />
         </li>
                 
         <li>
@@ -70,19 +81,22 @@ $(document).ready( function() {
         </li>
 
         <li>
+            <label for="email_address">Email Address:</label>
+            <input type="text" id="email_address" name="email_address" size="15"/>
+        </li>
+
+        <li>
             <input type="submit" name="submit" value="Submit" />
         </li>
     </ul>
 </fieldset>
 </form>
 
-<!--
+
 </body>
 </html>
--->
 
-<%doc>
+
 <%flags>
 inherit => undef
 </%flags>
-</%doc>

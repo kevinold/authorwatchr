@@ -8,6 +8,9 @@ __PACKAGE__->load_components(qw/PK::Auto Core/);
 __PACKAGE__->table('users');
 # Set columns in table
 __PACKAGE__->add_columns(qw/id username password email_address first_name last_name active/);
+# Add unique constraints
+__PACKAGE__->add_unique_constraint([ qw/username/]);
+__PACKAGE__->add_unique_constraint([ qw/email_address/]);
 # Set the primary key for the table
 __PACKAGE__->set_primary_key('id');
 

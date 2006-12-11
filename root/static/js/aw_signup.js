@@ -68,6 +68,51 @@ var aw_signup = {
                 jqLabel.attr("class","error");
             }
         });
+   },
+
+   checkFirstName : function() {
+        $("#signup #first_name")
+        .keyup(function(){
+            var jqLabel = $("#signup #first_name").prev('label');
+            if ( this.value.match(/^[A-Za-z0-9_]+$/) && this.value.length > 2 ) {
+                jqLabel.html('First Name: Ok');
+                jqLabel.attr("class","valid");
+            }
+            else {
+                jqLabel.html('First Name: At least 2 characters and only contain A-Z, a-z ,0-9 and underscore (_)');
+                jqLabel.attr("class","error");
+            }
+        });
+   },
+
+   checkLastName : function() {
+        $("#signup #last_name")
+        .keyup(function(){
+            var jqLabel = $("#signup #last_name").prev('label');
+            if ( this.value.match(/^[A-Za-z0-9_]+$/) && this.value.length > 2 ) {
+                jqLabel.html('Last Name: Ok');
+                jqLabel.attr("class","valid");
+            }
+            else {
+                jqLabel.html('Last Name: At least 2 characters and only contain A-Z, a-z ,0-9 and underscore (_)');
+                jqLabel.attr("class","error");
+            }
+        });
+   },
+
+   checkEmailAddress : function() {
+        $("#signup #email_address")
+        .keyup(function(){
+            var jqLabel = $("#signup #email_address").prev('label');
+            if ( this.value.match(/^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i) ) {
+                jqLabel.html('Email Address: Ok');
+                jqLabel.attr("class","valid");
+            }
+            else {
+                jqLabel.html('Email Address: Invalid Email');
+                jqLabel.attr("class","error");
+            }
+        });
    }
     /*
     loadMyAuthors : function() {
@@ -84,5 +129,6 @@ var aw_signup = {
     */ 
 };
 
+//return !value.match(/^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i);
 //$(aw.hideCompleteReviews);
 //$(aw_signup.checkUserName);

@@ -16,7 +16,6 @@ Catalyst Controller.
 
 =cut
 
-
 =head2 index 
 
 =cut
@@ -35,24 +34,67 @@ sub cu : Local {
     my $user = 0;
     if ( defined $c->req->params->{username} ) {
 
-        $user = $c->model('AwDB::User')->search({ username => $c->req->params->{username} });
-   
+        $user = $c->model('AwDB::User')
+            ->search( { username => $c->req->params->{username} } );
+
         if ( $user == 0 ) {
-	    # Username is available
+
+            # Username is available
             $c->response->body('0');
         } else {
-	    # Username exists
+
+            # Username exists
             $c->response->body('1');
         }
 
-    }
-    else {
-	# Default to username is available
+    } else {
+
+        # Default to username is available
         $c->response->body('0');
     }
 
 }
 
+sub newuser : Local {
+    my ( $self, $c ) = @_;
+
+    my $username = $c->req->params->{username};
+    my $password = $c->req->params->{password};
+    my $confirmpassword = $c->req->params->{confirmpassword};
+    my $first_name = $c->req->params->{first_name};
+    my $last_name = $c->req->params->{last_name};
+    my $email_address = $c->req->params->{email_address};
+
+    if ( $username && $password && $confirmpassword && $email_address ) {
+    
+        if ( $password eq $confirmpassword ) {
+            # Find or Create user
+            my $user;
+            $user = $c->model('AwDB::User')->find_or_new(
+                {   
+                    username => $username,
+                    email_address => $email_address,
+                }
+            );
+            if ( $user->id ) { 
+                $c->stash->{error_msg} = 'User/Email already exists.';
+                $c->stash->{template} = 'signup.mhtml';
+            }
+            else {
+                $user->password($password);
+                $user->first_name($first_name);
+                $user->last_name($last_name);
+                $user->active(1);
+                $user->insert;
+                $c->stash->{template} = 'signup_success.mhtml';
+            }
+        }
+
+    } else {
+        $c->stash->{error_msg} = 'Please complete form before submitting.';
+        $c->stash->{template} = 'signup.mhtml';
+    }
+}
 
 =head1 AUTHOR
 
