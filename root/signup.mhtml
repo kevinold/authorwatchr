@@ -14,10 +14,11 @@
 </%doc>
 
 <!-- Signup form -->
-
+<!--
 <html>
 
 <head>
+-->
 <script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" src="/static/js/aw_signup.js"></script>
 
@@ -52,23 +53,36 @@ $(document).ready( function() {
 <form id="signup" method="post" action="<% $c->uri_for('/signup_commit') %>">
 <fieldset>
 <legend>Signup</legend>
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username" size="15" value="kdo" /><br/>
-        
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" size="15"/><br/>
+    <ul>
+        <li>
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" size="15" value="kdo" />
+        </li>
+                
+        <li>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" size="15"/>
+        </li>
 
-      <label for="confirm_password">Confirm Password:</label>
-      <input type="password" id="confirmpassword" name="confirmpassword" size="15"/><br/>
+        <li>
+            <label for="confirm_password">Confirm Password:</label>
+            <input type="password" id="confirmpassword" name="confirmpassword" size="15"/>
+        </li>
 
-      <input type="submit" name="submit" value="Submit" />
+        <li>
+            <input type="submit" name="submit" value="Submit" />
+        </li>
+    </ul>
 </fieldset>
 </form>
 
-
+<!--
 </body>
 </html>
+-->
 
+<%doc>
 <%flags>
 inherit => undef
 </%flags>
+</%doc>

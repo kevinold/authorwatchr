@@ -25,6 +25,7 @@ sub index : Private {
     my ( $self, $c ) = @_;
 
     #$c->response->body('Matched authorwatch::C::Signup in Signup.');
+    $c->stash->{page_css} = 'signup';
     $c->stash->{template} = 'signup.mhtml';
 }
 

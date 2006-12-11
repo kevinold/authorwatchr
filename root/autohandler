@@ -7,6 +7,9 @@
   <title>AuthorWatcher.com</title>
   <link href="/static/css/global/style.css" media="screen" rel="Stylesheet" type="text/css" />
   <link href="/static/css/pages/sample.css" media="screen" rel="Stylesheet" type="text/css" />
+% if ( $c->stash->{page_css} ) {
+  <link href="/static/css/pages/<% $c->stash->{page_css} %>.css" media="screen" rel="Stylesheet" type="text/css" />
+% }
   <!--<script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/lib/prototype.js"></script>
   <script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/src/scriptaculous.js"></script>-->
   <script type="text/javascript" src="/static/js/jquery.js"></script>
@@ -52,7 +55,7 @@
 % if ( $c->user ) {
   <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>!</span>
 % }
-   <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/> -->
+  <img src="/static/images/logo_large_new.jpg" style="float:left;"/>
   </div>
   <!-- End Header -->
   
