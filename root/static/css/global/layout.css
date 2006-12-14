@@ -38,8 +38,8 @@ body {
 /* HEADER
 ----------------------------------------------------------------*/
 #header {
-  /*background: #fff;*/
-  height: 110px;
+  border-bottom: 5px solid #0572C4;
+  /*height: 110px;*/
 }
 
 
@@ -70,5 +70,5 @@ body {
 #footer {
   clear: both;
   background: #0572C4;
-  height: 29px;
+  height: 50px;
 }

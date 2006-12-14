@@ -55,7 +55,7 @@ Define all aspects (layout AND typography) of:
 	color: #784904;
 	text-decoration: none;
 	text-align: center;
-	border-bottom: 1px dashed #C4C4C4;
+	/*border-bottom: 1px dashed #C4C4C4;*/
     padding: 2px;
 }
 
@@ -64,6 +64,34 @@ Define all aspects (layout AND typography) of:
   color: #C49806;
 }
   
+#footer ul {
+    list-style: none;
+    display: inline;
+}
+
+#footer li {
+	width: 70px;
+	margin: 0;
+	padding: 0;
+    display: block;
+    float: left;
+    position: relative;
+}
+
+#footer a:link, 
+#footer a:visited { 
+    display: block;
+	height: 20px;
+	font-weight: bold;
+	font-size: 13px;
+    color: #fff;
+	text-decoration: none;
+	text-align: center;
+}
+
+#footer a:hover {
+    text-decoration: underline;
+}
 
 /* CURRENT PAGE INDICATORS
 -----------------------------------------------------------------

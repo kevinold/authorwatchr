@@ -84,6 +84,17 @@ a:hover {
   font-size: 28px;
 }
 
+#header h2 {
+    /*background:url("/static/images/logo_book_small.jpg") no-repeat;*/
+    /*padding:2px 0 12px 59px;*/
+    margin:0;
+    height:50px;
+    font:lighter 34px Georgia;
+}
+
+#header b {
+    color: #784904;
+}
 
 /* SIDEBAR CONTENT
 ----------------------------------------------------------------*/

@@ -13,7 +13,7 @@
   <!--<script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/lib/prototype.js"></script>
   <script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/src/scriptaculous.js"></script>-->
   <script type="text/javascript" src="/static/js/jquery.js"></script>
-  <script type="text/javascript" src="/static/js/jq-corner.js"></script>
+  <!--<script type="text/javascript" src="/static/js/jq-corner.js"></script>-->
   <script type="text/javascript" src="/static/js/aw.js"></script>
   <script type="text/javascript">
   /*
@@ -22,10 +22,10 @@
         $("#box3").corner("bevel top 8px");
         $("#box4").corner("round tl br 20px").corner("bevel tr bl 10px");
         $("#box6").corner("bevel tr 16px");
-  */
   $(document).bind("load", function(){
         $("#footer").corner();
     });
+  */
   </script>
 </head>
 
@@ -34,6 +34,7 @@
   
   <!-- Header -->
   <div id="header">
+  <h2>author<b>watch</b></h2>
   
   <!-- Nav -->
   <div id="nav">
@@ -45,23 +46,20 @@
       <li><a href="<% $c->uri_for("/signup") %>">Signup</a></li>
       <li><a href="<% $c->uri_for("/login") %>">Login</a></li>
 % }
-      <li><a href="<% $c->uri_for("/about") %>">About</a></li>
-      <li><a href="<% $c->uri_for("/feedback") %>">Feedback</a></li>
     </ul>
     <br clear="all"/>
-     
   </div>
  
 % if ( $c->user ) {
   <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>!</span>
 % }
-  <img src="/static/images/logo_large_new.jpg" style="float:left;"/>
+  <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/>-->
   </div>
   <!-- End Header -->
   
   <!-- Sidebar -->
   <div id="sidebar" class="clearfix">
-
+    <& 'login.mhtml' &>
   </div>
  
   
@@ -74,6 +72,10 @@
 
   <!-- Footer -->
   <div id="footer">
+    <ul class="clearfix">
+      <li><a href="<% $c->uri_for("/about") %>">About</a></li>
+      <li><a href="<% $c->uri_for("/feedback") %>">Feedback</a></li>
+    </ul>
     <p>&copy; Copyright 2006 AuthorWatcher.com</p>
   </div>
 
