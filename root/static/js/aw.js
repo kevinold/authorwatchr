@@ -38,12 +38,25 @@ var aw = {
                 var myauthors = json.myauthors;
                 $("#my_authors").html('');
                 $.each(myauthors, function(i) {
-                    $("#my_authors").append( this.name + "<br>" );
+                    $("#my_authors").append('<a href="#">' + this.name + '</a><br>');
                 });
+                
+                /*
+                $("#my_authors a")
+                .each(function(){
+                    var author = $(this).html();
+                    $(this).click( function() {
+                        $.post('/search/aws', { author: author });
+                        return false;
+                    });
+                });
+                */
+
             }
-        )
+        );
+
     }
 };
 
 $(aw.hideCompleteReviews);
-//$(aw.loadMyAuthors);
+$(aw.loadMyAuthors);
