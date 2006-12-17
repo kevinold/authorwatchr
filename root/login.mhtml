@@ -3,11 +3,13 @@
     <!--Please Note: You are already logged in as '<% $c->user->username %>'.
     You can <a href="<% $c->uri_for('/logout') %>">logout</a> here.
     <% $c->user->user->username %>-->
-    My Authors<br/>
     <a href="<% $c->uri_for('/logout') %>">logout</a>
 
-    <div id="my_authors">
-    </div>
+    <fieldset id="my_authors">
+    <legend>My Authors<legend/>
+    <ul>
+    </ul>
+    </fieldset>
 % }
 % else {
 <!-- Login form -->

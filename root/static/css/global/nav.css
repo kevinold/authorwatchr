@@ -19,10 +19,14 @@ Define all aspects (layout AND typography) of:
 
 /* NAV (ul)
 ----------------------------------------------------------------*/
+#nav {
+    /*background: #fff url(/static/images/nav_bar_bg.gif) repeat-x;*/
+    border-bottom: #784904 1px solid;
+}
 #nav ul {
   list-style: none;
 	display: inline;
-    float: right;
+    /*float: right;*/
 	/*background: #C4C4C4;*/
 	margin: 0;
 	padding-right: 20px;

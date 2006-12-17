@@ -26,7 +26,7 @@ body {
 ----------------------------------------------------------------*/
 #wrapper {
   clear: both; 
-  width: 880px;
+  /*width: 880px;*/
   height: auto;
   margin: 0 auto;
   /*border-left: 1px solid #CCC;
@@ -38,10 +38,15 @@ body {
 /* HEADER
 ----------------------------------------------------------------*/
 #header {
-  background: #fff url(/static/images/header_bg.png) repeat-x;
+  /*background: #fff url(/static/images/aw_bg4.gif) repeat-x;
+  border-bottom: 2px solid white;
+  border-top: 1px solid white;*/
+
+  background: #0572C4;
+  /*background: #fff url(/static/images/header_bg.png) repeat-x;*/
   /*width: 400px;*/
-  height: 71px;
-  color: #fff;
+  height: 50px;
+  /*color: #fff;*/
   /*border-bottom: 5px solid #0572C4;
   height: 110px;*/
 }
