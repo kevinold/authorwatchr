@@ -86,16 +86,18 @@ a:hover {
 }
 
 #header h2 {
-    /*background:url("/static/images/logo_book_small.jpg") no-repeat;*/
-    /*padding:2px 0 12px 59px;*/
-    color:#fff;
-    margin:0;
-    height:50px;
-    font:lighter 34px Georgia;
+    background: transparent url("/static/images/logo_circle_small_trans.png") no-repeat scroll 0%;
+    color:#0572C4;
+    margin: 0 0 0 10px;
+    padding: 20px 0 0 70px;
+    height: 65px;
+    font:lighter 34px arial;
+    letter-spacing: 2px;
 }
 
 #header b {
-    /*color: #784904;*/
+    color: #784904;
+    font-weight: bold;
 }
 
 /* SIDEBAR CONTENT
