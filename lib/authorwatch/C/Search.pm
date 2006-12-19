@@ -147,7 +147,7 @@ sub aws : Local {
                 $records{$asin}{editorialreview} = straighten_html($editorialreview);
 
                 $records{$asin}{formattedprice} = $xp->findvalue(
-                    "/ItemSearchResponse/Items/Item[$i]/OfferSummary/LowestNewPrice/FormattedPrice"
+                    "/ItemSearchResponse/Items/Item[$i]/Offers/Offer/OfferListing/Price/FormattedPrice"
                     )
                     || 'N/A';
 
@@ -202,7 +202,7 @@ sub query_aws : Private {
     #my $availability  = "New Release";
     my $operation     = "ItemSearch";
     my $searchindex   = "Books";
-    my $responsegroup = "Request,Medium";
+    my $responsegroup = "Request,Large";
 
     #my $version       = "2006-05-17";
 
@@ -223,7 +223,7 @@ sub query_aws : Private {
     my $ua = new LWP::UserAgent;
     $ua->timeout(30);
 
-    #warn "URL Sent:", $request;
+    warn "URL Sent:", $request;
     my $response = get($request);
 
     return $response;
