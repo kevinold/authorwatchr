@@ -6,9 +6,8 @@ use strict;
 use File::Temp;
 
 my $svnroot = 'svn+ssh://kold@kold.homelinux.com/home/kold/authorwatch';
-my $tmpdir = File::Temp::tempdir('sync_authorwatch.XXXXXX', TMPDIR => 1, CLEANUP => 0);
+my $tmpdir = File::Temp::tempdir('sync_authorwatch.XXXXXX', TMPDIR => 1, CLEANUP => 1);
 
-print "dir is: $tmpdir\n";
 chdir $tmpdir;
 
 print "Exporting authorwatch from SVN...\n";
