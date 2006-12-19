@@ -25,7 +25,6 @@ requires 'SQL::Translator';
 requires 'Catalyst::Plugin::XMLRPC';
 requires 'Config::Any::YAML';
 requires 'XML::Feed';
-requires 'Switch';
 requires 'DateTime';
 requires 'YAML';
 requires 'LWP::Simple';
