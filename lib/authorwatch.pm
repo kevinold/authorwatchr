@@ -17,13 +17,13 @@ use Catalyst::Runtime '5.70';
 #    Authorization::ACL
 #    Authorization::Roles
 #    Session::Store::FastMmap
+#    Captcha
 use Catalyst qw/
     -Debug
     ConfigLoader
     FormBuilder
     Static::Simple
     StackTrace
-    Captcha
 
     Authentication
     Authentication::Store::DBIC

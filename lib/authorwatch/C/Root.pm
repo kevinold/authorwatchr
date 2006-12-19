@@ -43,10 +43,10 @@ sub default : Private {
 }
 
 
-sub captcha : Local {
-    my ( $self, $c ) = @_;
-    $c->create_captcha();
-}
+#sub captcha : Local {
+#    my ( $self, $c ) = @_;
+#    $c->create_captcha();
+#}
 
 =head2 end
 

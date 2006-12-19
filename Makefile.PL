@@ -20,7 +20,7 @@ requires 'Catalyst::Plugin::Textile';
 requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Authentication::Store::DBIC';
 requires 'Catalyst::Plugin::Authentication::Credential::Password';
-requires 'Catalyst::Plugin::Captcha';
+#requires 'Catalyst::Plugin::Captcha';
 requires 'SQL::Translator';
 requires 'Catalyst::Plugin::XMLRPC';
 requires 'Config::Any::YAML';
