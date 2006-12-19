@@ -23,7 +23,9 @@ if ( $c->user ) {
 
 <h2>Results for "<% $c->stash->{search_term} %>"</h2>
 
-% unless ( $auth_is_saved ) {
+% if ( $c->user ) {
+
+%   unless ( $auth_is_saved ) {
 <!-- Show "save to list" -->
 <button id="save_author">Save <b><% $c->stash->{search_term} %></b> to your favorites</button>
 
@@ -44,14 +46,13 @@ $("#save_author")
     $(this).load('<% $c->uri_for("/user/save_author") %>', 
                  { value: "<% $c->stash->{search_term} %>" },
                  aw.loadMyAuthors
-    )
+    ).remove();
 });
 
 </script>
 
-% } 
-
-% unless ( $c->user ) {
+% } # end unless auth_is_saved
+% } else {
 Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 % }
 
