@@ -35,14 +35,17 @@
   <!-- Header -->
   <div id="header">
   <h2>author<b>watch</b></h2>
+% if ( $c->user ) {
+  <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>! </span>
+% }
   </div>
   <!-- End Header -->
 
   <!-- Nav -->
   <div id="nav">
     <ul class="clearfix">
-% if ( $c->user ) {
       <li><a href="<% $c->uri_for("/") %>" class="home">Home</a></li>
+% if ( $c->user ) {
       <li><a href="<% $c->uri_for("/logout") %>">Logout</a></li>
 % } else {
       <li><a href="<% $c->uri_for("/signup") %>">Signup</a></li>
@@ -52,9 +55,6 @@
     <br clear="all"/>
   </div>
  
-% if ( $c->user ) {
-  <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>! </span>
-% }
   <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/>-->
   
   <!-- Sidebar -->
