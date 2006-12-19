@@ -13,11 +13,12 @@
 % }
 </%doc>
 
-<!-- Signup form -->
+<!-- Signup form 
 
 <html>
 
 <head>
+-->
 
 <script type="text/javascript" src="/static/js/jquery.js"></script>
 <script type="text/javascript" src="/static/js/aw_signup.js"></script>
@@ -48,7 +49,7 @@ $(document).ready( function() {
 </head>
 
 
-<body>
+<!--<body>-->
 <div class="error">
 <% $c->stash->{error_msg} ? $c->stash->{error_msg} : '' %>
 </div>
@@ -92,11 +93,13 @@ $(document).ready( function() {
 </fieldset>
 </form>
 
-
+<!--
 </body>
 </html>
+-->
 
-
+<%doc>
 <%flags>
 inherit => undef
 </%flags>
+</%doc>
