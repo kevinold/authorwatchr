@@ -1,7 +1,7 @@
 var aw = {
 
     hideCompleteReviews : function () {
-        $("#author_results div.moreInfo")
+        $("#result p.moreInfo")
         .each(function(){
             var hidInfoJObj = $(this);
             if (!$.browser.safari) {

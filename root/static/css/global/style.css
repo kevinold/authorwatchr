@@ -186,29 +186,38 @@ a:hover {
 }
 
 #author_results {
-    width: 90%;
-    background: #f1f1f3;
-    padding: 10px;
+    background:none;
+    padding:0;
 }
 
-#author_results h2 {
+#result {
+    margin: 0 0 20px 0;
+    border-bottom: 1px dotted #999;
+    background: #fff;
+    padding: 15px 0 10px 0;
+}
+
+#result h2 {
   display: inline;
-  margin: 0 0 10px 0;
+  margin: 10px 0 20px 0;
   color: #000;
-  font-size: 14px;
+  font-size: 16px arial;
 }
 
-#author_results h3 {
-  display: inline;
-  margin: 0 0 10px 0;
-  color: #000;
-  font-size: 13px;
-}
 
-#author_results img {
+#result img {
     float: left;
-    padding-right: 20px;
-    border: 1px solid #f1f1f3;
+    margin: 0 20px 10px 0;
+    width: auto;
+}
+
+#result p {
+    margin:0;
+    line-height: 15px;
+}
+
+p.moreInfo {
+    display:none;
 }
 
 /* FORMS

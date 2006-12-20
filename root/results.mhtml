@@ -62,13 +62,12 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 % my @sentences = split_sentences( $er );
 % my $first = shift @sentences;
 
-    <div id="details_<% $rec %>" style="height:auto;">
+    <div id="result" class="clearfix">
 
-    <h2><% $ref->{$rec}->{title} %></h2> by <h3><% $ref->{$rec}->{author} %></h3><br clear="all"/>
+    <h2><% $ref->{$rec}->{title} %> by <span><% $ref->{$rec}->{author} %></span></h2>
 
     <img src="<% $ref->{$rec}->{smallimage} %>" height="<% $ref->{$rec}->{smallimageheight} %>" width="<% $ref->{$rec}->{smallimagewidth} %>" />
 
-    <div style="margin-left:75px;">
 
     <p id="er_first_<% $rec %>">
     <% $first %> 
@@ -76,23 +75,17 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 
     </p>
 
-    <div class="moreInfo">
+    <p class="moreInfo">
 % foreach my $s ( @sentences ) {
     <% $s %>
 % }
-    </div>
-
-    </div>
+    </p>
 
 
-    <br clear="all"/>
-    <br clear="all"/>
 
-    <div style="float:right;">
     Publish Date: <% $ref->{$rec}->{pubdate} %>
     Newest Low Price: <% $ref->{$rec}->{formattedprice} %>
     <a href="<% $ref->{$rec}->{detailpageurl} %>">View Details</a>
-    </div>
 
     </div>
 <br clear="all"/>
