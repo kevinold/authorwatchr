@@ -15,4 +15,4 @@ print "Exporting authorwatch from SVN...\n";
 system qq(svn -q export $svnroot authorwatch);
 
 print "Syncing authorwatch...\n";
-system(qq(rsync -e ssh -zva --delete $tmpdir/authorwatch/ authorwatch\@authorwatch.info:/home/authorwatch/site));
+system(qq(rsync -e ssh -zva --delete $tmpdir/authorwatch/ authorwatch\@authorwatcher.com:/home/authorwatch/site));
