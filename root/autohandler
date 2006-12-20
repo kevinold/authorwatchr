@@ -34,7 +34,7 @@
   
   <!-- Header -->
   <div id="header">
-  <h2>author<b>watch</b></h2>
+  <h2>author<b>watcher</b></h2>
 % if ( $c->user ) {
   <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>! </span>
 % }
