@@ -1,5 +1,9 @@
 ---
 name: authorwatch
+cache:
+  backend:
+     share_file: '/tmp/authorwatch.cache'
+     cache_size: '16m'
 static:
   dirs:
     - static

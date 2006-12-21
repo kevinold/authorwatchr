@@ -25,6 +25,8 @@ use Catalyst qw/
     Static::Simple
     StackTrace
 
+    Cache
+    Cache::Store::FastMmap
     Authentication
     Authentication::Store::DBIC
     Authentication::Credential::Password

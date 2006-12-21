@@ -56,12 +56,20 @@ sub aws : Local {
         my @search = split / /, $svalue;
         my $keywords = join " ", @search;
 
+        # setup cache key
+        my $authcachekey = join "_", @search;
+
         my $today = strftime "%m-%Y", localtime;
             # Real search
             #"author: $keywords and pubdate: after $today and binding: Hardcover"
         my $pw_search = uri_escape(
             "author: $keywords and binding: Hardcover"
         );
+    
+        
+        my %records;
+        
+        unless ( %records = $c->cache->get($authcachekey) ) {
 
         # Perform search
         my $response = query_aws($pw_search);
@@ -70,8 +78,6 @@ sub aws : Local {
 
         # Process XML response with XPath.
         my $xp = XML::XPath->new( xml => $response );
-
-        my %records;
 
         if ( $xp->find("//Error") ) {
             my $ec = $xp->findvalue("//Error/Code");
@@ -165,12 +171,15 @@ sub aws : Local {
             }
         }
 
-        $c->stash->{error_msg} = "No Results Found." unless %records;
+            $c->cache->set($authcachekey, \%records);
+        }
         $c->stash->{records}   = \%records;
+        $c->stash->{error_msg} = "No Results Found." unless %records;
 
         #Capitalize first and last name
         $search_term =~ s/(\w+)/\u\L$1/g;
         $c->stash->{search_term} = $search_term;
+        
     }
     else {
         $c->stash->{error_msg} = "No search parameters entered.";
