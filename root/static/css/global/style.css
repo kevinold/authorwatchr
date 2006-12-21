@@ -190,14 +190,14 @@ a:hover {
     padding:0;
 }
 
-#result {
+#author_results .result {
     margin: 0 0 20px 0;
     border-bottom: 1px dotted #999;
     background: #fff;
     padding: 15px 0 10px 0;
 }
 
-#result h2 {
+#author_results .result h2 {
   display: inline;
   margin: 10px 0 20px 0;
   color: #000;
@@ -205,19 +205,19 @@ a:hover {
 }
 
 
-#result img {
+#author_results .result img {
     float: left;
     margin: 0 20px 10px 0;
     width: auto;
 }
 
-#result p {
+#author_results .result p {
     margin:0;
     line-height: 15px;
 }
 
-p.moreInfo {
-    display:none;
+#author_results .result p.moreInfo {
+    height:auto;
 }
 
 /* FORMS

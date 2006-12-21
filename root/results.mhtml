@@ -62,7 +62,7 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 % my @sentences = split_sentences( $er );
 % my $first = shift @sentences;
 
-    <div id="result" class="clearfix">
+    <div class="result" class="clearfix">
 
     <h2><% $ref->{$rec}->{title} %> by <span><% $ref->{$rec}->{author} %></span></h2>
 
@@ -81,7 +81,9 @@ Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
 % }
     </p>
 
-
+    <br clear="all"/>
+    <br clear="all"/>
+    <br clear="all"/>
 
     Publish Date: <% $ref->{$rec}->{pubdate} %>
     Newest Low Price: <% $ref->{$rec}->{formattedprice} %>

@@ -1,7 +1,7 @@
 var aw = {
 
     hideCompleteReviews : function () {
-        $("#result p.moreInfo")
+        $('.result p.moreInfo')
         .each(function(){
             var hidInfoJObj = $(this);
             if (!$.browser.safari) {
@@ -18,18 +18,14 @@ var aw = {
                         .title("Click to hide the details")
                         .parent()
                         .next()
-                            .animate({height:"show"},1000,function(){
-                                this.style.width=this.style.height='';
-                                });
+                            .show("slow");
                 },function(){
                         $(this)
                         .html("Read&#160;on&#8230;")
                         .title("Click to show further details")
                         .parent()
                                 .next()
-                                        .animate({height:"hide"},1000,function(){
-                                            this.style.width=this.style.height='';
-                                        });
+                                        .hide("slow");
                 });
     },
     loadMyAuthors : function() {
