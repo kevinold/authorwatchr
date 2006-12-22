@@ -33,17 +33,6 @@ $(document).ready( function() {
     $(aw_signup.checkEmailAddress);
     });
 </script>
-<style type="text/css" media="screen">
-    label {
-        display: block;
-    }
-    label.error {
-        color: red;
-    }
-    label.valid {
-        color: green;
-    }
-</style>
 
 
 </head>
@@ -61,29 +50,35 @@ $(document).ready( function() {
         <li>
             <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" size="15" value="" />
+            <span></span>
         </li>
         <li>
             <label for="last_name">Last Name:</label>
             <input type="text" id="last_name" name="last_name" size="15" value="" />
+            <span></span>
         </li>
         <li>
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" size="15" value="" />
+            <span></span>
         </li>
                 
         <li>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" size="15"/>
+            <span></span>
         </li>
 
         <li>
             <label for="confirm_password">Confirm Password:</label>
             <input type="password" id="confirmpassword" name="confirmpassword" size="15"/>
+            <span></span>
         </li>
 
         <li>
             <label for="email_address">Email Address:</label>
             <input type="text" id="email_address" name="email_address" size="15"/>
+            <span></span>
         </li>
 
         <li>

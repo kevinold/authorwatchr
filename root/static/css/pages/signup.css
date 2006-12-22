@@ -3,7 +3,8 @@
     margin:0 0 15px 0; 
     padding:0; 
     font:normal 12px arial; 
-    float:left;}
+    float:left;
+    }
 
 #signup fieldset { 
     padding:15px 20px 15px 20px; 
@@ -17,18 +18,38 @@
 
 #signup li { 
     list-style:none; 
-    padding:8px 0 8px 0; 
+    padding:15px 0 15px 0; 
     border-bottom:1px dotted #ccc;
     }
 
 #signup label { 
-    display:block; width:200px; 
+    display:block;
+    width:175px; 
     float:left; 
-    font-weight:bold;}
+    font-weight:bold;
+    padding-right: 5px;
+}
+#signup input {
+    width: 150px;
+}
 
 #signup input[type="submit"] {
+    width: auto; 
     margin:15px 0 0 0;
     }
+
+#signup span {
+    padding-left: 10px;
+    font-weight: bold;
+}
+
+#signup span.valid {
+    color: green;
+}
+
+#signup span.error {
+    color: red;
+}
 /*
 #signup input[name="full_listing_url"] {
     width:330px;
