@@ -16,3 +16,6 @@ system qq(svn -q export $svnroot authorwatch);
 
 print "Syncing authorwatch...\n";
 system(qq(rsync -e ssh -zva --delete $tmpdir/authorwatch/ authorwatch\@authorwatcher.com:/home/authorwatch/site));
+
+print "Clearing cache & restarting...\n";
+system(qq(ssh -l authorwatch authorwatcher.com sudo /usr/local/bin/restart_authorwatch));
