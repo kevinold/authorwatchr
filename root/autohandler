@@ -13,7 +13,7 @@
   <!--<script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/lib/prototype.js"></script>
   <script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/src/scriptaculous.js"></script>-->
   <script type="text/javascript" src="/static/js/jquery.js"></script>
-  <!--<script type="text/javascript" src="/static/js/jq-corner.js"></script>-->
+  <script type="text/javascript" src="/static/js/jquery.corner.js"></script>
   <script type="text/javascript" src="/static/js/aw.js"></script>
   <script type="text/javascript">
   /*
@@ -22,10 +22,15 @@
         $("#box3").corner("bevel top 8px");
         $("#box4").corner("round tl br 20px").corner("bevel tr bl 10px");
         $("#box6").corner("bevel tr 16px");
-  $(document).bind("load", function(){
-        $("#footer").corner();
-    });
   */
+  //$(document).bind("load", function(){
+
+    $(function(){   // shorthand for $(document).ready() BTW
+        var kdo = $("#ma_box").html();
+        console.log("value is: " + kdo);
+        $("#ma_box").corner("round 8px").parent().css('padding', '4px').corner("round 10px");
+        console.log("after corner applied");
+    });
   </script>
 </head>
 
@@ -54,7 +59,11 @@
     </ul>
     <br clear="all"/>
   </div>
- 
+
+    <div id="ma_box" style="background: #ccc;border: 1px solid #ccc;height: 20px;">
+    test content
+    </div>
+
   <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/>-->
   
   <!-- Sidebar -->
