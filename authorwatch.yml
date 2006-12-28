@@ -10,9 +10,12 @@ static:
   ignore_extensions:
     - tmpl
     - xhtml
-dsn: 'dbi:mysql:database=authorwatch;host=kold.homelinux.com;port=3306'
-db_user: 'root'
-db_pass: 'kevin'
+dsn: 'dbi:mysql:database=authorwatch;host=authorwatcher.com;port=3306'
+db_user: 'aw'
+db_pass: 'aU^H0rW@tC$'
+#dsn: 'dbi:mysql:database=authorwatch;host=kold.homelinux.com;port=3306'
+#db_user: 'root'
+#db_pass: 'kevin'
 #dsn: 'dbi:mysql:database=authorwatch;host=localhost'
 #db_pass: ''
 session:
