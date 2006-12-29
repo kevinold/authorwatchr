@@ -93,6 +93,10 @@ sub aws : Local {
                 if ( !$xp->find("/ItemSearchResponse/Items/Item[$i]") ) {
                     last;
                 }
+
+                # Remove Large Print Editions
+                next if $xp->findvalue("/ItemSearchResponse/Items/Item[$i]/ItemAttributes/Edition") =~ /large/i;
+
                 my @authors;
                 for (
                     my $j = 1;
@@ -117,6 +121,7 @@ sub aws : Local {
                 next unless $yr  =~ /^200/;
                 next unless $mon =~ /^[0|1][0-9]/;
                 next unless $day =~ /^[0|1|2|3][0-9]/;
+
 
                 my $asin = $xp->findvalue(
                     "/ItemSearchResponse/Items/Item[$i]/ASIN");
