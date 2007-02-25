@@ -4,6 +4,7 @@ name 'authorwatch';
 all_from 'lib/authorwatch.pm';
 
 requires Catalyst => '5.7006';
+requires 'Test::Pod::Coverage';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
@@ -22,6 +23,7 @@ requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Authentication::Store::DBIC';
 requires 'Catalyst::Plugin::Authentication::Credential::Password';
 #requires 'Catalyst::Plugin::Captcha';
+requires 'XML::XPath';
 requires 'SQL::Translator';
 requires 'Catalyst::Plugin::XMLRPC';
 requires 'Config::Any::YAML';
@@ -29,7 +31,6 @@ requires 'XML::Feed';
 requires 'DateTime';
 requires 'YAML';
 requires 'LWP::Simple';
-requires 'XML::XPath';
 requires 'URI::Escape';
 requires 'HTML::Element';
 requires 'HTML::Scrubber';
@@ -38,6 +39,7 @@ requires 'Catalyst::Model::ISBNDB';
 requires 'Catalyst::View::JSON';
 requires 'Catalyst::View::Mason';
 requires 'Text::Sentence';
+requires 'Net::Amazon';
 #requires '';
 
 
