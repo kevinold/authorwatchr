@@ -41,6 +41,64 @@ Catalyst Controller.
 #$c->response->redirect("index.html");
 #}
 
+sub na : Local {
+    my ( $self, $c ) = @_;
+
+    $c->stash->{template} = 'results.mhtml';
+    my $svalue      = $c->req->param("author");
+    my $search_term = $c->req->param("author");
+
+    #$c->log->debug("**********svalue is: $svalue");
+
+    if ($svalue) {
+
+        #Get search terms urlified
+        my @search = split / /, $svalue;
+        my $keywords = join " ", @search;
+
+        # setup cache key
+        my $authcachekey = join "_", @search;
+
+        my $today = strftime "%m-%Y", localtime;
+            # Real search
+            #"author: $keywords and pubdate: after $today and binding: Hardcover"
+        my $pw_search = uri_escape(
+            "author: $keywords and binding: Hardcover"
+        );
+    
+        
+        my $records;
+        
+        unless ( $records = $c->cache->get($authcachekey) ) {
+            my $ua = Net::Amazon->new(token => '1GNG6V387CH1FWX4H182');
+            my $response = $ua->search(power => $pw_search, mode => "books");
+            
+            if($response->is_success()) {
+                #next if $->year() > 2008;
+                #print Dumper($response->properties);
+                #for my $prop ($response->properties) {
+                #    next if $prop->year() > 2008;
+                #    print $prop->as_string(), " ", $prop->ReleaseDate(), " ", $prop->similar_asins(), "\n";
+                #}
+                 
+                $c->cache->set($authcachekey, $response);
+            } else {
+                #print "Error: ", $response->message(), "\n";
+                $c->stash->{error_msg} = "Error: ", $response->message();
+            }
+
+        }
+
+        $c->stash->{records}   = $records;
+
+        #Capitalize first and last name
+        $search_term =~ s/(\w+)/\u\L$1/g;
+        $c->stash->{search_term} = $search_term;
+    }
+
+}
+
+
 sub aws : Local {
     my ( $self, $c ) = @_;
 
