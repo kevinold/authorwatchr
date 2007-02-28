@@ -9,6 +9,8 @@ use DateTime;
 use POSIX qw(strftime);
 use URI::Escape;
 use HTML::Scrubber;
+use Net::Amazon;
+use Data::Dumper;
 
 =head1 NAME
 
@@ -44,7 +46,7 @@ Catalyst Controller.
 sub na : Local {
     my ( $self, $c ) = @_;
 
-    $c->stash->{template} = 'results.mhtml';
+    $c->stash->{template} = 'results_na.mhtml';
     my $svalue      = $c->req->param("author");
     my $search_term = $c->req->param("author");
 
@@ -63,16 +65,18 @@ sub na : Local {
             # Real search
             #"author: $keywords and pubdate: after $today and binding: Hardcover"
         my $pw_search = uri_escape(
-            "author: $keywords and binding: Hardcover"
+            "author: $keywords and pubdate: after 01-2007 and binding: Hardcover"
         );
     
         
         my $records;
         
-        unless ( $records = $c->cache->get($authcachekey) ) {
+        unless( $records = $c->cache->get($authcachekey) ) {
+            
             my $ua = Net::Amazon->new(token => '1GNG6V387CH1FWX4H182');
             my $response = $ua->search(power => $pw_search, mode => "books");
             
+            $c->log->debug("**********RUNNING AMAZON QUERY", Dumper($records));
             if($response->is_success()) {
                 #next if $->year() > 2008;
                 #print Dumper($response->properties);
@@ -80,8 +84,9 @@ sub na : Local {
                 #    next if $prop->year() > 2008;
                 #    print $prop->as_string(), " ", $prop->ReleaseDate(), " ", $prop->similar_asins(), "\n";
                 #}
-                 
+                $records = $response;
                 $c->cache->set($authcachekey, $response);
+                #$c->log->debug("**********After cache set", Dumper($c->cache->get($authcachekey)));
             } else {
                 #print "Error: ", $response->message(), "\n";
                 $c->stash->{error_msg} = "Error: ", $response->message();
