@@ -65,15 +65,15 @@ sub na : Local {
             # Real search
             #"author: $keywords and pubdate: after $today and binding: Hardcover"
         my $pw_search = uri_escape(
-            "author: $keywords and pubdate: after 01-2007 and binding: Hardcover"
+            "author: $keywords and pubdate: after 06-2006 and binding: Hardcover"
         );
     
         
         my $records;
         
-        unless( $records = $c->cache->get($authcachekey) ) {
+        #unless( $records = $c->cache->get($authcachekey) ) {
             
-            my $ua = Net::Amazon->new(token => '1GNG6V387CH1FWX4H182');
+            my $ua = Net::Amazon->new(token => '1GNG6V387CH1FWX4H182', cache => $c->cache);
             my $response = $ua->search(power => $pw_search, mode => "books");
             
             $c->log->debug("**********RUNNING AMAZON QUERY", Dumper($records));
@@ -85,14 +85,14 @@ sub na : Local {
                 #    print $prop->as_string(), " ", $prop->ReleaseDate(), " ", $prop->similar_asins(), "\n";
                 #}
                 $records = $response;
-                $c->cache->set($authcachekey, $response);
+                #$c->cache->set($authcachekey, $response);
                 #$c->log->debug("**********After cache set", Dumper($c->cache->get($authcachekey)));
             } else {
                 #print "Error: ", $response->message(), "\n";
                 $c->stash->{error_msg} = "Error: ", $response->message();
             }
 
-        }
+        #}
 
         $c->stash->{records}   = $records;
 
