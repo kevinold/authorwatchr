@@ -5,6 +5,11 @@ my $response = $c->stash->{records};
 % if ($response) {
 %   for my $prop ($response->properties) {
 %       next if $prop->year() > 2008;
-        <% $prop->as_string() %> <b><% $prop->ReleaseDate() %></b> <% $prop->similar_asins() %> <br/>
+        <% $prop->as_string() %> <b><% $prop->ReleaseDate() %></b> <% $prop->similar_asins() %> 
+        <br/>
+        <% $prop->ProductDescription() %>
+        <% $prop->DetailPageURL() %>
+        <br/>
+        <br/>
 %   } 
 % }
