@@ -75,9 +75,11 @@ sub na : Local {
         #unless( $records = $c->cache->get($authcachekey) ) {
             
             Log::Log4perl->init("/home/kevin/log.conf");
-            #$WSDL = '2007-05-14';
+            
             my $ua = Net::Amazon->new(token => '1GNG6V387CH1FWX4H182', cache => $c->cache);
-            my $response = $ua->search(power => $pw_search, mode => "books", type => "Small");
+            my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium");
+            # When ready, pass Associate Tag this way
+            #my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium", AssociateTag => 'kevin123');
 
             $c->log->debug("**********RUNNING AMAZON QUERY", Dumper($records));
             if($response->is_success()) {
