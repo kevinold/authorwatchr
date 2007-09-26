@@ -2,8 +2,9 @@
 my $response = $c->stash->{records};
 
 </%init>
-
-% for my $prop ($response->properties) {
-% next if $prop->year() > 2008;
-<% $prop->as_string() %> <% $prop->ReleaseDate() %> <% $prop->similar_asins() %> <br/>
-% } 
+% if ($response) {
+%   for my $prop ($response->properties) {
+%       next if $prop->year() > 2008;
+        <% $prop->as_string() %> <b><% $prop->ReleaseDate() %></b> <% $prop->similar_asins() %> <br/>
+%   } 
+% }

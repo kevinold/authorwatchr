@@ -11,6 +11,7 @@ use URI::Escape;
 use HTML::Scrubber;
 use Net::Amazon;
 use Data::Dumper;
+use Log::Log4perl qw(:easy);
 
 =head1 NAME
 
@@ -65,7 +66,7 @@ sub na : Local {
             # Real search
             #"author: $keywords and pubdate: after $today and binding: Hardcover"
         my $pw_search = uri_escape(
-            "author: $keywords and pubdate: after 06-2006 and binding: Hardcover"
+            "author: $keywords and pubdate: after 09-2007 and binding: Hardcover"
         );
     
         
@@ -73,9 +74,11 @@ sub na : Local {
         
         #unless( $records = $c->cache->get($authcachekey) ) {
             
+            Log::Log4perl->init("/home/kevin/log.conf");
+            #$WSDL = '2007-05-14';
             my $ua = Net::Amazon->new(token => '1GNG6V387CH1FWX4H182', cache => $c->cache);
-            my $response = $ua->search(power => $pw_search, mode => "books");
-            
+            my $response = $ua->search(power => $pw_search, mode => "books", type => "Small");
+
             $c->log->debug("**********RUNNING AMAZON QUERY", Dumper($records));
             if($response->is_success()) {
                 #next if $->year() > 2008;
@@ -89,7 +92,8 @@ sub na : Local {
                 #$c->log->debug("**********After cache set", Dumper($c->cache->get($authcachekey)));
             } else {
                 #print "Error: ", $response->message(), "\n";
-                $c->stash->{error_msg} = "Error: ", $response->message();
+                #$c->log->debug("**********Error:", $response->message());
+                $c->stash->{error_msg} = "Error: " . $response->message();
             }
 
         #}
