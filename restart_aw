@@ -1,0 +1,8 @@
+#!/bin/bash
+
+rm -rf /tmp/obj/* /tmp/cache/* /tmp/aw.cache
+/etc/init.d/lighttpd stop
+sleep 2
+/etc/init.d/lighttpd start
+
+
