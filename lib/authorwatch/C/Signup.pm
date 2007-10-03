@@ -78,7 +78,8 @@ sub newuser : Local {
             );
             if ( $user->id ) { 
                 $c->stash->{error_msg} = 'User/Email already exists.';
-                $c->stash->{template} = 'signup.mhtml';
+                $c->forward('index');
+
             }
             else {
                 $user->password($password);
