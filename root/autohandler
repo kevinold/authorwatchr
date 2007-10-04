@@ -1,20 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>AuthorWatcher.com</title>
-  <link href="/static/css/global/style.css" media="screen" rel="Stylesheet" type="text/css" />
-  <link href="/static/css/pages/sample.css" media="screen" rel="Stylesheet" type="text/css" />
-% if ( $c->stash->{page_css} ) {
-  <link href="/static/css/pages/<% $c->stash->{page_css} %>.css" media="screen" rel="Stylesheet" type="text/css" />
-% }
-  <!--<script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/lib/prototype.js"></script>
-  <script type="text/javascript" src="/static/js/scriptaculous-js-1.6.1/src/scriptaculous.js"></script>-->
+  <title>authorwatchr.com - Find the latest titles by your favorite authors.</title>
+
+
+  <link href="/static/css/aw.css" media="screen" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="/static/js/jquery.js"></script>
-  <script type="text/javascript" src="/static/js/jquery.corner.js"></script>
 <!--  <script type="text/javascript" src="/static/js/aw.js"></script> -->
+
+
   <script type="text/javascript">
   /*
         $("#box1").corner();
@@ -22,7 +17,6 @@
         $("#box3").corner("bevel top 8px");
         $("#box4").corner("round tl br 20px").corner("bevel tr bl 10px");
         $("#box6").corner("bevel tr 16px");
-  */
   //$(document).bind("load", function(){
 
     $(function(){   // shorthand for $(document).ready() BTW
@@ -31,18 +25,21 @@
         $("#ma_box").corner("round 8px").parent().css('padding', '4px').corner("round 10px");
         console.log("after corner applied");
     });
+  */
   </script>
 </head>
 
-<body id="home">
-<div id="wrapper">
+<body>
+<div class="wrapper">
   
   <!-- Header -->
   <div id="header">
-  <h2>author<b>watcher</b></h2>
+  <h2>author<b>watch</b>r</h2>
+
 % if ( $c->user ) {
   <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>! </span>
 % }
+
   </div>
   <!-- End Header -->
 
@@ -68,7 +65,9 @@
   
   <!-- Sidebar -->
   <div id="sidebar" class="clearfix">
+  <%doc>
     <& 'login.mhtml' &>
+  </%doc>
   </div>
  
   
@@ -85,7 +84,7 @@
       <li><a href="<% $c->uri_for("/about") %>">About</a></li>
       <li><a href="<% $c->uri_for("/feedback") %>">Feedback</a></li>
     </ul>
-    <p>&copy; Copyright 2006 AuthorWatcher.com</p>
+    <p>&copy; Copyright 2007 authorwatchr.com</p>
   </div>
 
 </div>

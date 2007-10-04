@@ -1,15 +1,85 @@
 <%init>
 my $response = $c->stash->{records};
+my $auth_is_saved;
 
+if ( $c->user ) {
+    my $auth_rs = $c->user->my_authors;
+    while ( my $auth = $auth_rs->next ) {
+        my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
+        my $st = $c->stash->{search_term};
+        $auth_is_saved = 1 if lc $st eq lc $name ;
+    }
+}
 </%init>
+
+
+<h2>Results for "<% $c->stash->{search_term} %>"</h2>
+
+% if ( $c->user ) {
+
+%   unless ( $auth_is_saved ) {
+<!-- Show "save to list" -->
+<button id="save_author">Save <b><% $c->stash->{search_term} %></b> to your favorites</button>
+
+<script type="text/javascript">
+/*$("#save_author")
+    .click( function(){
+                $(this).load(
+                    '<% $c->uri_for("/user/save_author") %>', 
+                    { value: "<% $c->stash->{search_term} %>" },
+                    function() { $("#my_authors").load('<% $c->uri_for("/user/list_authors") %>') }
+                )
+            }
+    );
+*/
+
+$("#save_author")
+.click( function(){
+    $(this).load('<% $c->uri_for("/user/save_author") %>', 
+                 { value: "<% $c->stash->{search_term} %>" },
+                 aw.loadMyAuthors
+    ).remove();
+});
+
+</script>
+
+% } # end unless auth_is_saved
+% } else {
+Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
+% }
+
+
+
 % if ($response) {
+
+<div id="author_results">
 %   for my $prop ($response->properties) {
 %       next if $prop->year() > 2008;
-        <% $prop->as_string() %> <b><% $prop->ReleaseDate() %></b> <% $prop->similar_asins() %> 
+
+    <div class="result" class="clearfix">
+
+    <h2><% $prop->ProductName() %> by <span><% $prop->author() %></span></h2>
+
+    <img src="<% $prop->ImageUrlSmall() %>" />
+
+
+    <p> <% $prop->ProductDescription() %> <button class="toggler">Read on...</button> </p>
+
+    <br clear="all"/>
+    <br clear="all"/>
+    <br clear="all"/>
+
+    Release Date: <b><% $prop->ReleaseDate() %></b>
+    Newest Low Price: <% $prop->OurPrice() %>
+    <a href="<% $prop->DetailPageURL() %>">View Details</a>
+
+        <!-- <% $prop->as_string() %>  <% $prop->similar_asins() %> -->
         <br/>
-        <% $prop->ProductDescription() %>
-        <% $prop->DetailPageURL() %>
         <br/>
-        <br/>
+    </div>
+<br clear="all"/>
 %   } 
+
+</div> <!-- end author_results -->
+
 % }

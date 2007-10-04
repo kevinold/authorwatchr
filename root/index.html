@@ -1,12 +1,12 @@
 
 
-
-<form id="test" action="/search/na" method="get">
-<div id="searchbar">
-<label for="autocomplete">Author's Name</label> <input type="text" id="author" name="author"/> 
-</div>
-<div id="searchbar_go"><a href="#" id="go">GO!</a></div>
+<form action="/search/na" method="get"> 
+<label for="autocomplete">Author's Name</label>
+<input type="text" name="author" id="author" value="" size="20" /> 
+<input type="submit" value="Submit" /> 
+</form> 
 </form>
+
 
 <br/>
 
@@ -17,25 +17,3 @@
 
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.</p>
 
-<script type="text/javascript">
-//Event.observe('check', 'click', check_all, false);
-/*
-Event.observe (
-    window,
-    'load',
-    function ( e ) {
-        Event.observe (
-            'go',
-            'click',
-            function ( e ) {
-                $('test').submit();
-            },
-            false
-        );
-        Event.stop ( e );   
-    },
-    false
-);*/
-</script>
-
-<!-- <input type="image" src="/static/images/searchbar_go_over.jpg"/> -->

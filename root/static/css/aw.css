@@ -1,0 +1,209 @@
+/*================================================================
+Colors from Authorwatcher logo
+#f1f1f3 - Lightest Gray
+#e8e8ea - Light Gray
+#0572C4 - "Authorwatcher" Blue
+
+From http://colorblender.com/?preloadblend=6F82B8404C6BB8B8B86B6B6B474747B8B8B8
+
+#0572C4 - "Authorwatcher" Blue
+#044578 - Darker Blue
+#C49806 - Burnt Orange/Yellow
+#784904 - Brown
+#3B3B3B - Dark Gray
+#C4C4C4 - Light Gray
+
+Slayeroffice.com color palette for "Authorwatcher" Blue
+http://slayeroffice.com/tools/color_palette/?hex=0572C4
+
+0572C4 - Authorwatcher Blue
+4496D3 - lighter blue
+83B9E2 - even lighter blue
+C0DCF0 - even lighter blue 
+E7F1FA - lightest blue
+0461A7 - darker than AW blue
+045693 - even darker blue
+033962 - even darker
+011D31 - blue/black
+010B14 - almost black
+
+================================================================*/
+
+body { 
+    margin:0; 
+    padding:0;
+    font: normal 12px arial;
+    color: #2C3041;
+    background: #fff url(/static/images/back_cont.jpg) repeat-x;
+}
+
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.wrapper { 
+    width:750px;
+    margin:0 auto 0 auto;
+    min-height:100%;
+}
+
+/*
+#logo { 
+    background: url(/images/header.jpg);
+    height:134px; 
+    width:750px;
+    border-bottom: 1px dotted #fff;
+}
+*/
+
+/* authorwatchr logo */
+#header h2 {
+    background: transparent url("/static/images/logo_circle_small_trans.png") no-repeat scroll 0%;
+    color:#0572C4;
+    margin: 0 0 0 10px;
+    padding: 20px 0 0 70px;
+    height: 65px;
+    font:lighter 34px arial;
+    letter-spacing: 2px;
+}
+
+#header b {
+    color: #784904;
+    font-weight: normal;
+}
+
+
+/* Base Link Styles */
+
+a:link, a:active, a:visited  {
+    color: blue;
+    text-decoration:none;
+}
+    
+a:hover {
+    color:#OOO; 
+    text-decoration:underline;
+}
+
+/* Author results */
+
+#author_results {
+    background:none;
+    padding:0;
+    list-style: none;
+}
+
+#author_results .result {
+    margin: 0 0 20px 0;
+    border-bottom: 1px dotted #999;
+    background: #fff;
+    padding: 15px 0 10px 0;
+}
+
+#author_results .result h2 {
+  display: inline;
+  margin: 10px 0 20px 0;
+  color: #000;
+  font-size: 16px arial;
+}
+
+
+#author_results .result img {
+    float: left;
+    margin: 0 20px 10px 0;
+    width: auto;
+}
+
+#author_results .result p {
+    margin:0;
+    line-height: 15px;
+}
+
+#author_results .result p.moreInfo {
+    height:auto;
+}
+
+
+/* nav bar */
+#nav {
+    /*background: #fff url(/images/nav_bar_bg.gif) repeat-x;*/
+    border-bottom: #784904 1px solid;
+}
+
+#nav ul {
+  list-style: none;
+	display: inline;
+    /*float: right;*/
+	/*background: #C4C4C4;*/
+	margin: 0;
+	padding-right: 20px;
+}
+
+#nav li {
+	width: 70px;
+	margin: 0;
+	padding: 0;
+  display: block;
+  float: left;
+  position: relative;
+}
+
+
+/* NAV LINKS
+#784904 - Brown
+#3B3B3B - Dark Gray
+----------------------------------------------------------------*/
+#nav a:link, 
+#nav a:visited { 
+  display: block;
+	height: 20px;
+	font-weight: bold;
+	font-size: 13px;
+	padding-top: 2px;
+	color: #784904;
+	text-decoration: none;
+	text-align: center;
+	/*border-bottom: 1px dashed #C4C4C4;*/
+    padding: 2px;
+}
+
+#nav a:hover {
+  /*background: #EEE;*/
+  color: #C49806;
+}
+
+
+/* Footer */
+#footer { 
+    background: #fff url(/static/images/bg.gif) repeat-x;
+    width:750px;
+    height: auto;
+    margin:0 auto 0 auto;
+    font-size: 12px;
+    color: #fff;
+    clear: both;
+    /*padding: 20px 0 25px 0;*/
+    position: relative;
+}
+
+#footer a, #footer a:hover {
+    color: #fff;
+    text-decoration:none;
+    border-bottom: 1px dotted #fff;
+}
+
+#footer ul {
+    width:400px;
+    margin:0 auto 0 auto;
+}
+
+#footer li {
+    display:inline; 
+    margin:0 15px 0 0;
+    padding:0;
+    list-style:none;
+}
