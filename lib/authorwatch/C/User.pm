@@ -124,6 +124,42 @@ sub list_authors : Local {
 
 }
 
+
+=head2 myauthors
+
+Show a users list of authors
+
+=cut
+
+sub myauthors : Local {
+    my ( $self, $c ) = @_;
+
+    # Debug sql statements
+    #$c->model('AwDB::UserAuthors')->storage->debug(1);
+    #my $user_id = $c->req->param("user_id");
+    #$c->log->debug("**********is json: $is_json");
+
+    # Lookup authors for this user
+    my $authors = $c->user->my_authors;
+
+    my @myauthors;
+
+    while ( my $auth = $authors->next ) {
+        my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
+        my $aid = $auth->authors->id;
+        push @myauthors,
+            {
+            id   => $aid,
+            name => $name
+            };
+    }
+
+    #$c->stash->{template} = '/user/list_authors.mhtml';
+    $c->stash->{myauthors} = \@myauthors;
+    #$c->forward( $c->view('JSON') );
+
+}
+
 sub create_edit_profile_form : Local Form {
     my ( $self, $c ) = @_;
 

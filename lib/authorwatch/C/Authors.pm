@@ -35,7 +35,7 @@ sub default : Private {
 sub isbnauthor : Local {
     my ( $self, $c ) = @_;
 
-    my $book = $c->model('ISBNDB')->find_book( 0312340427 );
+    my $book = $c->model('ISBNDB')->find_book( '0312340427' );
     $c->response->body("$book->get_id");
 =pod
     my @authors = $c->model('ISBNDB')->search_authors({ name => 'John Grisham' });
