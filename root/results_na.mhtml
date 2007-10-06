@@ -1,32 +1,35 @@
 <%init>
+use AwUtil;
 my $response = $c->stash->{records};
 my $auth_is_saved;
+my $term = $c->stash->{search_term};
+my $norm_term = AwUtil::normalize($term);
 
 if ( $c->user ) {
     my $auth_rs = $c->user->my_authors;
     while ( my $auth = $auth_rs->next ) {
-        my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
-        my $st = $c->stash->{search_term};
-        $auth_is_saved = 1 if lc $st eq lc $name ;
+        my $name = $auth->authors->id;
+        $c->log->debug("**********norm_term is: $norm_term");
+        $auth_is_saved = 1 if lc $norm_term eq lc $name ;
     }
 }
 </%init>
 
 
-<h2>Results for "<% $c->stash->{search_term} %>"</h2>
+<h2>Results for "<% $term %>"</h2>
 
 % if ( $c->user ) {
 
 %   unless ( $auth_is_saved ) {
 <!-- Show "save to list" -->
-<button id="save_author">Save <b><% $c->stash->{search_term} %></b> to your favorites</button>
+<button id="save_author">Save <b><% $term %></b> to your favorites</button>
 
 <script type="text/javascript">
 /*$("#save_author")
     .click( function(){
                 $(this).load(
                     '<% $c->uri_for("/user/save_author") %>', 
-                    { value: "<% $c->stash->{search_term} %>" },
+                    { value: "<% $term %>" },
                     function() { $("#my_authors").load('<% $c->uri_for("/user/list_authors") %>') }
                 )
             }
@@ -36,7 +39,7 @@ if ( $c->user ) {
 $("#save_author")
 .click( function(){
     $(this).load('<% $c->uri_for("/user/save_author") %>', 
-                 { value: "<% $c->stash->{search_term} %>" },
+                 { id: "<% $norm_term %>", value: "<% $term %>" },
                  aw.loadMyAuthors
     ).remove();
 });
@@ -45,7 +48,7 @@ $("#save_author")
 
 % } # end unless auth_is_saved
 % } else {
-Login to Save <b><% $c->stash->{search_term} %></b> to your favorites.
+Login to Save <b><% $term %></b> to your favorites.
 % }
 
 

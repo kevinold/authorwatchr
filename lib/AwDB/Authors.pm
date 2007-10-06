@@ -3,14 +3,37 @@ package AwDB::Authors;
 use base qw/DBIx::Class/;
 
 # Load required DBIC stuff
-__PACKAGE__->load_components(qw/PK::Auto Core/);
+__PACKAGE__->load_components(qw/PK::Auto Core InflateColumn/);
 # Set the table name
 __PACKAGE__->table('authors');
 # Set the columns in the table
-__PACKAGE__->add_columns(qw/id first_name last_name/);
+#__PACKAGE__->add_columns(qw/id first_name last_name/);
+__PACKAGE__->add_columns(qw/id display_name/);
 # Set the primary key for the table
 __PACKAGE__->set_primary_key('id');
 
+
+=pod
+__PACKAGE__->inflate_column('id', {
+        inflate => sub { shift },
+        deflate => sub { normalize( $self->id ); },
+    });
+
+sub normalize {
+    my $name = shift;
+   
+    #convert lowercase
+    $name = lc $name;
+
+    #replace non-alpha, non-numeric with underscore
+    $name =~ s/[^a-z0-9]/_/g;
+
+    #remove multiple underscores
+    $name =~ s/_{2,}/_/g;
+
+    return $name;
+}
+=cut
 
 #
 # Set relationships:
@@ -38,6 +61,8 @@ __PACKAGE__->has_many(map_user_role => 'AwDB::UserRole', 'user_id');
 #     3) Name of belongs_to() relationship in model class of has_many() above
 #   You must already have the has_many() defined to use a many_to_many().
 #__PACKAGE__->many_to_many(users => 'message_users', 'author');
+
+
 
 
 

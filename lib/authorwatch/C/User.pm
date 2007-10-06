@@ -39,20 +39,28 @@ sub save_author : Local {
 
     #$c->stash->{template} = 'results.mhtml';
     #my $svalue = $c->req->param("autocomplete_parameter");
-    my $term = $c->req->param("value");
-    $term =~ s/[^A-Za-z0-9 ]//g;
+    my $id = $c->req->param("id");
+    my $term = $c->req->param("val");
+    #$term =~ s/[^A-Za-z0-9 ]//g;
 
     my $user_id = $c->user->user->id;
 
     #Separate name into first and last name
-    my ( $fname, $lname ) = split / /, $term;
-    map { s/^\s+//g; s/\s+$//g; } $fname, $lname;
+    #my ( $fname, $lname ) = split / /, $term;
+    #map { s/^\s+//g; s/\s+$//g; } $fname, $lname;
 
     # Find or create author trying to be added
+    #my $author;
+    #$author = $c->model('AwDB::Authors')->find_or_create(
+    #    {   first_name => $fname,
+    #        last_name  => $lname,
+    #    }
+    #);
+
     my $author;
     $author = $c->model('AwDB::Authors')->find_or_create(
-        {   first_name => $fname,
-            last_name  => $lname,
+        {   id => $id,
+            display_name  => $term,
         }
     );
 
@@ -64,6 +72,7 @@ sub save_author : Local {
         #$c->response->body("1");
         $c->model('AwDB::UserAuthors')
             ->create( { user_id => $user_id, author_id => $aid } );
+        $c->response->body("1");
     }
     else {
 
@@ -88,6 +97,9 @@ sub save_author : Local {
 
 }
 
+
+
+
 =head2 list_authors
 
 Show a users list of authors
@@ -108,13 +120,10 @@ sub list_authors : Local {
     my @myauthors;
 
     while ( my $auth = $authors->next ) {
-        my $name
-            = $auth->authors->first_name . " " . $auth->authors->last_name;
-        my $aid = $auth->authors->id;
         push @myauthors,
             {
-            id   => $aid,
-            name => $name
+            id   => $auth->authors->id,
+            name => $auth->authors->display_name,
             };
     }
 
@@ -145,18 +154,13 @@ sub myauthors : Local {
     my @myauthors;
 
     while ( my $auth = $authors->next ) {
-        my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
-        my $aid = $auth->authors->id;
-        push @myauthors,
-            {
-            id   => $aid,
-            name => $name
-            };
+        #my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
+        push @myauthors, $auth->authors->id;
     }
 
     #$c->stash->{template} = '/user/list_authors.mhtml';
     $c->stash->{myauthors} = \@myauthors;
-    #$c->forward( $c->view('JSON') );
+    $c->forward( $c->view('JSON') );
 
 }
 
