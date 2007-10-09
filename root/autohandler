@@ -6,7 +6,7 @@
 
 
   <link href="/static/css/aw.css" media="screen" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="/static/js/jquery.js"></script>
+  <script type="text/javascript" src="/static/js/jquery-1.2.1.min.js"></script>
   <script type="text/javascript" src="/static/js/aw.js"></script> 
 
 
@@ -60,10 +60,13 @@
     <br clear="all"/>
   </div>
 
-    <div id="ma_box" style="background: #fff;border: 1px solid #ccc;height: 50px;">
+    <div id="ma_box" class="clearfix">
     <% $c->stash->{myauthors} %>
     </div>
 
+    <br clear="all" />
+    <a href="#" class='show_ma'>View My Authors</a>
+    
   <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/>-->
   
   <!-- Sidebar -->

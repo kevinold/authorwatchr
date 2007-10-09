@@ -276,3 +276,19 @@ a:hover {
     width:330px;
     }
 */
+
+
+/* My Authors box */
+
+#ma_box {
+    display: none;
+}
+
+#ma_box ul {
+    list-style: none;
+}
+
+#ma_box li {
+    float: left;
+    padding: 5px;
+}
