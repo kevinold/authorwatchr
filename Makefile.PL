@@ -46,6 +46,7 @@ requires 'WebService::ISBNDB' => '0.33';
 requires 'Text::Sentence';
 requires 'Net::Amazon' => '0.43';
 requires 'WWW::Google::SiteMap' => '1.09';
+requires 'Log::Log4perl';
 #requires '';
 
 
