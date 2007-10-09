@@ -37,7 +37,7 @@
   
   <!-- Header -->
   <div id="header">
-  <h2>author<b>watch</b>r</h2>
+  <!--<h2>author<b>watch</b>r</h2>-->
 
 % if ( $c->user ) {
   <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>! </span>
@@ -61,9 +61,7 @@
   </div>
 
     <div id="ma_box" style="background: #fff;border: 1px solid #ccc;height: 50px;">
-% if ( $c->user ) {
-<% $c->forward('/user/myauthors') %>
-% }
+    <% $c->stash->{myauthors} %>
     </div>
 
   <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/>-->

@@ -39,6 +39,13 @@ sub default : Private {
     # Hello World
     #$c->response->body( $c->welcome_message );
     #$c->response->redirect("index.html");
+   
+    # If user issue a subrequest to render the list of authors
+    # and stash it in a variable
+    if ($c->user) {
+        $c->stash->{myauthors} = $c->subreq('/user/myauthors');
+    }
+
     $c->stash->{template} = 'index.html';
 }
 

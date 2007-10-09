@@ -3,6 +3,7 @@ package authorwatch::C::User;
 use strict;
 use warnings;
 use base 'Catalyst::Controller';
+use HTML::Element;
 
 =head1 NAME
 
@@ -151,19 +152,10 @@ sub myauthors : Local {
     # Lookup authors for this user
     my $myauthors = $c->user->my_authors;
 
-    #my @myauthors;
-
-    #while ( my $auth = $authors->next ) {
-        #my $name = $auth->authors->first_name . " " . $auth->authors->last_name;
-        #push @myauthors, $auth->authors->id;
-    #}
-
     $c->stash->{myauthors} = $myauthors;
     $c->stash->{template} = '/user/my_authors.mhtml';
-    #$c->forward($c->view('Mason'));
-    #$c->forward( $c->view('JSON') );
+    $c->forward( $c->view('Mason') );
 
-    #$c->res->body( 'test' );
 }
 
 sub create_edit_profile_form : Local Form {
