@@ -18,6 +18,7 @@ requires 'Catalyst::Plugin::Cache';
 requires 'Catalyst::Plugin::Cache::Store::FastMmap';
 requires 'Catalyst::Plugin::Session::State::Cookie';
 requires 'Catalyst::Plugin::Textile';
+requires 'Catalyst::Plugin::SubRequest';
 requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Authentication::Store::DBIC';
 requires 'Catalyst::Plugin::Authentication::Credential::Password';
@@ -25,6 +26,7 @@ requires 'Catalyst::Model::DBIC::Schema';
 requires 'Catalyst::Model::ISBNDB';
 requires 'Catalyst::View::JSON';
 requires 'Catalyst::View::Mason';
+requires 'Catalyst::Plugin::XMLRPC';
 #requires 'Catalyst::Plugin::Captcha';
 requires 'YAML';
 
@@ -32,7 +34,6 @@ requires 'YAML';
 #non-catalyst modules
 requires 'XML::XPath';
 requires 'SQL::Translator';
-requires 'Catalyst::Plugin::XMLRPC';
 requires 'Config::Any::YAML';
 requires 'XML::Feed';
 requires 'DateTime';
