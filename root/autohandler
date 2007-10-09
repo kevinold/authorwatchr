@@ -26,6 +26,9 @@
         console.log("after corner applied");
     });
   */
+    $(function(){   // shorthand for $(document).ready() BTW
+        $("a.show_ma").toggle(function(){$("#ma_box").slideDown("slow");},function(){$("#ma_box").slideUp("slow")});
+    });
   </script>
 </head>
 
@@ -57,8 +60,10 @@
     <br clear="all"/>
   </div>
 
-    <div id="ma_box" style="background: #ccc;border: 1px solid #ccc;height: 20px;">
-    test content
+    <div id="ma_box" style="background: #fff;border: 1px solid #ccc;height: 50px;">
+% if ( $c->user ) {
+<% $c->forward('/user/myauthors') %>
+% }
     </div>
 
   <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/>-->

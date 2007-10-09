@@ -1,4 +1,4 @@
-
+<%doc>
 % if ( $c->user ) {
     <!--Please Note: You are already logged in as '<% $c->user->username %>'.
     You can <a href="<% $c->uri_for('/logout') %>">logout</a> here.
@@ -11,6 +11,10 @@
     </fieldset>
 % }
 % else {
+% }
+</%doc>
+
+
 <!-- Login form -->
 
 <div class="error">
@@ -29,5 +33,4 @@
       <input type="submit" name="submit" value="Submit" />
 </fieldset>
 </form>
-% }
 

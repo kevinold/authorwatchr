@@ -34,7 +34,7 @@ var aw = {
                 var myauthors = json.myauthors;
                 $("#my_authors ul").html('');
                 $.each(myauthors, function(i) {
-                    $("#my_authors ul").append('<li><a href="/search/aws?author=' + encodeURI(this.name) + '">' + this.name + '</a></li>');
+                    $("#my_authors ul").append('<li><a href="/search/na?author=' + encodeURI(this.name) + '">' + this.name + '</a></li>');
                 });
                 
                 /*

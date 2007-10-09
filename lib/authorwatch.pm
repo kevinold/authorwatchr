@@ -34,6 +34,7 @@ use Catalyst qw/
     Session
     Session::Store::DBI
     Session::State::Cookie
+    SubRequest
     /;
 
 our $VERSION = '0.01';

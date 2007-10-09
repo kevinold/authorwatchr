@@ -1,0 +1,13 @@
+<%init>
+my $myauthors = $c->{stash}->{myauthors};
+</%init>
+<ul>
+% while ( my $auth = $myauthors->next ) {
+    <li>
+    <a href="/search/na?author=<% $auth->authors->id %>"><% $auth->authors->display_name %></a>
+    </li>
+% }
+</ul>
+<%flags>
+inherit => undef
+</%flags>
