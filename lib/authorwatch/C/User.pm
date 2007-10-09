@@ -3,7 +3,6 @@ package authorwatch::C::User;
 use strict;
 use warnings;
 use base 'Catalyst::Controller';
-use HTML::Element;
 
 =head1 NAME
 
