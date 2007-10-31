@@ -73,8 +73,9 @@ sub na : Local {
         my $records;
         
         #unless( $records = $c->cache->get($authcachekey) ) {
-            
-            Log::Log4perl->init("/home/kevin/log.conf");
+            if (-f '/home/kevin/log.conf') {
+                Log::Log4perl->init("/home/kevin/log.conf");
+            }
             
             my $ua = Net::Amazon->new(token => '1GNG6V387CH1FWX4H182', cache => $c->cache);
             my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium");
@@ -105,6 +106,10 @@ sub na : Local {
         #Capitalize first and last name
         $search_term =~ s/(\w+)/\u\L$1/g;
         $c->stash->{search_term} = $search_term;
+
+        #if ($c->user) {
+        #    $c->stash->{myauthors} = $c->subreq('/user/myauthors');
+        #}
     }
 
 }

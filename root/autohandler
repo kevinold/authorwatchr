@@ -27,7 +27,7 @@
     });
   */
     $(function(){   // shorthand for $(document).ready() BTW
-        $("a.show_ma").toggle(function(){$("#ma_box").slideDown("slow");},function(){$("#ma_box").slideUp("slow")});
+        $("a.show_ma").toggle(function(){$("#ma_box").slideDown("fast");},function(){$("#ma_box").slideUp("fast")});
     });
   </script>
 </head>
@@ -60,18 +60,22 @@
     <br clear="all"/>
   </div>
 
+% if ( $c->user ) {
     <div id="ma_box" class="clearfix">
-    <% $c->stash->{myauthors} %>
+    <& '/user/my_authors.mhtml' &>
     </div>
 
     <br clear="all" />
     <a href="#" class='show_ma'>View My Authors</a>
+% }
     
   <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/>-->
   
   <!-- Sidebar -->
   <div id="sidebar" class="clearfix">
+% unless ( $c->user ) {
     <& 'login.mhtml' &>
+% }
   </div>
  
   

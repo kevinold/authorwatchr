@@ -1,5 +1,6 @@
 <%init>
-my $myauthors = $c->{stash}->{myauthors};
+my $myauthors = $c->user->my_authors;
+#my $myauthors = $c->{stash}->{myauthors};
 </%init>
 <ul>
 % while ( my $auth = $myauthors->next ) {
