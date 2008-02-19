@@ -190,32 +190,27 @@ a:hover {
 /* Footer */
 #footer { 
     background: #fff url(/static/images/bg.gif) repeat-x;
-    width:750px;
-    height: auto;
-    margin:0 auto 0 auto;
-    font-size: 12px;
-    color: #fff;
     clear: both;
-    /*padding: 20px 0 25px 0;*/
-    position: relative;
+    font-size: 12px;
+    margin-top: 10px;
+    padding: 14px 14px 8px !important;
+    text-align: right;
+}
+
+#footer .copyrightinfo {
+    display: inline;
+    float: left;
+    text-align: left;
+}
+
+#footer span {
+    padding: 0px 5px;
 }
 
 #footer a, #footer a:hover {
     color: #fff;
     text-decoration:none;
     border-bottom: 1px dotted #fff;
-}
-
-#footer ul {
-    width:400px;
-    margin:0 auto 0 auto;
-}
-
-#footer li {
-    display:inline; 
-    margin:0 15px 0 0;
-    padding:0;
-    list-style:none;
 }
 
 /* Signup */

@@ -37,7 +37,7 @@
   
   <!-- Header -->
   <div id="header">
-  <!--<h2>author<b>watch</b>r</h2>-->
+  <h2>author<b>watch</b>r</h2>
 
 % if ( $c->user ) {
   <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="<% $c->uri_for("/user") %>"><% $c->user->username %></a>! </span>
@@ -88,11 +88,10 @@
 
   <!-- Footer -->
   <div id="footer">
-    <ul class="clearfix">
-      <li><a href="<% $c->uri_for("/about") %>">About</a></li>
-      <li><a href="<% $c->uri_for("/feedback") %>">Feedback</a></li>
-    </ul>
-    <p>&copy; Copyright 2007 authorwatchr.com</p>
+    <div class="copyrightinfo">&copy; Copyright 2007 authorwatchr.com</div>
+    <a href="<% $c->uri_for("/about") %>">About</a>
+    <span> | </span>
+    <a href="<% $c->uri_for("/feedback") %>">Feedback</a>
   </div>
 
 </div>
