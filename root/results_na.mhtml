@@ -48,7 +48,7 @@ $("#save_author")
 
 % } # end unless auth_is_saved
 % } else {
-Login to Save <b><% $term %></b> to your favorites.
+Login to Save <b><% $norm_term %></b> to your favorites.
 % }
 
 
@@ -57,7 +57,7 @@ Login to Save <b><% $term %></b> to your favorites.
 
 <div id="author_results">
 %   for my $prop ($response->properties) {
-%       next if $prop->year() > 2008;
+%       next if $prop->year() > 2008;   # Change this line to be greater than today
 
     <div class="result" class="clearfix">
 
@@ -66,7 +66,7 @@ Login to Save <b><% $term %></b> to your favorites.
     <img src="<% $prop->ImageUrlSmall() %>" />
 
 
-    <p> <% $prop->ProductDescription() %> <button class="toggler">Read on...</button> </p>
+    <p> <% $prop->ProductDescription() %> </p>
 
     <br clear="all"/>
     <br clear="all"/>

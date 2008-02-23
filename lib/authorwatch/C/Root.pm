@@ -45,8 +45,12 @@ sub default : Private {
     #if ($c->user) {
     #    $c->stash->{myauthors} = $c->subreq('/user/myauthors');
     #}
-
-    $c->stash->{template} = 'index.html';
+    
+    if ($c->res->status(404) ) {
+        $c->stash->{template} = '404.html';
+    } else {
+        $c->stash->{template} = 'index.html';
+    }
 }
 
 

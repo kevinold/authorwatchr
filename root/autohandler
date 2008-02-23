@@ -69,8 +69,6 @@
     <a href="#" class='show_ma'>View My Authors</a>
 % }
     
-  <!--<img src="/static/images/logo_large_new.jpg" style="float:left;"/>-->
-  
   <!-- Sidebar -->
   <div id="sidebar" class="clearfix">
 % unless ( $c->user ) {
