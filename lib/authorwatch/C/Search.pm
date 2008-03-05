@@ -78,7 +78,7 @@ sub na : Local {
             }
             
             my $ua = Net::Amazon->new(token => '1GNG6V387CH1FWX4H182', cache => $c->cache);
-            my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium");
+            my $response = $ua->search(power => $pw_search, mode => 'books', type => 'Medium', sort => 'daterank');
             # When ready, pass Associate Tag this way
             #my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium", AssociateTag => 'kevin123');
 
