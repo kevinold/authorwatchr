@@ -31,26 +31,26 @@ sub index : Private {
 sub cu : Local {
     my ( $self, $c ) = @_;
 
-    my $user = 0;
+    my $user = 'false'; # assume user does not exist answering the question "Does this user exist?"
     if ( defined $c->req->params->{username} ) {
 
         $user = $c->model('AwDB::User')
             ->search( { username => $c->req->params->{username} } );
 
-        if ( $user == 0 ) {
+        if ( $user eq 'false' ) {
 
             # Username is available
-            $c->response->body('0');
+            $c->response->body('false');
         } else {
 
             # Username exists
-            $c->response->body('1');
+            $c->response->body('true');
         }
 
     } else {
 
         # Default to username is available
-        $c->response->body('0');
+        $c->response->body('false');
     }
 
 }
