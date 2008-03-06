@@ -4,11 +4,12 @@ var aw_signup = {
         .keyup(function(){
             if ( this.value.match(/^[A-Za-z0-9_]+$/) && this.value.length > 2 ) {
             $.post('/signup/cu', { username: $(this).val() },
-                function(data) {
-                    
+                function(json) {
+
+                    var data = eval(json);
                     //var label = jqLabel[0];
                     var msg, cn;
-                    if ( data == 1 ) {
+                    if ( data["uexists"] == 1 ) {
                         msg = 'Username is not available';
                         cn = 'error';
                     }
@@ -21,7 +22,7 @@ var aw_signup = {
                     var jqLabel = $("#signup #username").next('span');
                         jqLabel.html(msg);
                         jqLabel.attr("class",cn);
-                }
+                }, 'json'
             )
             } //end if
             else {
