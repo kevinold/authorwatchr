@@ -5,6 +5,7 @@
   <title>authorwatchr.com - Find the latest titles by your favorite authors.</title>
 
 
+  <!--<link href="/static/css/reset.css" media="screen" rel="stylesheet" type="text/css" />-->
   <link href="/static/css/aw.css" media="screen" rel="stylesheet" type="text/css" />
   <script type="text/javascript" src="/static/js/jquery-1.2.1.min.js"></script>
   <script type="text/javascript" src="/static/js/aw.js"></script> 

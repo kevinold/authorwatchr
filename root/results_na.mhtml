@@ -1,5 +1,6 @@
 <%init>
 use AwUtil;
+use Data::Dumper;
 my $response = $c->stash->{records};
 my $auth_is_saved;
 my $term = $c->stash->{search_term};
@@ -48,7 +49,7 @@ $("#save_author")
 
 % } # end unless auth_is_saved
 % } else {
-Login to Save <b><% $norm_term %></b> to your favorites.
+Login to Save <b><% $term %></b> to your favorites.
 % }
 
 
@@ -57,7 +58,9 @@ Login to Save <b><% $norm_term %></b> to your favorites.
 
 <div id="author_results">
 %   for my $prop ($response->properties) {
-%       next if $prop->year() > 2008;   # Change this line to be greater than today
+%       next if $prop->year() < 2008;   # Change this line to be greater than today
+%       my $norm_author = AwUtil::normalize($prop->author());
+%       next unless $norm_author eq $norm_term;
 
     <div class="result" class="clearfix">
 
@@ -71,9 +74,9 @@ Login to Save <b><% $norm_term %></b> to your favorites.
     <br clear="all"/>
     <br clear="all"/>
     <br clear="all"/>
-
-    Release Date: <b><% $prop->ReleaseDate() %></b>
-    Newest Low Price: <% $prop->OurPrice() %>
+    <% $prop->{xmlref}->{OfferSummary}->{LowestNewPrice}->{FormattedPrice} %>
+    Release Date: <b><% $prop->ReleaseDate() %> <% $prop->year() %></b>
+    Newest Low Price: <% $prop->OurPrice() || $prop->ListPrice() %>
     <a href="<% $prop->DetailPageURL() %>">View Details</a>
 
         <!-- <% $prop->as_string() %>  <% $prop->similar_asins() %> -->
