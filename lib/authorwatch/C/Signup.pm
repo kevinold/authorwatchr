@@ -31,28 +31,29 @@ sub index : Private {
 sub cu : Local {
     my ( $self, $c ) = @_;
 
-    my $user = 'false'; # assume user does not exist answering the question "Does this user exist?"
+    my $user = 0; # assume user does not exist answering the question "Does this user exist?"
     if ( defined $c->req->params->{username} ) {
 
         $user = $c->model('AwDB::User')
             ->search( { username => $c->req->params->{username} } );
 
-        if ( $user eq 'false' ) {
+        if ( $user == 0 ) {
 
             # Username is available
-            $c->response->body('false');
+            $c->stash->{uexists} = 0;
         } else {
 
             # Username exists
-            $c->response->body('true');
+            $c->stash->{uexists} = 1;
         }
 
     } else {
 
         # Default to username is available
-        $c->response->body('false');
+        $c->stash->{uexists} = 0;
     }
 
+    $c->forward( $c->view('JSON') );
 }
 
 sub newuser : Local {
