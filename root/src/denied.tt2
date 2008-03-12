@@ -1,0 +1,6 @@
+[% META title="Access denied" %]
+
+[% IF !error %]You are not allowed to access this resource.[% END %]
+[% IF !Catalyst.user %]
+<a href="[% Catalyst.uri_for('/login') %]">Logging in</a> might help.
+[% END %]

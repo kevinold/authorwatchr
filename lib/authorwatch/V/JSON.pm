@@ -3,6 +3,8 @@ package authorwatch::V::JSON;
 use strict;
 use base 'Catalyst::View::JSON';
 
+__PACKAGE__->config(allow_callback => 1);
+
 =head1 NAME
 
 authorwatch::V::JSON - Catalyst JSON View

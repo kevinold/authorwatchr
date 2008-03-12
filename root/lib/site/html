@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <title>[% template.title or site.title %]</title>
+  <style type="text/css">
+[% PROCESS ttsite.css %]
+  </style>
+  <script type="text/javascript" 
+          src="[% base %]static/Jemplate.js"></script>
+  <script type="text/javascript" 
+          src="[% base %]jemplate"></script>
+  <script type="text/javascript">
+  function show_address_edit_form(id) { 
+    Jemplate.process('edit_address.tt2',
+                     '[% Catalyst.uri_for("/rest/address/") %]'+id,
+                     '#address_'+id);
+  }
+  function cancel_address_edit(id){
+    var data = Ajax.get('[% Catalyst.uri_for("/rest/address/")%]'+id);
+    data = JSON.parse(data);
+    data.view_only = 1;
+    var elem = document.getElementById('outside_address_'+id);
+    Jemplate.process('edit_address.tt2', data, elem);
+  }
+  </script>
+
+ </head>
+ <body>
+[% content %]
+ </body>
+</html>

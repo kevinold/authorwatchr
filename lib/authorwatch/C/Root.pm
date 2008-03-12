@@ -46,13 +46,17 @@ sub default : Private {
     #    $c->stash->{myauthors} = $c->subreq('/user/myauthors');
     #}
     
-    if ($c->res->status(404) ) {
-        $c->stash->{template} = '404.html';
-    } else {
+    #if ($c->res->status(404) ) {
+    #    $c->stash->{template} = '404.html';
+    #} else {
         $c->stash->{template} = 'index.html';
-    }
+    #}
 }
 
+sub access_denied : Private {
+    my ( $self, $c ) = @_;
+    $c->stash->{template} = 'denied.tt2';
+}
 
 #sub captcha : Local {
 #    my ( $self, $c ) = @_;
@@ -66,6 +70,27 @@ Attempt to render a view, if needed.
 =cut 
 
 sub end : ActionClass('RenderView') {
+    my ( $self, $c ) = @_;
+
+    #if ( scalar @{ $c->error } ) {
+    #    $c->stash->{errors}   = $c->error;
+    #    $c->stash->{template} = 'errors.tt';
+    #    $c->forward('MyApp::View::TT');
+    #    $c->error(0);
+    #}
+
+    return 1 if $c->response->status =~ /^3\d\d$/;
+    return 1 if $c->response->body;
+
+    #unless ( $c->response->content_type ) {
+    #    $c->response->content_type('text/html; charset=utf-8');
+    #}
+
+    if ($c->stash->{template} =~ /tt.*$/) {
+        $c->detach('authorwatch::V::TT');
+    } else {
+        $c->forward('authorwatch::V::Mason');
+    }
 }
 
 =head2 auto

@@ -32,7 +32,7 @@ use Catalyst qw/
     Authentication::Credential::Password
 
     Session
-    Session::Store::DBI
+    Session::Store::DBIC
     Session::State::Cookie
     SubRequest
     /;
@@ -42,7 +42,13 @@ our $VERSION = '0.01';
 #
 # Configure the application
 #
-__PACKAGE__->config( name => 'authorwatch' );
+__PACKAGE__->config( 
+        name => 'authorwatch',
+        'Controller::FormBuilder' => {
+            template_type => 'Mason',
+        },
+        
+        );
 
 #
 # Start the application
