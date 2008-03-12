@@ -12,7 +12,7 @@ requires 'Catalyst::Plugin::Cache::Store::FastMmap';
 requires 'Catalyst::Plugin::FormBuilder';
 requires 'Catalyst::Plugin::StackTrace';
 requires 'Catalyst::Plugin::Session';
-requires 'Catalyst::Plugin::Session::Store::DBI';
+requires 'Catalyst::Plugin::Session::Store::DBIC';
 requires 'Catalyst::Plugin::Session::Store::FastMmap';
 requires 'Catalyst::Plugin::Cache';
 requires 'Catalyst::Plugin::Cache::Store::FastMmap';
@@ -26,6 +26,7 @@ requires 'Catalyst::Model::DBIC::Schema';
 requires 'Catalyst::Model::ISBNDB';
 requires 'Catalyst::View::JSON';
 requires 'Catalyst::View::Mason';
+requires 'Catalyst::View::TT';
 requires 'Catalyst::Plugin::XMLRPC';
 #requires 'Catalyst::Plugin::Captcha';
 requires 'YAML';
@@ -47,6 +48,7 @@ requires 'Text::Sentence';
 requires 'Net::Amazon' => '0.43';
 requires 'WWW::Google::SiteMap' => '1.09';
 requires 'Log::Log4perl';
+requires 'DBD::SQLite';
 #requires '';
 
 
