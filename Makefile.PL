@@ -9,7 +9,8 @@ requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
 requires 'Catalyst::Plugin::PageCache';
 requires 'Catalyst::Plugin::Cache::Store::FastMmap';
-requires 'Catalyst::Plugin::FormBuilder';
+requires 'Catalyst::Controller::FormBuilder';
+requires 'Catalyst::Controller::BindLex';
 requires 'Catalyst::Plugin::StackTrace';
 requires 'Catalyst::Plugin::Session';
 requires 'Catalyst::Plugin::Session::Store::DBIC';
@@ -31,10 +32,10 @@ requires 'Catalyst::Plugin::XMLRPC';
 #requires 'Catalyst::Plugin::Captcha';
 requires 'YAML';
 
+build_requires 'SQL::Translator';
 
 #non-catalyst modules
 requires 'XML::XPath';
-requires 'SQL::Translator';
 requires 'Config::Any::YAML';
 requires 'XML::Feed';
 requires 'DateTime';
