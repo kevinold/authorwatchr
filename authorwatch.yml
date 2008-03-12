@@ -10,9 +10,9 @@ static:
   ignore_extensions:
     - tmpl
     - xhtml
-dsn: 'dbi:mysql:database=authorwatcher;host=localhost'
-db_user: 'root'
-db_pass: ''
+#dsn: 'dbi:mysql:database=authorwatcher;host=localhost'
+#db_user: 'root'
+#db_pass: ''
 #dsn: 'dbi:mysql:database=authorwatch;host=authorwatcher.com;port=3306'
 #db_user: 'aw'
 #db_pass: 'aU^H0rW@tC$'
@@ -20,9 +20,9 @@ db_pass: ''
 #db_user: 'root'
 #db_pass: 'kevin'
 session:
-  expires: 86400
-  dbi_dbh: 'authorwatch::M::AwDB'
-  dbi_table: 'sessions'
+  expires: 3600
+  dbic_class: 'AwDB::Session'
+  flash_to_stash: 1
 default_view: 'Mason'
 authentication:
     dbic:

@@ -18,7 +18,7 @@ use base qw/DBIx::Class::Schema/;
 # But the variation below is more flexible in that it can be used to
 # load from multiple namespaces.
 __PACKAGE__->load_classes({
-    AwDB => [qw/Authors User Role UserRole UserAuthors/]
+    AwDB => [qw/Authors User Role UserRole UserAuthors Session/]
 });
 
 1;

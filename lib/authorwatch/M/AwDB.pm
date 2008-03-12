@@ -6,13 +6,15 @@ use base 'Catalyst::Model::DBIC::Schema';
 __PACKAGE__->config(
     schema_class => 'AwDB',
     connect_info => [
-        authorwatch->config->{'dsn'},
-        authorwatch->config->{'db_user'},
-        authorwatch->config->{'db_pass'},
+        'dbi:SQLite:aw.db',
     ],
 
 );
 
+#authorwatch->config->{'dsn'},
+#authorwatch->config->{'db_user'},
+#authorwatch->config->{'db_pass'},
+#
 =head1 NAME
 
 authorwatch::M::AwDB - Catalyst DBIC Schema Model
