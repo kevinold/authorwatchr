@@ -2,9 +2,9 @@
 <div id="userinfo">
   [% IF Catalyst.user %]
     Logged in as [% Catalyst.user -%] 
-  [%- IF Catalyst.user.person.name -%]
-  ([% Catalyst.user.person.name %])
-  [%- END %].
+  [%#- IF Catalyst.user.person.name -%]
+  ([%# Catalyst.user.person.name %])
+  [%#- END %].
 
   <a href="[% Catalyst.uri_for('/logout') %]">Log out</a>.
   [% ELSE %]

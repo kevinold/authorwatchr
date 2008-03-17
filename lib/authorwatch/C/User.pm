@@ -238,6 +238,8 @@ sub edit_profile_commit : Local Form {
 sub change_password : Local Form {
     my ( $self, $c, @args ) = @_;
     
+    $c->stash->{template} = 'user/change_password.tt2';
+
     if (!$c->user) {
         $c->stash->{error} = 'You are not authorized to edit addresses for this person.';
         $c->detach('/access_denied');
@@ -254,9 +256,16 @@ sub change_password : Local Form {
     #$form->field( name => 'new_pw', type => 'password' );
     #$form->field( name => 'new_pw_again', type => 'password' );
 
-            #$c->log->debug('current_pw: ', $c->req->param('current_pw'));
     if ( $form->submitted ) {
         if ( $form->validate ) {
+            if ($c->user_exists()) {
+                if ($c->req->param('new_pw') eq $c->req->param('new_pw_again')) {
+                    $c->log->debug('new password set');
+                    my $user = $c->model('AwDB::User')->find($c->user->user->id);
+                    $user->password($c->req->param('new_pw_again'));
+                    $user->update();
+                }
+            }
             return $c->response->body("VALID FORM");
         }
         else {

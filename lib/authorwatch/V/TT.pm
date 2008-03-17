@@ -6,6 +6,7 @@ use base 'Catalyst::View::TT';
 __PACKAGE__->config({
     CATALYST_VAR => 'Catalyst',
     INCLUDE_PATH => [
+        authorwatch->path_to( 'root' ),
         authorwatch->path_to( 'root', 'src' ),
         authorwatch->path_to( 'root', 'lib' ),
     ],
