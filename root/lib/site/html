@@ -1,31 +1,39 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
- <head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
   <title>[% template.title or site.title %]</title>
-  <style type="text/css">
-[% PROCESS ttsite.css %]
-  </style>
-  <script type="text/javascript" 
-          src="[% base %]static/Jemplate.js"></script>
-  <script type="text/javascript" 
-          src="[% base %]jemplate"></script>
-  <script type="text/javascript">
-  function show_address_edit_form(id) { 
-    Jemplate.process('edit_address.tt2',
-                     '[% Catalyst.uri_for("/rest/address/") %]'+id,
-                     '#address_'+id);
-  }
-  function cancel_address_edit(id){
-    var data = Ajax.get('[% Catalyst.uri_for("/rest/address/")%]'+id);
-    data = JSON.parse(data);
-    data.view_only = 1;
-    var elem = document.getElementById('outside_address_'+id);
-    Jemplate.process('edit_address.tt2', data, elem);
-  }
-  </script>
 
- </head>
- <body>
+
+  <!--<link href="[% base %]/static/css/reset.css" media="screen" rel="stylesheet" type="text/css" />-->
+  <link href="[% base %]/static/css/aw.css" media="screen" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="[% base %]/static/js/jquery-1.2.1.min.js"></script>
+  <script type="text/javascript" src="[% base %]/static/js/aw.js"></script> 
+
+  <script type="text/javascript">
+  /*
+        $("#box1").corner();
+        $("#box2").corner("bevel 16px");
+        $("#box3").corner("bevel top 8px");
+        $("#box4").corner("round tl br 20px").corner("bevel tr bl 10px");
+        $("#box6").corner("bevel tr 16px");
+  //$(document).bind("load", function(){
+
+    $(function(){   // shorthand for $(document).ready() BTW
+        var kdo = $("#ma_box").html();
+        console.log("value is: " + kdo);
+        $("#ma_box").corner("round 8px").parent().css('padding', '4px').corner("round 10px");
+        console.log("after corner applied");
+    });
+  */
+    $(function(){   // shorthand for $(document).ready() BTW
+        $("a.show_ma").toggle(function(){$("#ma_box").slideDown("fast");},function(){$("#ma_box").slideUp("fast")});
+    });
+  </script>
+</head>
+
+<body>
 [% content %]
- </body>
+</body>
 </html>
+

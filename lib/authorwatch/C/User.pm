@@ -153,8 +153,8 @@ sub myauthors : Local {
     my $myauthors = $c->user->my_authors;
 
     $c->stash->{myauthors} = $myauthors;
-    $c->stash->{template} = '/user/my_authors.mhtml';
-    $c->forward( $c->view('Mason') );
+    $c->stash->{template} = 'user/my_authors.tt2';
+    #$c->forward( $c->view('Mason') );
 
 }
 

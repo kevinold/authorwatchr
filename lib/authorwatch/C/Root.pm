@@ -49,7 +49,7 @@ sub default : Private {
     #if ($c->res->status(404) ) {
     #    $c->stash->{template} = '404.html';
     #} else {
-        $c->stash->{template} = 'index.html';
+        $c->stash->{template} = 'index.tt2';
     #}
 }
 

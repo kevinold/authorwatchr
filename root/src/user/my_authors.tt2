@@ -1,0 +1,7 @@
+<ul>
+[% WHILE (auth = myauthors.next ) %]
+    <li>
+    <a href="/search/na?author=[% auth.authors.id %]">[% auth.authors.display_name %]</a>
+    </li>
+[% END %]
+</ul>

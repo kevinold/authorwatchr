@@ -1,3 +1,6 @@
-<!-- BEGIN site/header -->
-<h1 class="title">[% template.title or site.title %]</h1>
-<!-- END site/header -->
+  <!-- Header -->
+  <h2>author<b>watch</b>r</h2>
+[% IF Catalyst.user %]
+  <span id="welcome" style="float:right;padding-right:20px;">Welcome, <a href="[% Catalyst.uri_for("/user") %]">[% Catalyst.user.username %]</a>! </span>
+[% END %]
+  <!-- End Header -->
