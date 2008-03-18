@@ -1,0 +1,6 @@
+
+<h2>Author's you are watching</h2>
+
+<a href="[% Catalyst.uri_for("/user/change_password") %]">Change Password</a>
+
+[% INCLUDE user/my_authors.tt2 %]

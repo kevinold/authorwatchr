@@ -23,10 +23,7 @@ Catalyst Controller.
 
 sub index : Private {
     my ( $self, $c ) = @_;
-
-    $c->stash->{template} = 'user/index.html';
-
-    #$c->response->body('Matched authorwatch::C::User in User.');
+    $c->stash->{template} = 'user/index.tt2';
 }
 
 =head2 save_author
@@ -154,7 +151,6 @@ sub myauthors : Local {
 
     $c->stash->{myauthors} = $myauthors;
     $c->stash->{template} = 'user/my_authors.tt2';
-    #$c->forward( $c->view('Mason') );
 
 }
 
@@ -243,19 +239,9 @@ sub change_password : Local Form {
     if (!$c->user) {
         $c->stash->{error} = 'You are not authorized to edit addresses for this person.';
         $c->detach('/access_denied');
-        #$c->log->debug('**** user not logged in');
-        #$c->response->redirect($c->uri_for('/'));
     }
 
     my $form = $self->formbuilder();
-    #$form->name('change_password');
-    #$form->method('post');
-
-    # add email form field to fields already defined edit.fb
-    #$form->field( name => 'old_pw', type => 'password' );
-    #$form->field( name => 'new_pw', type => 'password' );
-    #$form->field( name => 'new_pw_again', type => 'password' );
-
     if ( $form->submitted ) {
         if ( $form->validate ) {
             if ($c->user_exists()) {
@@ -264,23 +250,20 @@ sub change_password : Local Form {
                     my $user = $c->model('AwDB::User')->find($c->user->user->id);
                     $user->password($c->req->param('new_pw_again'));
                     $user->update();
+                    $c->stash->{message} = 'Password Changed';
+                } else {
+                    $c->stash->{message} = 'Passwords did not match';
                 }
             }
-            return $c->response->body("VALID FORM");
         }
         else {
-            $c->stash->{ERROR}          = "INVALID FORM";
+            $c->stash->{error}          = "INVALID FORM";
             $c->stash->{invalid_fields} =
                 [ grep { !$_->validate } $form->fields ];
         }
     }
 }
 
-sub check_pw : Private {
-    my ( $self, $c, @args ) = @_;
-
-    $c->response->body($c->user->user->password);
-}
 =head2 end
 
 Forward to Mason View
