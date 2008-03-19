@@ -1,3 +1,5 @@
+[% META nowrap = 1 %]
+
 <ul>
 [% WHILE (auth = myauthors.next ) %]
     <li>
