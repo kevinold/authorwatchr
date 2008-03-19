@@ -238,7 +238,7 @@ sub change_password : Local Form {
 
     if (!$c->user) {
         $c->stash->{error} = 'You are not authorized to edit addresses for this person.';
-        $c->detach('/access_denied');
+        $c->redirect_and_detach('/access_denied');
     }
 
     my $form = $self->formbuilder();

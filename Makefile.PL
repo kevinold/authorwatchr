@@ -23,6 +23,7 @@ requires 'Catalyst::Plugin::SubRequest';
 requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Authentication::Store::DBIC';
 requires 'Catalyst::Plugin::Authentication::Credential::Password';
+requires 'Catalyst::Plugin::RedirectAndDetach';
 requires 'Catalyst::Model::DBIC::Schema';
 requires 'Catalyst::Model::ISBNDB';
 requires 'Catalyst::View::JSON';

@@ -35,6 +35,7 @@ use Catalyst qw/
     Session::Store::DBIC
     Session::State::Cookie
     SubRequest
+    RedirectAndDetach
     /;
 
 our $VERSION = '0.01';
