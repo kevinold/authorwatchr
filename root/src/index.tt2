@@ -1,6 +1,6 @@
 
 <div>
-<form action="/search/na" method="get"> 
+<form action="/search/" method="get"> 
 <label for="autocomplete">Author's Name</label>
 <input type="text" name="author" id="author" value="" size="20" /> 
 <input type="submit" value="Submit" /> 

@@ -1,5 +1,6 @@
 ---
 name: authorwatch
+log_4_perl_conf: __HOME__/log.conf
 cache:
   backend:
      share_file: '/tmp/aw.cache'

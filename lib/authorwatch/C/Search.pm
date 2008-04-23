@@ -12,6 +12,7 @@ use HTML::Scrubber;
 use Net::Amazon;
 use Data::Dumper;
 use Log::Log4perl qw(:easy);
+use AwUtil;
 
 =head1 NAME
 
@@ -44,10 +45,10 @@ Catalyst Controller.
 #$c->response->redirect("index.html");
 #}
 
-sub na : Local {
+sub index : Local {
     my ( $self, $c ) = @_;
 
-    $c->stash->{template} = 'results_na.mhtml';
+    $c->stash->{template} = 'results.tt2';
     my $svalue      = $c->req->param("author");
     my $search_term = $c->req->param("author");
 
@@ -73,9 +74,9 @@ sub na : Local {
         my $records;
         
         #unless( $records = $c->cache->get($authcachekey) ) {
-            if (-f '/home/kevin/log.conf') {
-                Log::Log4perl->init("/home/kevin/log.conf");
-            }
+            #if (-f $c->config('log_4_perl_conf')) {
+            #    Log::Log4perl->init($c->config('log_4_perl_conf'));
+            #}
             
             my $ua = Net::Amazon->new(token => '1GNG6V387CH1FWX4H182', cache => $c->cache);
             my $response = $ua->search(power => $pw_search, mode => 'books', type => 'Medium', sort => 'daterank');
@@ -101,7 +102,26 @@ sub na : Local {
 
         #}
 
+        # Results to display
         $c->stash->{records}   = $records;
+
+        # Normalize the term
+        my $norm_term = AwUtil::normalize($search_term);
+
+        # If user is logged in, determine if they've already saved this author
+        my $auth_is_saved = 0;
+        if ($c->user) {
+            $auth_is_saved = $c->model('AwDB::UserAuthors')->search(
+                {
+                    author_id => $norm_term,
+                    user_id => $c->user->id,
+                }
+            );
+        }
+        $c->stash->{auth_is_saved} = $auth_is_saved;
+        
+        # Normalized term
+        $c->stash->{norm_term} = $norm_term;
 
         #Capitalize first and last name
         $search_term =~ s/(\w+)/\u\L$1/g;
@@ -115,7 +135,7 @@ sub na : Local {
 }
 
 
-sub aws : Local {
+sub aws : Private {
     my ( $self, $c ) = @_;
 
     $c->stash->{template} = 'results.mhtml';
@@ -272,12 +292,12 @@ Forward to Mason View
 
 =cut
 
-sub end : Private {
-    my ( $self, $c ) = @_;
+#sub end : Private {
+#    my ( $self, $c ) = @_;
 
     # Forward to View unless response body is already defined
-    $c->forward( $c->view('Mason') ) unless $c->response->body;
-}
+#    $c->forward( $c->view('Mason') ) unless $c->response->body;
+#}
 
 sub query_aws : Private {
     my $keywords = shift;

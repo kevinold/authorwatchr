@@ -1,0 +1,79 @@
+[%
+SET     response = Catalyst.stash.records;
+SET     term = Catalyst.stash.search_term;
+SET     norm_term = Catalyst.stash.norm_term;
+SET     auth_is_saved = Catalyst.stash.auth_is_saved;
+%]
+
+<h2>Results for "[% term %]"</h2>
+
+[% IF c.user %]
+
+[% UNLESS auth_is_saved %]
+<!-- Show "save to list" -->
+<button id="save_author">Save <b>[% term %]</b> to your favorites</button>
+
+<script type="text/javascript">
+/*$("#save_author")
+    .click( function(){
+                $(this).load(
+                    '[% c.uri_for("/user/save_author") %]', 
+                    { value: "[% term %]" },
+                    function() { $("#my_authors").load('[% c.uri_for("/user/list_authors") %]') }
+                )
+            }
+    );
+*/
+
+$("#save_author")
+.click( function(){
+    $(this).load('[% c.uri_for("/user/save_author") %]', 
+                 { id: "[% norm_term %]", value: "[% term %]" },
+                 aw.loadMyAuthors
+    ).remove();
+});
+
+</script>
+
+[% END %]
+[% ELSE %]
+Login to Save <b>[% term %]</b> to your favorites.
+[% END %]
+
+
+[% IF response %]
+
+<div id="author_results">
+[% FOREACH prop IN response.properties %]
+    [% NEXT IF prop.year < 2008  # Change this line to be greater than today %]
+    [%#my $norm_author = AwUtil::normalize($prop->author());
+      #next unless $norm_author eq $norm_term;
+    %]
+
+    <div class="result" class="clearfix">
+
+    <h2>[% prop.ProductName %] by <span>[% prop.author %]</span></h2>
+
+    <img src="[% prop.ImageUrlSmall %]" />
+
+
+    <p> [% prop.ProductDescription %] </p>
+
+    <br clear="all"/>
+    <br clear="all"/>
+    <br clear="all"/>
+    [% prop.xmlref.OfferSummary.LowestNewPrice.FormattedPrice %]
+    Release Date: <b>[% prop.ReleaseDate %] [% prop.year %]</b>
+    Newest Low Price: [% prop.OurPrice || prop.ListPrice %]
+    <a href="[% prop.DetailPageURL %]">View Details</a>
+
+        <!-- [% prop.as_string %]  [% prop.similar_asins %] -->
+        <br/>
+        <br/>
+    </div>
+<br clear="all"/>
+[% END %]
+
+</div> <!-- end author_results -->
+
+[% END %]
