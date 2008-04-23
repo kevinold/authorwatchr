@@ -2,7 +2,7 @@ package authorwatch::C::Root;
 
 use strict;
 use warnings;
-use base 'Catalyst::Controller';
+use base 'Catalyst::Controller::FormBuilder';
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -30,27 +30,11 @@ Root Controller for this Catalyst based application.
 
 =cut
 
-#
-# Output a friendly welcome message
-#
 sub default : Private {
     my ( $self, $c ) = @_;
 
-    # Hello World
-    #$c->response->body( $c->welcome_message );
-    #$c->response->redirect("index.html");
-   
-    # If user issue a subrequest to render the list of authors
-    # and stash it in a variable
-    #if ($c->user) {
-    #    $c->stash->{myauthors} = $c->subreq('/user/myauthors');
-    #}
-    
-    #if ($c->res->status(404) ) {
-    #    $c->stash->{template} = '404.html';
-    #} else {
-        $c->stash->{template} = 'index.tt2';
-    #}
+    $c->response->status('404');
+    $c->stash->{template} = 'not_found.tt2';
 }
 
 sub access_denied : Private {
@@ -58,16 +42,55 @@ sub access_denied : Private {
     $c->stash->{template} = 'denied.tt2';
 }
 
+sub login : Global Form {
+    my ($self, $c) = @_;
+    my $form = $self->formbuilder;
+
+    if($form->submitted && $form->validate){
+	if($c->login($form->field('username'), $form->field('password'))){
+	    $c->flash->{message} = 'Logged in successfully.';
+	    $c->res->redirect($c->uri_for('/'));
+	    $c->detach();
+	}
+	else {
+	    $c->stash->{error} = 'Login failed.';
+	}
+    }
+}
+
+sub logout : Global {
+    my ($self, $c) = @_;
+
+    $c->logout;
+    $c->flash->{message} = 'Logged out.';
+    $c->res->redirect($c->uri_for('/'));
+}
+
 #sub captcha : Local {
 #    my ( $self, $c ) = @_;
 #    $c->create_captcha();
 #}
 
+
+=head2 index
+
+=cut
+
+sub index : Private {}
+
+
 =head2 end
 
 Attempt to render a view, if needed.
 
-=cut 
+=cut
+
+sub end : ActionClass('RenderView') {}
+
+
+=head2 end
+
+Attempt to render a view, if needed. --- USED FOR MASON AND TT TEMPLATES DURING TRANSITION
 
 sub end : ActionClass('RenderView') {
     my ( $self, $c ) = @_;
@@ -92,39 +115,7 @@ sub end : ActionClass('RenderView') {
         $c->forward('authorwatch::V::Mason');
     }
 }
-
-=head2 auto
-
-Check if there is a user and, if not, forward to login page
-
-=cut
-
-# Note that 'auto' runs after 'begin' but before your actions and that
-# 'auto' "chain" (all from application path to most specific class are run)
-
-=pod
-sub auto : Private {
-    my ($self, $c) = @_;
-
-    # Allow unauthenticated users to reach the login page
-    if ($c->request->path =~ /login/) {
-        return 1;
-    }
-
-    # If a user doesn't exist, force login
-    if (!$c->user_exists) {
-        # Dump a log message to the development server debug output
-        $c->log->debug('***Root::auto User not found, forwarding to /login');
-        # Redirect the user to the login page
-        $c->response->redirect($c->uri_for('/login'));
-        # Return 0 to cancel 'post-auto' processing and prevent use of application
-        return 0;
-    }
-
-    # User found, so return 1 to continue with processing after this 'auto'
-    return 1;
-}
-=cut
+=cut 
 
 
 =head1 AUTHOR
