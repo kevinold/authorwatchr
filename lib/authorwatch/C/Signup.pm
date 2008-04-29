@@ -2,7 +2,9 @@ package authorwatch::C::Signup;
 
 use strict;
 use warnings;
-use base 'Catalyst::Controller';
+
+use base 'Catalyst::Controller::FormBuilder';
+use Digest;
 
 =head1 NAME
 
@@ -20,24 +22,15 @@ Catalyst Controller.
 
 =cut
 
-sub index : Private {
-    my ( $self, $c ) = @_;
+sub cu : Local {    # For Ajax username lookups
+    my ($self, $c) = @_;
 
-    #$c->response->body('Matched authorwatch::C::Signup in Signup.');
-    $c->stash->{page_css} = 'signup';
-    $c->stash->{template} = 'signup.mhtml';
-}
+    my $user = 0;    # assume user does not exist answering the question "Does this user exist?"
+    if (defined $c->req->params->{username}) {
 
-sub cu : Local {
-    my ( $self, $c ) = @_;
+        $user = $c->model('AwDB::User')->search({username => $c->req->params->{username}});
 
-    my $user = 0; # assume user does not exist answering the question "Does this user exist?"
-    if ( defined $c->req->params->{username} ) {
-
-        $user = $c->model('AwDB::User')
-            ->search( { username => $c->req->params->{username} } );
-
-        if ( $user == 0 ) {
+        if ($user == 0) {
 
             # Username is available
             $c->stash->{uexists} = 0;
@@ -53,8 +46,72 @@ sub cu : Local {
         $c->stash->{uexists} = 0;
     }
 
-    $c->forward( $c->view('JSON') );
+    $c->forward($c->view('JSON'));
 }
+
+sub default : Local Form {
+    my ($self, $c, @args) = @_;
+
+    $c->stash->{template} = 'signup/default.tt2';
+
+    my $username        = $c->req->params->{username};
+    my $password        = $c->req->params->{password};
+    my $confirmpassword = $c->req->params->{confirmpassword};
+    my $email_address   = $c->req->params->{email_address};
+
+    my $form = $self->formbuilder();
+    if ($form->submitted) {
+        if ($form->validate) {
+            $c->log->debug("in validate");
+            if ($username && $password && $confirmpassword && $email_address) {
+                if ($password eq $confirmpassword) {
+
+                    # password
+                    my $password = $c->req->param('password');
+                    my $d        = Digest->new($c->config->{authentication}->{dbic}->{password_hash_type});
+                    $d->add($password);
+                    my $computed = $d->digest;
+
+                    # Find or Create user
+                    my $user;
+                    $user = $c->model('AwDB::User')->find_or_new(
+                        {username => $username,
+
+                         #             email_address => $email_address,
+                        });
+                    if ($user->id) {
+                        $c->stash->{error} = 'User/Email already exists.';
+                        $c->forward('signup');
+                    } else {
+                        $user->email_address($email_address);
+                        $user->username($username);
+                        $user->password($computed);
+                        $user->active(1);
+                        $user->insert;
+
+                        $c->forward('success');
+                        $c->stash->{message} = 'User created!';
+                    }
+
+                } else {
+                    $c->stash->{error} = 'Passwords do not match.';
+                }
+
+            } else {
+                $c->stash->{error} = "INVALID FORM";
+                $c->stash->{invalid_fields} = [grep { !$_->validate } $form->fields];
+            }
+        }
+
+    }
+}
+
+sub success : Local {
+    my ($self, $c) = @_;
+    $c->stash->{template} = 'signup/success.tt2';
+}
+
+=pod
 
 sub newuser : Local {
     my ( $self, $c ) = @_;
@@ -98,6 +155,8 @@ sub newuser : Local {
     }
 }
 
+=cut
+
 =head1 AUTHOR
 
 Kevin Old
@@ -110,3 +169,4 @@ it under the same terms as Perl itself.
 =cut
 
 1;
+## Please see file perltidy.ERR

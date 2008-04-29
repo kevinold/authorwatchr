@@ -1,6 +1,6 @@
 var aw_signup = {
    checkUserName : function() {
-        $("#signup #username")
+        $("#default #username")
         .keyup(function(){
             if ( this.value.match(/^[A-Za-z0-9_]+$/) && this.value.length > 2 ) {
             $.post('/signup/cu', { username: $(this).val() },
@@ -19,14 +19,18 @@ var aw_signup = {
                     }
 
                     //Append message to label
-                    var jqLabel = $("#signup #username").next('span');
+                    var jqLabel = $("#default #username").next('span');
                         jqLabel.html(msg);
                         jqLabel.attr("class",cn);
+
+                    //$.create('div', {'id': 'myId'}, 'myText').appendTo('#myElem');
+                    //$.create('span', {'class': cn}, msg).after('#test #one');
+                    //$('<div>').attr('class', cn).text(msg).next('span').appendTo('#test #one');
                 }, 'json'
             )
             } //end if
             else {
-                var jqLabel = $("#signup #username").next('span');
+                var jqLabel = $("#default #username").next('span');
                     //jqLabel.html('Minimum 3 characters, containing A-Z, a-z ,0-9 and underscore (_)');
                     jqLabel.html('Invalid username');
                     jqLabel.attr("class","error");
@@ -35,9 +39,9 @@ var aw_signup = {
    },
 
    checkPass : function() {
-        $("#signup #password")
+        $("#default #password")
         .blur(function(){
-            var jqLabel = $("#signup #password").next('span');
+            var jqLabel = $("#default#password").next('span');
             if ( this.value.length > 2 ) {
                 jqLabel.html('Ok');
                 jqLabel.attr("class","valid");
@@ -50,12 +54,12 @@ var aw_signup = {
    },
 
    confirmPass : function() {
-        $("#signup #confirmpassword")
+        $("#default #confirmpassword")
         .blur(function(){
-            var jqLabel = $("#signup #confirmpassword").next('span');
+            var jqLabel = $("#default #confirmpassword").next('span');
             if ( this.value.length > 2 ) {
-                var pw = $("#signup #password").val();
-                var cpw = $("#signup #confirmpassword").val();
+                var pw = $("#default #password").val();
+                var cpw = $("#default #confirmpassword").val();
                 if ( pw == cpw ) {
                     jqLabel.html('Ok');
                     jqLabel.attr("class","valid");
@@ -105,9 +109,9 @@ var aw_signup = {
    },
 
    checkEmailAddress : function() {
-        $("#signup #email_address")
+        $("#default #email_address")
         .keyup(function(){
-            var jqLabel = $("#signup #email_address").next('span');
+            var jqLabel = $("#default #email_address").next('span');
             if ( this.value.match(/^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i) ) {
                 jqLabel.html('Ok');
                 jqLabel.attr("class","valid");

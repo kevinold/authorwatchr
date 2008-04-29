@@ -1,0 +1,31 @@
+
+<script type="text/javascript">
+$(document).ready( function() {
+    $(aw_signup.checkUserName);
+    $(aw_signup.checkPass);
+    $(aw_signup.confirmPass);
+    $(aw_signup.checkEmailAddress);
+    });
+</script>
+
+<div id="test">
+<p id="one">test one two three</p>
+</div>
+
+<div id="form">
+[% formbuilder.start -%]
+<!--<input id="_submitted_default" name="_submitted_default" type="hidden" value="1" />-->
+[% FOREACH field IN formbuilder.fields -%]
+<p>
+    <label>
+        <span [% IF field.required %]class="required"[%END%]>[%field.label%]</span>
+    </label>
+    [% field.field %]
+        <span></span>
+    </p>
+[% END %]
+<div id="submit">[% formbuilder.submit %]</div>
+<div id="reset">[% formbuilder.reset %]</div>
+[% formbuilder.end %]
+</div>
+

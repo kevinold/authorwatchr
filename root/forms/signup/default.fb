@@ -1,0 +1,25 @@
+name: default
+method: post
+fields:
+    username:
+        label: Username
+        type:  text
+        size:  20
+        required: 1
+    password:
+        label: New Password
+        type:  password
+        size:  20
+        required: 1
+    confirmpassword:
+        label: Confim Password (Again)
+        type:  password
+        size:  20
+        required: 1
+    email_address:
+        label: Email
+        type:  text
+        size:  20
+        required: 1
+
+submit: Signup
