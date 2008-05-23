@@ -1,4 +1,4 @@
-package authorwatch;
+package AW;
 
 use strict;
 use warnings;
@@ -44,7 +44,7 @@ our $VERSION = '0.01';
 # Configure the application
 #
 __PACKAGE__->config( 
-        name => 'authorwatch',
+        name => 'AW',
         'Controller::FormBuilder' => {
             template_type => 'Mason',
         },
@@ -73,16 +73,16 @@ __PACKAGE__->deny_access_unless(
 =cut
 
 #
-# IMPORTANT: Please look into authorwatch::C::Root for more
+# IMPORTANT: Please look into AW::C::Root for more
 #
 
 =head1 NAME
 
-authorwatch - Catalyst based application
+AW - Catalyst based application
 
 =head1 SYNOPSIS
 
-    script/authorwatch_server.pl
+    script/AW_server.pl
 
 =head1 DESCRIPTION
 
@@ -90,7 +90,7 @@ Catalyst based application.
 
 =head1 SEE ALSO
 
-L<authorwatch::C::Root>, L<Catalyst>
+L<AW::C::Root>, L<Catalyst>
 
 =head1 AUTHOR
 

@@ -1,7 +1,7 @@
 use inc::Module::Install;
 
-name 'authorwatch';
-all_from 'lib/authorwatch.pm';
+name 'AW';
+all_from 'lib/AW.pm';
 
 requires 'Catalyst::Runtime' => '5.7010';
 requires 'Catalyst::Plugin::ConfigLoader';

@@ -1,4 +1,4 @@
-package authorwatch::M::ISBNDB;
+package AW::M::ISBNDB;
 
 use strict;
 use warnings;
@@ -8,7 +8,7 @@ __PACKAGE__->config(access_key => 'FXPTYHMD');
 
 =head1 NAME
 
-authorwatch::M::ISBNDB - Catalyst Model
+AW::M::ISBNDB - Catalyst Model
 
 =head1 DESCRIPTION
 

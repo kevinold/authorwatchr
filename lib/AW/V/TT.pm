@@ -1,4 +1,4 @@
-package authorwatch::V::TT;
+package AW::V::TT;
 
 use strict;
 use base 'Catalyst::View::TT';
@@ -6,8 +6,8 @@ use base 'Catalyst::View::TT';
 __PACKAGE__->config({
     CATALYST_VAR => 'Catalyst',
     INCLUDE_PATH => [
-        authorwatch->path_to( 'root', 'src' ),
-        authorwatch->path_to( 'root', 'lib' ),
+        AW->path_to( 'root', 'src' ),
+        AW->path_to( 'root', 'lib' ),
     ],
     PRE_PROCESS  => 'config/main',
     WRAPPER      => 'site/wrapper',
@@ -18,17 +18,17 @@ __PACKAGE__->config({
 
 =head1 NAME
 
-authorwatch::V::TT - TT View for authorwatch
+AW::V::TT - TT View for AW
 
 =head1 DESCRIPTION
 
-TT View for authorwatch. 
+TT View for AW. 
 
 =head1 AUTHOR
 
 =head1 SEE ALSO
 
-L<authorwatch>
+L<AW>
 
 Kevin Old
 

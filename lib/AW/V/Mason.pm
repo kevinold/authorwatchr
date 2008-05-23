@@ -1,4 +1,4 @@
-package authorwatch::V::Mason;
+package AW::V::Mason;
 
 use strict;
 use base 'Catalyst::View::Mason';
@@ -7,7 +7,7 @@ __PACKAGE__->config(use_match => 0);
 
 =head1 NAME
 
-authorwatch::V::Mason - Mason View Component
+AW::V::Mason - Mason View Component
 
 =head1 SYNOPSIS
 

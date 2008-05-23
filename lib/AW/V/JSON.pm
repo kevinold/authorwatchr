@@ -1,4 +1,4 @@
-package authorwatch::V::JSON;
+package AW::V::JSON;
 
 use strict;
 use base 'Catalyst::View::JSON';
@@ -7,11 +7,11 @@ __PACKAGE__->config(allow_callback => 1);
 
 =head1 NAME
 
-authorwatch::V::JSON - Catalyst JSON View
+AW::V::JSON - Catalyst JSON View
 
 =head1 SYNOPSIS
 
-See L<authorwatch>
+See L<AW>
 
 =head1 DESCRIPTION
 

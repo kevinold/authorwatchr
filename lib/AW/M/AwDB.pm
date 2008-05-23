@@ -1,4 +1,4 @@
-package authorwatch::M::AwDB;
+package AW::M::AwDB;
 
 use strict;
 use base 'Catalyst::Model::DBIC::Schema';
@@ -11,17 +11,17 @@ __PACKAGE__->config(
 
 );
 
-#authorwatch->config->{'dsn'},
-#authorwatch->config->{'db_user'},
-#authorwatch->config->{'db_pass'},
+#AW->config->{'dsn'},
+#AW->config->{'db_user'},
+#AW->config->{'db_pass'},
 #
 =head1 NAME
 
-authorwatch::M::AwDB - Catalyst DBIC Schema Model
+AW::M::AwDB - Catalyst DBIC Schema Model
 
 =head1 SYNOPSIS
 
-See L<authorwatch>
+See L<AW>
 
 =head1 DESCRIPTION
 

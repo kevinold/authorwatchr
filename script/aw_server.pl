@@ -50,9 +50,9 @@ if ( $debug ) {
 
 # This is require instead of use so that the above environment
 # variables can be set at runtime.
-require authorwatch;
+require AW;
 
-authorwatch->run( $port, $host, {
+AW->run( $port, $host, {
     argv              => \@argv,
     'fork'            => $fork,
     keepalive         => $keepalive,
@@ -66,11 +66,11 @@ authorwatch->run( $port, $host, {
 
 =head1 NAME
 
-authorwatch_server.pl - Catalyst Testserver
+aw_server.pl - Catalyst Testserver
 
 =head1 SYNOPSIS
 
-authorwatch_server.pl [options]
+aw_server.pl [options]
 
  Options:
    -d -debug          force debug mode

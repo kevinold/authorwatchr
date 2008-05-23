@@ -36,7 +36,7 @@ AwDB::User - A model object representing a person with access to the system.
 This is an object that represents a row in the 'users' table of your application
 database.  It uses DBIx::Class (aka, DBIC) to do ORM.
 
-For Catalyst, this is designed to be used through authorwatch::Model::AwDB.
+For Catalyst, this is designed to be used through AW::Model::AwDB.
 Offline utilities may wish to use this class directly.
 
 =cut

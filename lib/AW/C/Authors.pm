@@ -1,4 +1,4 @@
-package authorwatch::C::Authors;
+package AW::C::Authors;
 
 use strict;
 use warnings;
@@ -7,11 +7,11 @@ use HTML::Element;
 
 =head1 NAME
 
-authorwatch::C::Authors - Catalyst Controller
+AW::C::Authors - Catalyst Controller
 
 =head1 SYNOPSIS
 
-See L<authorwatch>
+See L<AW>
 
 =head1 DESCRIPTION
 

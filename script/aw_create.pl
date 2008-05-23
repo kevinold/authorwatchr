@@ -20,17 +20,17 @@ pod2usage(1) if ( $help || !$ARGV[0] );
 
 my $helper = Catalyst::Helper->new( { '.newfiles' => !$force, mech => $mech } );
 
-pod2usage(1) unless $helper->mk_component( 'authorwatch', @ARGV );
+pod2usage(1) unless $helper->mk_component( 'aw', @ARGV );
 
 1;
 
 =head1 NAME
 
-authorwatch_create.pl - Create a new Catalyst Component
+aw_create.pl - Create a new Catalyst Component
 
 =head1 SYNOPSIS
 
-authorwatch_create.pl [options] model|view|controller name [helper] [options]
+aw_create.pl [options] model|view|controller name [helper] [options]
 
  Options:
    -force        don't create a .new file where a file to be created exists
@@ -38,15 +38,15 @@ authorwatch_create.pl [options] model|view|controller name [helper] [options]
    -help         display this help and exits
 
  Examples:
-   authorwatch_create.pl controller My::Controller
-   authorwatch_create.pl -mechanize controller My::Controller
-   authorwatch_create.pl view My::View
-   authorwatch_create.pl view MyView TT
-   authorwatch_create.pl view TT TT
-   authorwatch_create.pl model My::Model
-   authorwatch_create.pl model SomeDB DBIC::Schema MyApp::Schema create=dynamic\
+   aw_create.pl controller My::Controller
+   aw_create.pl -mechanize controller My::Controller
+   aw_create.pl view My::View
+   aw_create.pl view MyView TT
+   aw_create.pl view TT TT
+   aw_create.pl model My::Model
+   aw_create.pl model SomeDB DBIC::Schema MyApp::Schema create=dynamic\
    dbi:SQLite:/tmp/my.db
-   authorwatch_create.pl model AnotherDB DBIC::Schema MyApp::Schema create=static\
+   aw_create.pl model AnotherDB DBIC::Schema MyApp::Schema create=static\
    dbi:Pg:dbname=foo root 4321
 
  See also:

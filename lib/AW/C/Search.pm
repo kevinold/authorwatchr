@@ -1,4 +1,4 @@
-package authorwatch::C::Search;
+package AW::C::Search;
 
 use strict;
 use warnings;
@@ -16,11 +16,11 @@ use AwUtil;
 
 =head1 NAME
 
-authorwatch::C::Search - Catalyst Controller
+AW::C::Search - Catalyst Controller
 
 =head1 SYNOPSIS
 
-See L<authorwatch>
+See L<AW>
 
 =head1 DESCRIPTION
 

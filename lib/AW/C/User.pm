@@ -1,4 +1,4 @@
-package authorwatch::C::User;
+package AW::C::User;
 
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use Data::Dumper;
 
 =head1 NAME
 
-authorwatch::C::User - Catalyst Controller
+AW::C::User - Catalyst Controller
 
 =head1 DESCRIPTION
 

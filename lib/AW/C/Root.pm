@@ -1,4 +1,4 @@
-package authorwatch::C::Root;
+package AW::C::Root;
 
 use strict;
 use warnings;
@@ -12,11 +12,11 @@ __PACKAGE__->config->{namespace} = '';
 
 =head1 NAME
 
-authorwatch::C::Root - Root Controller for this Catalyst based application
+AW::C::Root - Root Controller for this Catalyst based application
 
 =head1 SYNOPSIS
 
-See L<authorwatch>.
+See L<AW>.
 
 =head1 DESCRIPTION
 
@@ -110,9 +110,9 @@ sub end : ActionClass('RenderView') {
     #}
 
     if ($c->stash->{template} =~ /tt.*$/) {
-        $c->detach('authorwatch::V::TT');
+        $c->detach('AW::V::TT');
     } else {
-        $c->forward('authorwatch::V::Mason');
+        $c->forward('AW::V::Mason');
     }
 }
 =cut 

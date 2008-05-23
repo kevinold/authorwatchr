@@ -42,7 +42,7 @@ database.  It uses DBIx::Class (aka, DBIC) to do ORM.
 You probably won't need to use this class directly -- it will be automatically
 used by DBIC where joins are needed.
 
-For Catalyst, this is designed to be used through authorwatch::Model::AwDB.
+For Catalyst, this is designed to be used through AW::Model::AwDB.
 Offline utilities may wish to use this class directly.
 
 =cut

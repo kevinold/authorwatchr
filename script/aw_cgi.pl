@@ -6,15 +6,15 @@ use strict;
 use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
-use authorwatch;
+use aw;
 
-authorwatch->run;
+AW->run;
 
 1;
 
 =head1 NAME
 
-authorwatch_cgi.pl - Catalyst CGI
+aw_cgi.pl - Catalyst CGI
 
 =head1 SYNOPSIS
 

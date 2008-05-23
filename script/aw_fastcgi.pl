@@ -8,7 +8,7 @@ use Getopt::Long;
 use Pod::Usage;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
-use authorwatch;
+use aw;
 
 my $help = 0;
 my ( $listen, $nproc, $pidfile, $manager, $detach, $keep_stderr );
@@ -25,7 +25,7 @@ GetOptions(
 
 pod2usage(1) if $help;
 
-authorwatch->run( 
+AW->run( 
     $listen, 
     {   nproc   => $nproc,
         pidfile => $pidfile, 
@@ -39,11 +39,11 @@ authorwatch->run(
 
 =head1 NAME
 
-authorwatch_fastcgi.pl - Catalyst FastCGI
+aw_fastcgi.pl - Catalyst FastCGI
 
 =head1 SYNOPSIS
 
-authorwatch_fastcgi.pl [options]
+aw_fastcgi.pl [options]
  
  Options:
    -? -help      display this help and exits

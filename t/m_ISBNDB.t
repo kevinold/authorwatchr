@@ -2,5 +2,5 @@ use strict;
 use warnings;
 use Test::More tests => 1;
 
-BEGIN { use_ok 'authorwatch::M::ISBNDB' }
+BEGIN { use_ok 'AW::M::ISBNDB' }
 

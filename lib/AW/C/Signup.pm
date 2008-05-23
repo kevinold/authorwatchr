@@ -1,4 +1,4 @@
-package authorwatch::C::Signup;
+package AW::C::Signup;
 
 use strict;
 use warnings;
@@ -8,7 +8,7 @@ use Digest;
 
 =head1 NAME
 
-authorwatch::C::Signup - Catalyst Controller
+AW::C::Signup - Catalyst Controller
 
 =head1 DESCRIPTION
 
