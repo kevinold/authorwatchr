@@ -6,7 +6,7 @@ use strict;
 use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
-use aw;
+use AW;
 
 AW->run;
 

@@ -20,7 +20,7 @@ pod2usage(1) if ( $help || !$ARGV[0] );
 
 my $helper = Catalyst::Helper->new( { '.newfiles' => !$force, mech => $mech } );
 
-pod2usage(1) unless $helper->mk_component( 'aw', @ARGV );
+pod2usage(1) unless $helper->mk_component( 'AW', @ARGV );
 
 1;
 
@@ -39,6 +39,7 @@ aw_create.pl [options] model|view|controller name [helper] [options]
 
  Examples:
    aw_create.pl controller My::Controller
+   aw_create.pl controller My::Controller BindLex
    aw_create.pl -mechanize controller My::Controller
    aw_create.pl view My::View
    aw_create.pl view MyView TT
