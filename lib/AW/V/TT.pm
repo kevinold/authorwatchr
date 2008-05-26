@@ -14,6 +14,7 @@ __PACKAGE__->config({
     ERROR        => 'error.tt2',
     TEMPLATE_EXTENSION    => '.tt2',
     TIMER        => 0,
+    COMPILE_DIR  => '/tmp/template_cache',
 });
 
 =head1 NAME
