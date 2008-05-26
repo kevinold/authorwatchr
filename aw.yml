@@ -3,8 +3,10 @@ name: AW
 log_4_perl_conf: __HOME__/log.conf
 cache:
   backend:
-     share_file: '/tmp/aw.cache'
-     cache_size: '16m'
+    class: 'Cache::FileCache'
+    namespace: 'AW'
+    default_expires_in: 600
+    cache_root: '/tmp'
 static:
   dirs:
     - static

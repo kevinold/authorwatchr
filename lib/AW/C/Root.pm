@@ -3,6 +3,7 @@ package AW::C::Root;
 use strict;
 use warnings;
 use base 'Catalyst::Controller::FormBuilder';
+use Data::Dumper;
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -76,7 +77,26 @@ sub logout : Global {
 
 =cut
 
-sub index : Private {}
+sub index : Private {
+    my ( $self, $c ) = @_;
+
+    my $cache_key   = "index|authors";
+    #$c->cache->remove($cache_key);
+
+    my $authors;
+    unless ($authors = $c->cache->get($cache_key)) {
+        #$c->log->debug("setting cache");
+        my @default_authors = qw(john_grisham dean_koontz greg_iles);
+        my $cache_value = { authors => \@default_authors };
+        $authors = $cache_value;
+        $c->cache->set($cache_key, $cache_value, "10 minutes");
+        #$c->log->debug("after set cache: ", $c->cache->get($cache_key));
+    }
+
+    $c->log->debug("from cache: ", Dumper($c->cache->get($cache_key))) if $c->cache->get($cache_key);
+
+    $c->stash->{authors} = $authors->{authors} if $authors;
+}
 
 
 =head2 end
