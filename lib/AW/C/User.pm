@@ -248,14 +248,7 @@ sub change_password : Local Form {
                 if ($c->req->param('new_pw') eq $c->req->param('new_pw_again')) {
                     $c->log->debug('new password set');
                     my $user = $c->model('AwDB::User')->find($c->user->user->id);
-
-                    # password
-                    my $password = $c->req->param('new_pw_again');
-                    my $d = Digest->new($c->config->{authentication}->{dbic}->{password_hash_type});
-                    $d->add($password);
-                    my $computed = $d->digest;
-
-                    $user->password($computed);
+                    $user->password($c->req->param('new_pw_again'));
                     $user->update();
                     $c->stash->{message} = 'Password Changed';
                 } else {
