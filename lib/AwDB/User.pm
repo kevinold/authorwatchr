@@ -1,7 +1,7 @@
 package AwDB::User;
 
 use base qw/DBIx::Class/;
-use Data::Dumper;
+use Digest;
 
 # Load required DBIC stuff
 __PACKAGE__->load_components(qw/PK::Auto Core/);

@@ -4,7 +4,6 @@ use strict;
 use warnings;
 
 use base 'Catalyst::Controller::FormBuilder';
-use Digest;
 
 =head1 NAME
 
@@ -66,12 +65,6 @@ sub default : Local Form {
             if ($username && $password && $confirmpassword && $email_address) {
                 if ($password eq $confirmpassword) {
 
-                    # password
-                    my $password = $c->req->param('password');
-                    my $d        = Digest->new($c->config->{authentication}->{dbic}->{password_hash_type});
-                    $d->add($password);
-                    my $computed = $d->digest;
-
                     # Find or Create user
                     my $user;
                     $user = $c->model('AwDB::User')->find_or_new(
@@ -85,7 +78,7 @@ sub default : Local Form {
                     } else {
                         $user->email_address($email_address);
                         $user->username($username);
-                        $user->password($computed);
+                        $user->password($c->req->param('password'));
                         $user->active(1);
                         $user->insert;
 
