@@ -19,7 +19,6 @@ use Catalyst::Runtime '5.70';
 #    Session::Store::FastMmap
 #    Captcha
 use Catalyst qw/
-    -Debug
     ConfigLoader
     FormBuilder
     Static::Simple
