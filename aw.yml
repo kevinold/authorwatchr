@@ -1,6 +1,7 @@
 ---
 name: AW
 log_4_perl_conf: __HOME__/log.conf
+jquery_cdn: 1
 cache:
   backend:
     class: 'Cache::FileCache'
