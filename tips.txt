@@ -6,3 +6,9 @@ my $user_id = $c->req->param("user_id");
 
 # Debug message
 $c->log->debug("**********is json: $is_json");
+
+# TT concatenation is the underscore (_)
+# http://search.cpan.org/~abw/Template-Toolkit-2.19/lib/Template/Manual/Directives.pod
+DEFAULT jquery = Catalyst.req.base _ '/static/js/jquery-1.2.6.min.js';
+
+
