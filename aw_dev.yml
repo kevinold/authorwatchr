@@ -1,8 +1,9 @@
 ---
-# This is the production yml file
+# This is the dev yml file
+# To use: export AW_CONFIG=aw_dev.yml; script/aw_server.pl -d r
 name: AW
 log_4_perl_conf: __HOME__/log.conf
-jquery_cdn: 1
+jquery_cdn: 0
 cache:
   backend:
     class: 'Cache::FileCache'
