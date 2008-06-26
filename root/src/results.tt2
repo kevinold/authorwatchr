@@ -7,7 +7,9 @@ SET     auth_is_saved = Catalyst.stash.auth_is_saved;
 
 <h2>Results for "[% term %]"</h2>
 
-[% IF c.user %]
+<a href="[% Catalyst.uri_for('/search/rss', Catalyst.req.params) %]">Get RSS updates for [% term %]</a>
+
+[% IF Catalyst.user %]
 
 [% UNLESS auth_is_saved %]
 <!-- Show "save to list" -->
@@ -17,9 +19,9 @@ SET     auth_is_saved = Catalyst.stash.auth_is_saved;
 /*$("#save_author")
     .click( function(){
                 $(this).load(
-                    '[% c.uri_for("/user/save_author") %]', 
+                    '[% Catalyst.uri_for("/user/save_author") %]', 
                     { value: "[% term %]" },
-                    function() { $("#my_authors").load('[% c.uri_for("/user/list_authors") %]') }
+                    function() { $("#my_authors").load('[% Catalyst.uri_for("/user/list_authors") %]') }
                 )
             }
     );
@@ -27,7 +29,7 @@ SET     auth_is_saved = Catalyst.stash.auth_is_saved;
 
 $("#save_author")
 .click( function(){
-    $(this).load('[% c.uri_for("/user/save_author") %]', 
+    $(this).load('[% Catalyst.uri_for("/user/save_author") %]', 
                  { id: "[% norm_term %]", value: "[% term %]" },
                  aw.loadMyAuthors
     ).remove();
@@ -45,7 +47,7 @@ Login to Save <b>[% term %]</b> to your favorites.
 
 <div id="author_results">
 [% FOREACH prop IN response.properties %]
-    [% NEXT IF prop.year < 2008  # Change this line to be greater than today %]
+    [% NEXT IF prop.year < Catalyst.config.active_year  # Change this line to be greater than today %]
     [%#my $norm_author = AwUtil::normalize($prop->author());
       #next unless $norm_author eq $norm_term;
     %]

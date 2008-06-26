@@ -12,6 +12,7 @@ use HTML::Scrubber;
 use Net::Amazon;
 use Data::Dumper;
 use Log::Log4perl qw(:easy);
+use XML::Feed;
 use AwUtil;
 
 =head1 NAME
@@ -48,7 +49,13 @@ Catalyst Controller.
 sub index : Local {
     my ( $self, $c ) = @_;
 
+    $c->forward('results');
     $c->stash->{template} = 'results.tt2';
+
+}
+
+sub results : Private {
+    my ( $self, $c ) = @_;
     my $svalue      = $c->req->param("author");
     my $search_term = $c->req->param("author");
 
@@ -134,6 +141,32 @@ sub index : Local {
 
 }
 
+sub rss : Local {
+    my ($self, $c) = @_;
+    $c->log->debug('in rss b4 index call');
+    $c->forward('results');
+
+    my $feed = XML::Feed->new('RSS');
+    $feed->title($c->config->{name} . ' RSS Feed');
+    $feed->link($c->req->base);    # link to the site.
+    $feed->description('Results for ' . $c->stash->{search_term});
+
+    my $count;
+    # Process the entries
+    foreach my $prop ($c->stash->{records}->properties) {
+        next unless $prop->year;
+        next if $prop->year < $c->config->{active_year};
+        my $feed_entry = XML::Feed::Entry->new('RSS');
+        $feed_entry->title($prop->ProductName. ' by ' . $prop->author);
+        $feed_entry->content($prop->ProductDescription);
+        $feed->add_entry($feed_entry);
+        $count++;
+    }
+
+    $c->res->content_type('application/rss+xml');
+    $c->res->body($feed->as_xml);
+
+}
 
 sub aws : Private {
     my ( $self, $c ) = @_;
