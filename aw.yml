@@ -15,6 +15,7 @@ static:
   ignore_extensions:
     - tmpl
     - xhtml
+active_year: 2008
 #dsn: 'dbi:mysql:database=authorwatcher;host=localhost'
 #db_user: 'root'
 #db_pass: ''
