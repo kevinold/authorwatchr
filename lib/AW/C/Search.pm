@@ -73,8 +73,9 @@ sub results : Private {
         my $today = strftime "%m-%Y", localtime;
             # Real search
             #"author: $keywords and pubdate: after $today and binding: Hardcover"
+            #"author: $keywords and pubdate: after 09-2007 and binding: Hardcover"
         my $pw_search = uri_escape(
-            "author: $keywords and pubdate: after 09-2007 and binding: Hardcover"
+            "author: $keywords and binding: hardcover or paperback and language: english"
         );
     
         
