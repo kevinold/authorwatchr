@@ -10,10 +10,10 @@
      MACRO debug(message) CALL Catalyst.log.debug(message);
    END;
 
-   DEFAULT jquery = Catalyst.req.base _ '/static/js/jquery-1.2.6.min.js';
+   DEFAULT jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js';
 
-   IF Catalyst.config.jquery_cdn;
-     jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js';
+   IF Catalyst.config.jquery_dev;
+     jquery = Catalyst.req.base _ '/static/js/jquery-1.2.6.min.js';
    END;
 
    # define a data structure to hold sitewide data
