@@ -26,7 +26,6 @@ use Catalyst qw/
 
     Cache
     Authentication
-    Authentication::Store::DBIC
     Authentication::Credential::Password
 
     Session
