@@ -21,7 +21,7 @@ my $port              = $ENV{AW_PORT} || $ENV{CATALYST_PORT} || 3000;
 my $keepalive         = 0;
 my $restart           = $ENV{AW_RELOAD} || $ENV{CATALYST_RELOAD} || 0;
 my $restart_delay     = 1;
-my $restart_regex     = '(?:/|^)(?!\.#).+(?:\.yml$|\.yaml$|\.pm)$';
+my $restart_regex     = '(?:/|^)(?!\.#).+(?:\.yml$|\.yaml$|\.conf|\.pm)$';
 my $restart_directory = undef;
 my $follow_symlinks   = 0;
 
@@ -88,7 +88,7 @@ aw_server.pl [options]
    -rd -restartdelay  delay between file checks
    -rr -restartregex  regex match files that trigger
                       a restart when modified
-                      (defaults to '\.yml$|\.yaml$|\.pm$')
+                      (defaults to '\.yml$|\.yaml$|\.conf|\.pm$')
    -restartdirectory  the directory to search for
                       modified files, can be set mulitple times
                       (defaults to '[SCRIPT_DIR]/..')
