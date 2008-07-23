@@ -107,6 +107,11 @@ Attempt to render a view, if needed.
 
 sub end : ActionClass('RenderView') {}
 
+sub test500 : Local
+{
+    die "Test 500";
+}
+
 
 =head2 end
 
