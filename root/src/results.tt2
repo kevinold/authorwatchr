@@ -47,7 +47,13 @@ Login to Save <b>[% term %]</b> to your favorites.
 
 <div id="author_results">
 [% FOREACH prop IN response.properties %]
+    <!--
+    Check that the title has the following criteria:
+    - Must have hyphens in ReleaseDate
+    - Look into a variable that might tell if it is a reprint, maybe an "original street date"
+    -->
     [% NEXT IF prop.year < Catalyst.config.active_year  # Change this line to be greater than today %]
+    [% NEXT UNLESS prop.ReleaseDate.search('-')  # ReleaseDate must have hyphens %]
     [%#my $norm_author = AwUtil::normalize($prop->author());
       #next unless $norm_author eq $norm_term;
     %]
