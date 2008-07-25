@@ -11,4 +11,6 @@ $c->log->debug("**********is json: $is_json");
 # http://search.cpan.org/~abw/Template-Toolkit-2.19/lib/Template/Manual/Directives.pod
 DEFAULT jquery = Catalyst.req.base _ '/static/js/jquery-1.2.6.min.js';
 
-
+# using :Path :Args, etc instead of : Private and : Local
+# http://search.cpan.org/~zarquon/Catalyst-Manual-5.7013/lib/Catalyst/Manual/Tutorial/MoreCatalystBasics.pod
+Note: Catalyst actions are regular Perl methods, but they make use of Nicholas Clark's attributes module (that's the : Local next to the sub list in the code above) to provide additional information to the Catalyst dispatcher logic. Many newer Catalyst applications are switching to the use of "Literal" :Path actions and Args attribute in lieu of : Local and : Private. For example, sub any_method :Path :Args(0) can be used instead of sub index :Private (because no path was supplied to Path it matches the "empty" URL in the namespace of that module... the same thing sub index would do) or sub list :Path('list') :Args(0) could be used instead of the sub list : Local above (the list argument to Path would make it match on the URL list under books, the namespace of the current module). See "Action Types" in Catalyst::Manual::Intro as well as Part 5 of this tutorial (Authentication) for additional information. Another popular but more advanced feature is Chained actions that allow a single URL to "chain together" multiple action method calls, each with an appropriate number of arguments (see Catalyst::DispatchType::Chained for details).
