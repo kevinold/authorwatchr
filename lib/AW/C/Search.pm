@@ -66,6 +66,8 @@ sub index :Path :Args {
             #}
             
             my $ua = Net::Amazon->new(token => $c->config->{na_token}, cache => $c->cache);
+            # sort param can be one of the items at:
+            # http://search.cpan.org/~boumenot/Net-Amazon-0.49/lib/Net/Amazon/Request/Sort.pm#Sorting_Books_Results
             my $response = $ua->search(power => $pw_search, mode => 'books', type => 'Medium', sort => 'daterank');
             # When ready, pass Associate Tag this way
             #my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium", AssociateTag => 'kevin123');
