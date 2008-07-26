@@ -17,6 +17,8 @@
     <br clear="all"/>
   </div>
 
+[% INCLUDE search_bar.tt2 %]
+
 [% IF Catalyst.user %]
     <div id="ma_box" class="clearfix">
     [% INCLUDE user/my_authors.tt2 %] 

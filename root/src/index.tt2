@@ -3,13 +3,6 @@ SET     authors = Catalyst.stash.authors;
 %]
 
 <div>
-<form action="/search/" method="get"> 
-<label for="autocomplete">Author's Name</label>
-<input type="text" name="author" id="author" value="" size="20" /> 
-<input type="submit" value="Submit" /> 
-</form> 
-</form>
-
 
 <br/>
 
