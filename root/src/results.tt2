@@ -73,6 +73,7 @@ Login to Save <b>[% term %]</b> to your favorites.
     <br clear="all"/>
     <!-- [% prop.xmlref.OfferSummary.LowestNewPrice.FormattedPrice %] -->
     Availability: [% prop.xmlref.Offers.Offer.OfferListing.Availability %]
+    PreOrder: [% IF prop.xmlref.Offers.Offer.OfferListing.PreOrder  %] Yes [% ELSE %] No [% END %]
     Release Date: <b>[% prop.ReleaseDate %] [% prop.year %]</b>
     Newest Low Price: [% prop.OurPrice || prop.ListPrice %]
     <a href="[% prop.DetailPageURL %]">View Details</a>
