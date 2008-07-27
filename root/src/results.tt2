@@ -53,7 +53,8 @@ Login to Save <b>[% term %]</b> to your favorites.
     - Look into a variable that might tell if it is a reprint, maybe an "original street date"
     -->
     [% NEXT IF prop.year < Catalyst.config.active_year  # Change this line to be greater than today %]
-    [% NEXT UNLESS prop.ReleaseDate.search('-')  # ReleaseDate must have hyphens %]
+    [% NEXT UNLESS prop.ReleaseDate.match('-')  # ReleaseDate must have hyphens %]
+    [% NEXT UNLESS prop.xmlref.Offers.Offer.OfferListing.Availability.match('Not yet published')  %]
     [%#my $norm_author = AwUtil::normalize($prop->author());
       #next unless $norm_author eq $norm_term;
     %]
@@ -70,7 +71,8 @@ Login to Save <b>[% term %]</b> to your favorites.
     <br clear="all"/>
     <br clear="all"/>
     <br clear="all"/>
-    [% prop.xmlref.OfferSummary.LowestNewPrice.FormattedPrice %]
+    <!-- [% prop.xmlref.OfferSummary.LowestNewPrice.FormattedPrice %] -->
+    Availability: [% prop.xmlref.Offers.Offer.OfferListing.Availability %]
     Release Date: <b>[% prop.ReleaseDate %] [% prop.year %]</b>
     Newest Low Price: [% prop.OurPrice || prop.ListPrice %]
     <a href="[% prop.DetailPageURL %]">View Details</a>

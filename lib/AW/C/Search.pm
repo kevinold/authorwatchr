@@ -53,8 +53,9 @@ sub index :Path :Args {
             # Real search
             #"author: $keywords and pubdate: after $today and binding: Hardcover"
             #"author: $keywords and pubdate: after 09-2007 and binding: Hardcover"
+            #"author: $keywords and binding: hardcover or paperback and language: english"
         my $pw_search = uri_escape(
-            "author: $keywords and binding: hardcover or paperback and language: english"
+            "author: $keywords and binding: hardcover and language: english"
         );
     
         
@@ -68,7 +69,7 @@ sub index :Path :Args {
             my $ua = Net::Amazon->new(token => $c->config->{na_token}, cache => $c->cache);
             # sort param can be one of the items at:
             # http://search.cpan.org/~boumenot/Net-Amazon-0.49/lib/Net/Amazon/Request/Sort.pm#Sorting_Books_Results
-            my $response = $ua->search(power => $pw_search, mode => 'books', type => 'Medium', sort => 'daterank');
+            my $response = $ua->search(power => $pw_search, mode => 'books', type => 'Large', sort => 'daterank');
             # When ready, pass Associate Tag this way
             #my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium", AssociateTag => 'kevin123');
 
