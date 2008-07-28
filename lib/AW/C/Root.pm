@@ -48,7 +48,7 @@ sub login : Global Form {
     my $form = $self->formbuilder;
 
     if($form->submitted && $form->validate){
-	if($c->login($form->field('username'), $form->field('password'))){
+	if($c->authenticate({ username => $form->field('username'), password => $form->field('password') })){
 	    $c->flash->{message} = 'Logged in successfully.';
 	    $c->res->redirect($c->uri_for('/'));
 	    $c->detach();
