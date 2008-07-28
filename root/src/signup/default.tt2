@@ -8,10 +8,6 @@ $(document).ready( function() {
     });
 </script>
 
-<div id="test">
-<p id="one">test one two three</p>
-</div>
-
 <div id="form">
 [% formbuilder.start -%]
 <!--<input id="_submitted_default" name="_submitted_default" type="hidden" value="1" />-->
