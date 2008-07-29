@@ -2,6 +2,7 @@ package AW::V::TT;
 
 use strict;
 use base 'Catalyst::View::TT';
+use AwUtil;
 
 __PACKAGE__->config({
     CATALYST_VAR => 'Catalyst',
@@ -15,6 +16,9 @@ __PACKAGE__->config({
     TEMPLATE_EXTENSION    => '.tt2',
     TIMER        => 0,
     COMPILE_DIR  => '/tmp/template_cache',
+    FILTERS       => {
+        urlifyauthor => \&AwUtil::urlify_author,
+    },
 });
 
 =head1 NAME
