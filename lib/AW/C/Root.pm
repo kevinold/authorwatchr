@@ -72,6 +72,12 @@ sub logout : Global {
 #    $c->create_captcha();
 #}
 
+sub auto : Private {
+    my ( $self, $c ) = @_;
+
+    $c->forward('/user/myauthors') if $c->user_exists();
+
+}
 
 =head2 index
 

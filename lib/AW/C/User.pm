@@ -141,16 +141,12 @@ Show a users list of authors
 sub myauthors : Local {
     my ( $self, $c ) = @_;
 
-    # Debug sql statements
-    #$c->model('AwDB::UserAuthors')->storage->debug(1);
-    #my $user_id = $c->req->param("user_id");
-    #$c->log->debug("**********is json: $is_json");
+    if ($c->user_exists()) {
+        # Lookup authors for this user
+        my $myauthors = $c->user->my_authors;
 
-    # Lookup authors for this user
-    my $myauthors = $c->user->my_authors;
-
-    $c->stash->{myauthors} = $myauthors;
-    $c->stash->{template} = 'user/my_authors.tt2';
+        $c->stash->{myauthors} = $myauthors;
+    }
 
 }
 
