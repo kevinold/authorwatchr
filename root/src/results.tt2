@@ -9,9 +9,7 @@ SET     auth_is_saved = Catalyst.stash.auth_is_saved;
 
 <a href="[% Catalyst.uri_for('/search/rss', Catalyst.req.params) %]">Get RSS updates for [% term %]</a>
 
-[% IF Catalyst.user %]
 
-[% UNLESS auth_is_saved %]
 <!-- Show "save to list" -->
 <button id="save_author">Save <b>[% term %]</b> to your favorites</button>
 
@@ -37,11 +35,9 @@ $("#save_author")
 
 </script>
 
-[% END %]
-[% ELSE %]
-Login to Save <b>[% term %]</b> to your favorites.
-[% END %]
 
+
+<!--Login to Save <b>[% term %]</b> to your favorites.-->
 
 [% IF response %]
 

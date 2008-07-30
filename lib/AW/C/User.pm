@@ -38,10 +38,11 @@ sub save_author : Local {
     #$c->stash->{template} = 'results.mhtml';
     #my $svalue = $c->req->param("autocomplete_parameter");
     my $id = $c->req->param("id");
-    my $term = $c->req->param("val");
+    my $term = $c->req->param("value");
+    $c->log->debug('term: ', $term);
     #$term =~ s/[^A-Za-z0-9 ]//g;
 
-    my $user_id = $c->user->user->id;
+    my $user_id = $c->user->id;
 
     #Separate name into first and last name
     #my ( $fname, $lname ) = split / /, $term;
@@ -58,7 +59,7 @@ sub save_author : Local {
     my $author;
     $author = $c->model('AwDB::Authors')->find_or_create(
         {   id => $id,
-            display_name  => $term,
+            display_name  => "$term",
         }
     );
 
