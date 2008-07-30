@@ -31,9 +31,9 @@ var aw = {
     loadMyAuthors : function() {
         $.getJSON('/user/list_authors',
             function(json) {
-                var myauthors = json.myauthors;
+                var my_authors = json.my_authors;
                 $("#my_authors ul").html('');
-                $.each(myauthors, function(i) {
+                $.each(my_authors, function(i) {
                     $("#my_authors ul").append('<li><a href="/search/na?author=' + encodeURI(this.name) + '">' + this.name + '</a></li>');
                 });
                 

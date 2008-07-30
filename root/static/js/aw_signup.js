@@ -126,9 +126,9 @@ var aw_signup = {
     loadMyAuthors : function() {
         $.getJSON('/user/list_authors',
             function(json) {
-                var myauthors = json.myauthors;
+                var my_authors = json.my_authors;
                 $("#my_authors").html('');
-                $.each(myauthors, function(i) {
+                $.each(my_authors, function(i) {
                     $("#my_authors").append( this.name + "<br>" );
                 });
             }

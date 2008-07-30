@@ -72,12 +72,6 @@ sub logout : Global {
 #    $c->create_captcha();
 #}
 
-sub auto : Private {
-    my ( $self, $c ) = @_;
-
-    $c->forward('/user/myauthors') if $c->user_exists();
-
-}
 
 =head2 index
 
@@ -85,6 +79,9 @@ sub auto : Private {
 
 sub index : Private {
     my ( $self, $c ) = @_;
+
+    # Set my_authors
+    $c->forward('/user/my_authors') if $c->user_exists();
 
     my $cache_key   = "index|authors";
     #$c->cache->remove($cache_key);

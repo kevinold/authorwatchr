@@ -115,10 +115,10 @@ sub list_authors : Local {
     # Lookup authors for this user
     my $authors = $c->user->my_authors;
 
-    my @myauthors;
+    my @my_authors;
 
     while ( my $auth = $authors->next ) {
-        push @myauthors,
+        push @my_authors,
             {
             id   => $auth->authors->id,
             name => $auth->authors->display_name,
@@ -126,26 +126,26 @@ sub list_authors : Local {
     }
 
     #$c->stash->{template} = '/user/list_authors.mhtml';
-    $c->stash->{myauthors} = \@myauthors;
+    $c->stash->{my_authors} = \@my_authors;
     $c->forward( $c->view('JSON') );
 
 }
 
 
-=head2 myauthors
+=head2 my_authors
 
 Show a users list of authors
 
 =cut
 
-sub myauthors : Local {
+sub my_authors : Local {
     my ( $self, $c ) = @_;
 
     if ($c->user_exists()) {
         # Lookup authors for this user
-        my $myauthors = $c->user->my_authors;
+        my $my_authors = $c->user->my_authors;
 
-        $c->stash->{myauthors} = $myauthors;
+        $c->stash->{my_authors} = $my_authors;
     }
 
 }

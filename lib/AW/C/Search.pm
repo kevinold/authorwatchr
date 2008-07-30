@@ -40,6 +40,9 @@ sub index :Path :Args {
 
     #$c->log->debug("**********svalue is: $svalue");
 
+    # Set my_authors
+    $c->forward('/user/my_authors') if $c->user_exists();
+
     if ($svalue) {
 
         #Get search terms urlified

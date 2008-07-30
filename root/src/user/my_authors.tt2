@@ -1,7 +1,7 @@
 [% META nowrap = 1 %]
 
 <ul>
-[% WHILE (auth = myauthors.next ) %]
+[% WHILE (auth = my_authors.next ) %]
     <li>
     <a href="/search/na?author=[% auth.authors.id | urlifyauthor %]">[% auth.authors.display_name %]</a>
     </li>
