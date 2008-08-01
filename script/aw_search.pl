@@ -12,7 +12,7 @@ use AwAmazonSearch;
 
 my $search = AwAmazonSearch->new->author_search('dean koontz');
 
-print Dumper($search);
+warn $search;
 
 #my $cfg = Config::Any::General->load( "$FindBin::Bin/../aw_dev.conf" ) || die $!;
 #warn Dumper($cfg);
