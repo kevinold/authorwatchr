@@ -6,11 +6,11 @@ use base 'Catalyst::Controller';
 use POSIX qw(strftime);
 use URI::Escape;
 use HTML::Scrubber;
-use Net::Amazon;
 use Data::Dumper;
 use Log::Log4perl qw(:easy);
 use XML::Feed;
 use AwUtil;
+use AwAmazonSearch;
 
 =head1 NAME
 
@@ -62,32 +62,15 @@ sub index :Path :Args {
         );
     
         
-        my $records;
-        
+        my $records = AwAmazonSearch->new->author_search("$svalue", $c->cache);
         #unless( $records = $c->cache->get($authcachekey) ) {
-            #if (-f $c->config('log_4_perl_conf')) {
-            #    Log::Log4perl->init($c->config('log_4_perl_conf'));
-            #}
-            
-            my $ua = Net::Amazon->new(token => $c->config->{na_token}, cache => $c->cache);
-            # sort param can be one of the items at:
-            # http://search.cpan.org/~boumenot/Net-Amazon-0.49/lib/Net/Amazon/Request/Sort.pm#Sorting_Books_Results
-            my $response = $ua->search(power => $pw_search, mode => 'books', type => 'Large', sort => 'daterank');
-            # When ready, pass Associate Tag this way
-            #my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium", AssociateTag => 'kevin123');
-
-            if($response->is_success()) {
-                $records = $response;
-                #$c->log->debug("**********RUNNING AMAZON QUERY", Dumper($records));
-                #$c->cache->set($authcachekey, $response);
-                #$c->log->debug("**********After cache set", Dumper($c->cache->get($authcachekey)));
-            } else {
-                #$c->log->debug("**********Error:", $response->message());
-                $c->stash->{error_msg} = "Error: " . $response->message();
-            }
-
+        #if (-f $c->config('log_4_perl_conf')) {
+        #    Log::Log4perl->init($c->config('log_4_perl_conf'));
         #}
+        
 
+        #} # unless cache
+        
         # Results to display
         $c->stash->{records}   = $records;
 

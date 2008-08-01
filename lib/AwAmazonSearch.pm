@@ -5,6 +5,7 @@ use FindBin;
 use Config::Any::General;
 use lib "$FindBin::Bin/../lib";
 use URI::Escape;
+use Net::Amazon;
 use Data::Dumper;
 use AW;
 #use Catalyst::Test 'AW';
@@ -13,12 +14,16 @@ use AW;
 my $cfg = Config::Any::General->load( "$FindBin::Bin/../aw_dev.conf" ) || die $!;
 
 sub author_search {
-    my ($self, $author) = @_;
+    my ($self, $author, $cache) = @_;
 
     #$self->balance($self->balance + $amount);
-    
+   
+    my $authcachekey = $author;
+    $authcachekey =~ s/ /_/g;
 
-    my $ua = Net::Amazon->new(token => $cfg->{ 'na_token' });
+    my $records;
+    unless( $records = $cache->get($authcachekey) ) {
+    my $ua = Net::Amazon->new(token => $cfg->{ 'na_token' }, cache => $cache);
 
     my $pw_search = uri_escape(
         "author: $author and binding: hardcover and language: english"
@@ -35,7 +40,8 @@ sub author_search {
     # When ready, pass Associate Tag this way
     #my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium", AssociateTag => 'kevin123');
 
-    my $records;
+    } # unless cache
+
     if ($response->is_success()) {
         $records = $response;
 
