@@ -10,7 +10,7 @@ use Data::Dumper;
 use AW;
 use AwAmazonSearch;
 
-my $search = AwAmazonSearch->new->author_search('dean koontz');
+my $search = AwAmazonSearch->new->author_search('harlan coben');
 
 warn $search;
 
