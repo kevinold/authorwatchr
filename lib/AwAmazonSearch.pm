@@ -17,14 +17,6 @@ my $cfg = Config::Any::General->load("$FindBin::Bin/../aw_dev.conf") || die $!;
 sub author_search {
     my ($self, $author, $cache) = @_;
 
-    my %params = %{$cfg->{cache}{backend}};
-    my $class  = delete $params{class};
-
-    eval("use $class;");    ## no critic (ProhibitStringyEval)
-    unless ($cache) {
-        $cache = $class->new(\%params);
-    }
-
     #$self->balance($self->balance + $amount);
 
     my $authcachekey = $author;

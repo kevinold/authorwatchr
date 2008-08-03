@@ -70,7 +70,8 @@ sub index :Path :Args {
         
 
         #} # unless cache
-        
+       
+        #$c->log->debug("**********records: ", Dumper($records));
         # Results to display
         $c->stash->{records}   = $records;
 
