@@ -8,13 +8,22 @@ use DBI;
 use lib "$FindBin::Bin/../lib";
 use Data::Dumper;
 use LWP::Simple;
+use AwDB;
 
-my $url = 'http://localhost:3000/search?author=harlan+coben';
-my $content = get $url;
-die "Couldn't get $url" unless defined $content;
+my $dsn = "dbi:SQLite:$FindBin::Bin/../aw.db";
+my $cfg = Config::Any::General->load( "$FindBin::Bin/../aw_dev.conf" ) || die $!;
+warn Dumper($cfg);
+
+my $schema = AwDB->connect( $dsn );
+my @users = $schema->resultset('User')->all;
+
+print Dumper(@users);
+
+#my $url = 'http://localhost:3000/search?author=harlan+coben';
+#my $content = get $url;
+#die "Couldn't get $url" unless defined $content;
 
 
-#use AW;
 #use AwAmazonSearch;
 
 
