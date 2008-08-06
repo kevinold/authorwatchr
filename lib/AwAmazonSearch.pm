@@ -34,11 +34,9 @@ sub author_search {
         my $response = $ua->search(power => $pw_search,
                                    mode  => 'books',
                                    type  => 'Large',
-                                   sort  => 'daterank'
+                                   sort  => 'daterank',
+                                   AssociateTag => 'kevin123',
                                   );
-
-        # When ready, pass Associate Tag this way
-        #my $response = $ua->search(power => $pw_search, mode => "books", type => "Medium", AssociateTag => 'kevin123');
 
         if ($response->is_success()) {
             $records = $response;
