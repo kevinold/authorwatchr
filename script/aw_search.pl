@@ -12,12 +12,14 @@ use AwDB;
 
 my $dsn = "dbi:SQLite:$FindBin::Bin/../aw.db";
 my $cfg = Config::Any::General->load( "$FindBin::Bin/../aw_dev.conf" ) || die $!;
-warn Dumper($cfg);
+#warn Dumper($cfg);
 
 my $schema = AwDB->connect( $dsn );
-my @users = $schema->resultset('User')->all;
+my $uas = $schema->resultset('UserAuthors')->search(undef, { select => { distinct => 'author_id' }, as => 'author_id' });
 
-print Dumper(@users);
+while (my $ua = $uas->next) {
+    print $ua->author_id, "\n";
+}
 
 #my $url = 'http://localhost:3000/search?author=harlan+coben';
 #my $content = get $url;
