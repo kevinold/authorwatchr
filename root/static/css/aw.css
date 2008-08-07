@@ -45,12 +45,6 @@ body {
     visibility: hidden;
 }
 
-.wrapper { 
-    width:750px;
-    margin:0 auto 0 auto;
-    min-height:100%;
-}
-
 /*
 #logo { 
     background: url(/images/header.jpg);
@@ -61,7 +55,7 @@ body {
 */
 
 /* authorwatchr logo */
-#header h2 {
+#hd h2 {
     background: transparent url("/static/images/logo_circle_small_trans.png") no-repeat scroll 0%;
     color:#0572C4;
     margin: 0 0 0 10px;
@@ -71,20 +65,9 @@ body {
     letter-spacing: 2px;
 }
 
-#header b {
+#hd b {
     color: #784904;
     font-weight: normal;
-}
-
-#sidebar {
-    float: right;
-    width: 125px;
-}
-
-#sidebar ul {
-    padding: 0 0 0 5px;
-    list-style: none;
-    line-height: 20px;
 }
 
 /* Base Link Styles */
@@ -188,7 +171,7 @@ a:hover {
 
 
 /* Footer */
-#footer { 
+#ft { 
     background: #fff url(/static/images/bg.gif) repeat-x;
     clear: both;
     font-size: 12px;
@@ -197,17 +180,17 @@ a:hover {
     text-align: right;
 }
 
-#footer .copyrightinfo {
+#ft .copyrightinfo {
     display: inline;
     float: left;
     text-align: left;
 }
 
-#footer span {
+#ft span {
     padding: 0px 5px;
 }
 
-#footer a, #footer a:hover {
+#ft a, #ft a:hover {
     color: #fff;
     text-decoration:none;
     border-bottom: 1px dotted #fff;

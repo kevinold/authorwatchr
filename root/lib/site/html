@@ -1,40 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+ "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-  <title>[% template.title or site.title %]</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>[% template.title or site.title %]</title>
 
+    <link rel="stylesheet" href="[% site.yuigrid %]" type="text/css">
+    <link rel="stylesheet" href="[% base %]/static/css/aw.css" media="screen" type="text/css" />
 
-  <!--<link href="[% base %]/static/css/reset.css" media="screen" rel="stylesheet" type="text/css" />-->
-  <link href="[% base %]/static/css/aw.css" media="screen" rel="stylesheet" type="text/css" />
-  <script type="text/javascript" src="[% site.jquery %]"></script>
-  <script type="text/javascript" src="[% base %]/static/js/aw.js"></script> 
-[% IF Catalyst.action.match('^signup') %]
-  <!--<script type="text/javascript" src="[% base %]/static/js/jquery.domec.js"></script>-->
-  <script type="text/javascript" src="[% base %]/static/js/aw_signup.js"></script>
-[% END; -%]
+    <script type="text/javascript" src="[% site.jquery %]"></script>
+    <script type="text/javascript" src="[% base %]/static/js/aw.js"></script> 
+    [% IF Catalyst.action.match('^signup') %]
+        <!--<script type="text/javascript" src="[% base %]/static/js/jquery.domec.js"></script>-->
+        <script type="text/javascript" src="[% base %]/static/js/aw_signup.js"></script>
+    [% END; -%]
+    <script type="text/javascript">
+    /*
+            $("#box1").corner();
+            $("#box2").corner("bevel 16px");
+            $("#box3").corner("bevel top 8px");
+            $("#box4").corner("round tl br 20px").corner("bevel tr bl 10px");
+            $("#box6").corner("bevel tr 16px");
+    //$(document).bind("load", function(){
 
-
-  <script type="text/javascript">
-  /*
-        $("#box1").corner();
-        $("#box2").corner("bevel 16px");
-        $("#box3").corner("bevel top 8px");
-        $("#box4").corner("round tl br 20px").corner("bevel tr bl 10px");
-        $("#box6").corner("bevel tr 16px");
-  //$(document).bind("load", function(){
-
-    $(function(){   // shorthand for $(document).ready() BTW
-        var kdo = $("#ma_box").html();
-        console.log("value is: " + kdo);
-        $("#ma_box").corner("round 8px").parent().css('padding', '4px').corner("round 10px");
-        console.log("after corner applied");
-    });
-  */
-    $(function(){   // shorthand for $(document).ready() BTW
-        $("a.show_ma").toggle(function(){$("#ma_box").slideDown("fast");},function(){$("#ma_box").slideUp("fast")});
-    });
-  </script>
+        $(function(){   // shorthand for $(document).ready() BTW
+            var kdo = $("#ma_box").html();
+            console.log("value is: " + kdo);
+            $("#ma_box").corner("round 8px").parent().css('padding', '4px').corner("round 10px");
+            console.log("after corner applied");
+        });
+    */
+        $(function(){   // shorthand for $(document).ready() BTW
+            $("a.show_ma").toggle(function(){$("#ma_box").slideDown("fast");},function(){$("#ma_box").slideUp("fast")});
+        });
+    </script>
 </head>
 
 <body>
