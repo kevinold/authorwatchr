@@ -88,17 +88,16 @@ sub index : Private {
 
     my $authors;
     unless ($authors = $c->cache->get($cache_key)) {
-        #$c->log->debug("setting cache");
-        my @default_authors = qw(john_grisham dean_koontz greg_iles);
-        my $cache_value = { authors => \@default_authors };
-        $authors = $cache_value;
-        $c->cache->set($cache_key, $cache_value, "10 minutes");
+        $c->log->debug("setting cache");
+        $authors = [$c->model('Authors')->all];
+
+        $c->cache->set($cache_key, $authors, "10 minutes");
         #$c->log->debug("after set cache: ", $c->cache->get($cache_key));
     }
 
-    $c->log->debug("from cache: ", Dumper($c->cache->get($cache_key))) if $c->cache->get($cache_key);
+    #$c->log->debug("from cache: ", Dumper($c->cache->get($cache_key))) if $c->cache->get($cache_key);
 
-    $c->stash->{authors} = $authors->{authors} if $authors;
+    $c->stash->{authors} = $authors;
 }
 
 
