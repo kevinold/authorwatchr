@@ -89,7 +89,7 @@ sub index : Private {
     my $authors;
     unless ($authors = $c->cache->get($cache_key)) {
         $c->log->debug("setting cache");
-        $authors = [$c->model('Authors')->all];
+        $authors = [$c->model('Authors')->search(undef, { rows => 10, order_by =>'random()' })->all];
 
         $c->cache->set($cache_key, $authors, "10 minutes");
         #$c->log->debug("after set cache: ", $c->cache->get($cache_key));
