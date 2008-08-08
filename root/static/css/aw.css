@@ -270,3 +270,32 @@ a:hover {
     float: left;
     padding: 5px;
 }
+
+/* Search bar */
+
+#search_bar  {
+    /* background:#D8D4AE url(/images/top_search.gif) no-repeat scroll left bottom; */
+    clear:both;
+    height:50px;
+    margin:0 auto;
+    padding:0 10px;
+    position:relative;
+    width:900px;
+}
+
+#search_bar #author {
+    /* background:#FFFFFF url(/images/inputbg.gif) no-repeat scroll left top; */
+    background:#FFFFFF;
+    border-color:#AFAB81 #D8D5B4 #D8D5B4 #AFAB81;
+    border-style:solid;
+    border-width:1px;
+    color:#767676;
+    /* float:left; */
+    font-size:1.2em;
+    height:18px;
+    left:7px;
+    padding:4px 2px;
+    /*position:relative;*/
+    top:22px;
+    width:314px;
+}

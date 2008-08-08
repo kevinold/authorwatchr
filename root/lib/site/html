@@ -32,6 +32,9 @@
     */
         $(function(){   // shorthand for $(document).ready() BTW
             $("a.show_ma").toggle(function(){$("#ma_box").slideDown("fast");},function(){$("#ma_box").slideUp("fast")});
+            $('#search_bar #author').click(function() {
+                $(this).val('');
+            });
         });
     </script>
 </head>
