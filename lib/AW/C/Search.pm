@@ -33,8 +33,8 @@ Catalyst Controller.
 =cut
 
 sub index :Path :Args {
-    my ( $self, $c ) = @_;
-    my $svalue      = $c->request->param("author");
+    my ( $self, $c, @args ) = @_;
+    my $svalue      = $c->request->param("author") || $args[0];
     my $search_term = $svalue;
     $c->stash->{template} = 'results.tt2';
 
