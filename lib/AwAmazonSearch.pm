@@ -36,6 +36,7 @@ sub author_search {
                                    type  => 'Large',
                                    sort  => 'daterank',
                                    AssociateTag => 'kevin123',
+                                   #ResponseGroup => 'Medium,Offers',
                                   );
 
         if ($response->is_success()) {
