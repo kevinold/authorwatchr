@@ -1,7 +1,9 @@
 
-<div class="wrapper">
+<div id="doc2" class="yui-t7">
   
-<div id="header">[% PROCESS site/header %]</div>
+    <div id="hd">[% PROCESS site/header %]</div>
+    <div id="bd">
+     <div class="yui-g">
 
   <!-- Nav -->
   <div id="nav">
@@ -28,10 +30,6 @@
     <a href="#" class='show_ma'>View My Authors</a>
 [% END %]
     
-  <!-- Sidebar -->
-  <div id="sidebar" class="clearfix">
-  </div>
- 
   
   <!-- Content -->
   <div id="content" class="clearfix">
@@ -48,7 +46,11 @@
   
   </div>
 
+    </div> <!-- end yui-g -->
+
+    </div> <!-- end bd -->
+
   <!-- Footer -->
-  <div id="footer"> [% PROCESS site/footer %] </div>
+  <div id="ft"> [% PROCESS site/footer %] </div>
 
 </div>

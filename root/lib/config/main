@@ -10,10 +10,15 @@
      MACRO debug(message) CALL Catalyst.log.debug(message);
    END;
 
+   DEFAULT yuigrid = 'http://yui.yahooapis.com/2.5.1/build/reset-fonts-grids/reset-fonts-grids.css';
    DEFAULT jquery = 'http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js';
 
    IF Catalyst.config.jquery_dev;
      jquery = Catalyst.req.base _ '/static/js/jquery-1.2.6.min.js';
+   END;
+
+   IF Catalyst.config.yuigrid_dev;
+     yuigrid = Catalyst.req.base _ '/static/css/reset-fonts-grids.css';
    END;
 
    # define a data structure to hold sitewide data
@@ -21,6 +26,7 @@
      title     => 'authorwatchr.com - Find the latest titles by your favorite authors.',
      copyright => '2008 authorwatchr.com',
      jquery    => jquery
+     yuigrid   => yuigrid
    };
 
    # load up any other configuration items 
