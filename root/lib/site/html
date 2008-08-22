@@ -6,13 +6,13 @@
     <title>[% template.title or site.title %]</title>
 
     <link rel="stylesheet" href="[% site.yuigrid %]" type="text/css">
-    <link rel="stylesheet" href="[% base %]/static/css/aw.css" media="screen" type="text/css" />
+    <link rel="stylesheet" href="[% base %]static/css/aw.css" media="screen" type="text/css" />
 
     <script type="text/javascript" src="[% site.jquery %]"></script>
-    <script type="text/javascript" src="[% base %]/static/js/aw.js"></script> 
+    <script type="text/javascript" src="[% base %]static/js/aw.js"></script> 
     [% IF Catalyst.action.match('^signup') %]
-        <!--<script type="text/javascript" src="[% base %]/static/js/jquery.domec.js"></script>-->
-        <script type="text/javascript" src="[% base %]/static/js/aw_signup.js"></script>
+        <!--<script type="text/javascript" src="[% base %]static/js/jquery.domec.js"></script>-->
+        <script type="text/javascript" src="[% base %]static/js/aw_signup.js"></script>
     [% END; -%]
     <script type="text/javascript">
     /*

@@ -27,6 +27,20 @@ E7F1FA - lightest blue
 011D31 - blue/black
 010B14 - almost black
 
+Slayeroffice.com color palette for "Authorwatcher" Brown
+http://slayeroffice.com/tools/color_palette/?hex=784904
+
+784904 - Authorwatchr Brown
+9A7743 - lighter brown
+BCA582 - even lighter brown
+DDD1C0 - even lighter brown
+F2EDE6 - lightest brown
+663E03 - darker than AW brown
+5A3703 - even darker brown
+3C2502 - even darker
+1E1201 - brown/black
+0C0700 - almost black
+
 ================================================================*/
 
 body { 
@@ -43,6 +57,18 @@ body {
     height: 0; 
     clear: both; 
     visibility: hidden;
+}
+
+.clear {
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
 }
 
 /*
@@ -70,10 +96,18 @@ body {
     font-weight: normal;
 }
 
+.no_image {
+    padding: 5px;
+    width: 49px;
+    height: 75px;
+    vertical-align: center;
+    border: 1px solid #ccc;
+}
+
 /* Base Link Styles */
 
 a:link, a:active, a:visited  {
-    color: blue;
+    color: #0572C4;
     text-decoration:none;
 }
     
@@ -82,14 +116,78 @@ a:hover {
     text-decoration:underline;
 }
 
+a.blue_btn {
+    color: #fff;
+    background: #0572C4;
+    border:1px solid #A3BAD1;
+    font:normal 11px arial;
+    text-decoration:none;
+    padding:3px 5px 3px 5px;
+    margin:0px;
+    height:20px;
+}
+
+a:hover.blue_btn {
+    background: #4496D3;
+    text-decoration:none;
+}
+
+a.feed_btn {
+    background: transparent url("/static/images/feed-icon-14x14.png") no-repeat scroll 0%;
+    padding:0 0 0 16px;
+}
+
+/* Results header */
+
+#results_header {
+    text-align: right;
+    margin: 0 0 5px 0;
+}
+
+#results_header h2 {
+    color: #9A7743;
+    text-transform: uppercase;
+    display: inline;
+    float: left;
+}
+
 /* Author results */
 
 #author_results {
-    background:none;
-    padding:0;
-    list-style: none;
+    /*background: #E7F1FA;*/
+               /*83B9E2 - even lighter blue*/
+               /*C0DCF0 - even lighter blue */
+               /*E7F1FA - lightest blue*/
+    border: 2px solid #E7F1FA;
+    padding: 2px;
 }
 
+#author_results ul {
+    margin: 0;
+    padding: 0;
+}
+
+#callist li {
+    border-bottom:1px solid #E8E8E8;
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+    padding:10px;
+}
+
+#author_results li h2 {
+  margin: 10px 0 20px 0;
+  color: #000;
+  font-size: 16px;
+  display: inline;
+}
+
+#author_results li img {
+    float: left;
+    margin: 0 20px 10px 10px;
+}
+
+/*
 #author_results .result {
     margin: 0 0 20px 0;
     border-bottom: 1px dotted #999;
@@ -97,19 +195,6 @@ a:hover {
     padding: 15px 0 10px 0;
 }
 
-#author_results .result h2 {
-  display: inline;
-  margin: 10px 0 20px 0;
-  color: #000;
-  font-size: 16px arial;
-}
-
-
-#author_results .result img {
-    float: left;
-    margin: 0 20px 10px 0;
-    width: auto;
-}
 
 #author_results .result p {
     margin:0;
@@ -119,7 +204,7 @@ a:hover {
 #author_results .result p.moreInfo {
     height:auto;
 }
-
+*/
 
 /* nav bar */
 #nav {
@@ -172,7 +257,8 @@ a:hover {
 
 /* Footer */
 #ft { 
-    background: #fff url(/static/images/bg.gif) repeat-x;
+    border-top: 1px dotted #ccc;
+    background: #fff;
     clear: both;
     font-size: 12px;
     margin-top: 10px;
@@ -184,16 +270,18 @@ a:hover {
     display: inline;
     float: left;
     text-align: left;
+    color: #0572C4;
 }
 
 #ft span {
     padding: 0px 5px;
+    color: #0572C4;
 }
 
 #ft a, #ft a:hover {
-    color: #fff;
+    color: #0572C4;
     text-decoration:none;
-    border-bottom: 1px dotted #fff;
+    border-bottom: 1px dotted #0572C4;
 }
 
 /* Signup */

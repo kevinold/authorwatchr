@@ -5,25 +5,17 @@ SET     norm_term = Catalyst.stash.norm_term;
 SET     auth_is_saved = Catalyst.stash.auth_is_saved;
 %]
 
-<h2>Results for "[% term %]"</h2>
+<div id="results_header" class="clearfix">
+<h2>Results for <b>"[% term %]"</b></h2>
 
-<a href="[% Catalyst.uri_for('/search/rss', Catalyst.req.params) %]">Get RSS updates for [% term %]</a>
-
+[% IF Catalyst.user %]
+ 
+[% UNLESS auth_is_saved == 1 %]
 
 <!-- Show "save to list" -->
-<button id="save_author">Save <b>[% term %]</b> to your favorites</button>
+<a class="blue_btn" id="save_author" href="#">Watch <b>[% term %]</b></a>
 
 <script type="text/javascript">
-/*$("#save_author")
-    .click( function(){
-                $(this).load(
-                    '[% Catalyst.uri_for("/user/save_author") %]', 
-                    { value: "[% term %]" },
-                    function() { $("#my_authors").load('[% Catalyst.uri_for("/user/list_authors") %]') }
-                )
-            }
-    );
-*/
 
 $("#save_author")
 .click( function(){
@@ -35,13 +27,20 @@ $("#save_author")
 
 </script>
 
+[% END %]
+[% ELSE %]
+<a href="[% Catalyst.uri_for('/login') %]">Login</a> to Save <b>[% term %]</b> to your favorites.
+[% END %]
 
+</div>
 
-<!--Login to Save <b>[% term %]</b> to your favorites.-->
 
 [% IF response %]
 
 <div id="author_results">
+
+<ul>
+
 [% FOREACH prop IN response.properties %]
     <!--
     Check that the title has the following criteria:
@@ -55,32 +54,35 @@ $("#save_author")
       #next unless $norm_author eq $norm_term;
     %]
 
-    <div class="result" class="clearfix">
+    <li class="clear">
 
-    <h2>[% prop.ProductName %] by <span>[% prop.author %]</span></h2>
-
+    [% IF prop.ImageUrlSmall %]
     <img src="[% prop.ImageUrlSmall %]" />
+    [% ELSE %]
+    <img class="no_image" src="[% base %]static/images/no_image.png" />
+    [% END %]
 
+    <h2>[% prop.ProductName %]</h2> by <span>[% prop.author %]</span>
 
     <p> [% prop.ProductDescription %] </p>
 
-    <br clear="all"/>
-    <br clear="all"/>
-    <br clear="all"/>
-    <!-- [% prop.xmlref.OfferSummary.LowestNewPrice.FormattedPrice %] -->
-    Availability: [% prop.xmlref.Offers.Offer.OfferListing.Availability %]
+    [% prop.xmlref.OfferSummary.LowestNewPrice.FormattedPrice %] 
+    Availability: [% prop.xmlref.Offers.Offer.OfferListing.Availability %] 
     PreOrder: [% IF prop.xmlref.Offers.Offer.OfferListing.PreOrder  %] Yes [% ELSE %] No [% END %]
-    Release Date: <b>[% prop.ReleaseDate %] [% prop.year %]</b>
-    Newest Low Price: [% prop.OurPrice || prop.ListPrice %]
-    <a href="[% prop.DetailPageURL %]">View Details</a>
+    Release Date: <b>[% prop.ReleaseDate %] [% prop.year %]</b> 
+    Newest Low Price: [% prop.OurPrice || prop.ListPrice %] 
+    <a href="[% prop.DetailPageURL %]">View Details</a> 
 
         <!-- [% prop.as_string %]  [% prop.similar_asins %] -->
-        <br/>
-        <br/>
-    </div>
-<br clear="all"/>
+    </li>
+
 [% END %]
 
+</ul>
+
 </div> <!-- end author_results -->
+
+<br clear="all"/>
+<a class="feed_btn" id="author_feed" href="[% Catalyst.uri_for('/search/rss', Catalyst.req.params) %]">[% term %] Title Updates</a>
 
 [% END %]
