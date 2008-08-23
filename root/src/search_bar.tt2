@@ -1,8 +1,8 @@
 <!-- search bar -->
 <div id="search_bar">
-    <form id="search" action="/search/" method="get"> 
-        <label for="author">Author's Name</label>
-        <input type="text" name="author" id="author" value="john grisham" size="20" /> 
-        <input type="submit" value="Submit" /> 
+    <form action="/search/" method="get"> 
+        <input type="text" id="author" name="author" value="john grisham" size="20" /> 
+        <input type="submit" value="Find the latest" /> 
     </form>
 </div>
+<!-- end search bar -->

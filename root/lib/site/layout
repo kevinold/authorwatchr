@@ -1,23 +1,12 @@
 
 <div id="doc2" class="yui-t7">
   
-    <div id="hd">[% PROCESS site/header %]</div>
+    <div id="hd">
+    [% PROCESS site/header %]
+    [% PROCESS site/nav %]
+    </div>
     <div id="bd">
      <div class="yui-g">
-
-  <!-- Nav -->
-  <div id="nav">
-    <ul class="clearfix">
-      <li><a href="[% Catalyst.uri_for("/") %]" class="home">Home</a></li>
-[% IF Catalyst.user %]
-      <li><a href="[% Catalyst.uri_for("/logout") %]">Logout</a></li>
-[% ELSE %]
-      <li><a href="[% Catalyst.uri_for("/signup") %]">Signup</a></li>
-      <li><a href="[% Catalyst.uri_for("/login") %]">Login</a></li>
-[% END %]
-    </ul>
-    <br clear="all"/>
-  </div>
 
 [% INCLUDE search_bar.tt2 %]
 
