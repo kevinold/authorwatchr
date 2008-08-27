@@ -15,6 +15,7 @@ __PACKAGE__->add_columns(
 );
 
 __PACKAGE__->set_primary_key('id');
+__PACKAGE__->add_unique_constraint([ qw/id/]);
 
 # belongs_to():
 #   args:
@@ -53,10 +54,4 @@ sub normalize {
 }
 =cut
 
-
-# Created by DBIx::Class::Schema::Loader v0.04005 @ 2008-08-26 20:34:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:5w3JXVPcqxSgQhkK1bOrOA
-
-
-# You can replace this text with custom content, and it will be preserved on regeneration
 1;

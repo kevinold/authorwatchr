@@ -30,7 +30,7 @@ __PACKAGE__->set_primary_key("id");
 __PACKAGE__->add_unique_constraint([ qw/username/]);
 __PACKAGE__->add_unique_constraint([ qw/email_address/]);
 
-__PACKAGE__->has_many(map_user_role => 'AW::Schema::UserRoles', 'user_id');
+#__PACKAGE__->has_many(map_user_role => 'AW::Schema::UserRoles', 'user_id');
 __PACKAGE__->has_many(my_authors => 'AW::Schema::UserAuthors', 'user_id');
 
 # tip from email on catalyst list (subject "Userpasswords")
@@ -43,9 +43,4 @@ sub store_column {
    return $self->next::method( $col, $val );
 }
 
-# Created by DBIx::Class::Schema::Loader v0.04005 @ 2008-08-26 20:34:18
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:thGRJyhJLopq3PRhUtxqCQ
-
-
-# You can replace this text with custom content, and it will be preserved on regeneration
 1;
