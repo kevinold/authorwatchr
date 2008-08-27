@@ -2,16 +2,33 @@ package AwDB::Authors;
 
 use base qw/DBIx::Class/;
 
-# Load required DBIC stuff
 __PACKAGE__->load_components(qw/PK::Auto Core InflateColumn/);
-# Set the table name
 __PACKAGE__->table('authors');
-# Set the columns in the table
-#__PACKAGE__->add_columns(qw/id first_name last_name/);
-__PACKAGE__->add_columns(qw/id display_name/);
-# Set the primary key for the table
+__PACKAGE__->add_columns(
+    id => {
+        'data_type'         => 'VARCHAR',
+        'size'              => 128,
+        'is_nullable'       => 0,
+        'is_foreign_key'    => 0,
+        'name'              => 'id',
+        'is_auto_increment' => 0,
+        'default_value'     => '',
+    },
+    display_name => {
+        'data_type'         => 'VARCHAR',
+        'size'              => 14,
+        'is_nullable'       => 0,
+        'is_foreign_key'    => 0,
+        'name'              => 'display_name',
+        'is_auto_increment' => 0,
+        'default_value'     => 'NULL',
+    },
+);
+
 __PACKAGE__->set_primary_key('id');
 
+__PACKAGE__->has_many(user_authors => 'AwDB::UserAuthors', 'user_id');
+__PACKAGE__->has_many(map_user_role => 'AwDB::UserRole', 'user_id');
 
 =pod
 __PACKAGE__->inflate_column('id', {
@@ -51,8 +68,6 @@ sub normalize {
 #     1) Name of relationship, DBIC will create accessor with this name
 #     2) Name of the model class referenced by this relationship
 #     3) Column name in *foreign* table
-__PACKAGE__->has_many(user_authors => 'AwDB::UserAuthors', 'user_id');
-__PACKAGE__->has_many(map_user_role => 'AwDB::UserRole', 'user_id');
 
 # many_to_many():
 #   args:
@@ -61,10 +76,6 @@ __PACKAGE__->has_many(map_user_role => 'AwDB::UserRole', 'user_id');
 #     3) Name of belongs_to() relationship in model class of has_many() above
 #   You must already have the has_many() defined to use a many_to_many().
 #__PACKAGE__->many_to_many(users => 'message_users', 'author');
-
-
-
-
 
 
 =head1 NAME

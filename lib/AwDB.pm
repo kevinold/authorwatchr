@@ -6,19 +6,17 @@ AwDB - DBIC Schema Class
 
 =cut
 
-# Our schema needs to inherit from ’DBIx::Class::Schema’
-use base qw/DBIx::Class::Schema/;
+use strict;
+use warnings;
+use base 'DBIx::Class::Schema';
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use AwDB;
+our $VERSION = 0.001;
 
-# Need to load the DB Model classes here.
-# You can use this syntax if you want:
-#    __PACKAGE__->load_classes(qw/Book BookAuthor Author/);
-# Also, if you simply want to load all of the classes in a directory
-# of the same name as your schema class (as we do here) you can use:
-#    __PACKAGE__->load_classes(qw//);
-# But the variation below is more flexible in that it can be used to
-# load from multiple namespaces.
-__PACKAGE__->load_classes({
-    AwDB => [qw/Authors User Role UserRole UserAuthors Session/]
-});
+__PACKAGE__->load_classes(qw/Authors Book User Role UserRole UserAuthors Session/);
+__PACKAGE__->load_components('+DBIx::Class::Schema::Versioned');
+__PACKAGE__->upgrade_directory("$FindBin::Bin/../sql/");
+__PACKAGE__->backup_directory("$FindBin::Bin/../sql/backups/");
 
 1;
