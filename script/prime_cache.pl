@@ -8,13 +8,13 @@ use DBI;
 use lib "$FindBin::Bin/../lib";
 use Data::Dumper;
 use LWP::Simple;
-use AwDB;
+use AW::Schema;
 
 my $dsn = "dbi:SQLite:$FindBin::Bin/../aw.db";
 my $cfg = Config::Any::General->load( "$FindBin::Bin/../aw_dev.conf" ) || die $!;
 #warn Dumper($cfg);
 
-my $schema = AwDB->connect( $dsn );
+my $schema = AW::Schema->connect( $dsn );
 my $uas = $schema->resultset('UserAuthors')->search(undef, { select => { distinct => 'author_id' }, as => 'author_id' });
 
 while (my $ua = $uas->next) {

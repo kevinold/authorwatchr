@@ -3,10 +3,10 @@ use strict;
 use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
-use AwDB;
+use AW::Schema;
 
 my $dsn = "dbi:SQLite:$FindBin::Bin/../aw.db";
-my $schema = AwDB->connect( $dsn );
+my $schema = AW::Schema->connect( $dsn );
 my $version = $schema->schema_version();
 
 $schema->create_ddl_dir(

@@ -3,9 +3,9 @@ use strict;
 use warnings;
 use FindBin;
 use lib "$FindBin::Bin/../lib";
-use AwDB;
+use AW::Schema;
 
 my $dsn = "dbi:SQLite:$FindBin::Bin/../aw.db";
-AwDB->connect($dsn)->upgrade;
+AW::Schema->connect($dsn)->upgrade;
 
 

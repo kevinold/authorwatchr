@@ -7,10 +7,10 @@ use Pod::Usage;
 use FindBin;
 use Net::Amazon;
 use lib "$FindBin::Bin/../lib";
-use AwDB;
+use AW::Schema;
 use Data::Dumper;
 
-#my $schema = AwDB->connect('dbi:mysql:database=authorwatch;host=kold.homelinux.com;port=3306','root','kevin');
+#my $schema = AW::Schema->connect('dbi:mysql:database=authorwatch;host=kold.homelinux.com;port=3306','root','kevin');
 #$schema->resultset('Authors')->find_or_create({ first_name => $fname, last_name => $lname });
 
 #BrowseNode ID's
