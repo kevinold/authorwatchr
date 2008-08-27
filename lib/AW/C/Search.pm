@@ -81,7 +81,7 @@ sub index :Path :Args {
         # If user is logged in, determine if they've already saved this author
         my $auth_is_saved = 0;
         if ($c->user) {
-            $auth_is_saved = $c->model('AwDB::UserAuthors')->search(
+            $auth_is_saved = $c->model('DB::UserAuthors')->search(
                 {
                     author_id => $norm_term,
                     user_id => $c->user->id,

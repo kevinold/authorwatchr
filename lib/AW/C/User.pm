@@ -50,14 +50,14 @@ sub save_author : Local {
 
     # Find or create author trying to be added
     #my $author;
-    #$author = $c->model('AwDB::Authors')->find_or_create(
+    #$author = $c->model('DB::Authors')->find_or_create(
     #    {   first_name => $fname,
     #        last_name  => $lname,
     #    }
     #);
 
     my $author;
-    $author = $c->model('AwDB::Authors')->find_or_create(
+    $author = $c->model('DB::Authors')->find_or_create(
         {   id => $id,
             display_name  => "$term",
         }
@@ -69,7 +69,7 @@ sub save_author : Local {
     if ($aid) {
 
         #$c->response->body("1");
-        $c->model('AwDB::UserAuthors')
+        $c->model('DB::UserAuthors')
             ->create( { user_id => $user_id, author_id => $aid } );
         $c->response->body("1");
     }
@@ -90,7 +90,7 @@ sub save_author : Local {
 
         $c->res->body( HTML::Element->new('ul')->push_content(@elements)->as_HTML );
     } else {
-        @authors = $c->model('AwDB::UserAuthors')->search({ user_id => $user_id });
+        @authors = $c->model('DB::UserAuthors')->search({ user_id => $user_id });
     }
 =cut
 
@@ -109,7 +109,7 @@ sub list_authors : Local {
     my ( $self, $c ) = @_;
 
     # Debug sql statements
-    #$c->model('AwDB::UserAuthors')->storage->debug(1);
+    #$c->model('DB::UserAuthors')->storage->debug(1);
     #my $user_id = $c->req->param("user_id");
     #$c->log->debug("**********is json: $is_json");
 
@@ -210,10 +210,10 @@ sub edit_profile_commit : Local Form {
         my $user;
 
         if ( defined $id ) {
-            $user = $c->model('AwDB::User')->find($id);
+            $user = $c->model('DB::User')->find($id);
         }
         else {
-            $user = $c->model('AwDB::User')->new( {} );
+            $user = $c->model('DB::User')->new( {} );
         }
 
         $user->email_address( $c->req->params->{email_address} );
@@ -244,7 +244,7 @@ sub change_password : Local Form {
             if ($c->user_exists()) {
                 if ($c->req->param('new_pw') eq $c->req->param('new_pw_again')) {
                     $c->log->debug('new password set');
-                    my $user = $c->model('AwDB::User')->find($c->user->id);
+                    my $user = $c->model('DB::User')->find($c->user->id);
                     $user->password($c->req->param('new_pw_again'));
                     $user->update();
                     $c->stash->{message} = 'Password Changed';

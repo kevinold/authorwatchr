@@ -60,14 +60,14 @@ sub isbnauthor : Local {
 sub suggest : Local {
     my ( $self, $c ) = @_;
 
-    $c->model('AwDB')->storage->debug(1);
+    $c->model('DB')->storage->debug(1);
 
     my $term = $c->req->param("value");
     $term =~ s/[^A-Za-z0-9 ]//g;
 
     my $html;
     my @authors;
-    @authors = $c->model('AwDB::Authors')->search(
+    @authors = $c->model('DB::Authors')->search(
         {   -or => {
                 first_name => { -like => "%$term%" },
                 last_name  => { -like => "%$term%" }
