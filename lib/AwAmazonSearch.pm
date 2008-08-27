@@ -24,7 +24,9 @@ sub author_search {
 
     my $records;
     unless ($records = $cache->get($authcachekey)) {
+        #Log::Log4perl->easy_init($DEBUG);
         my $ua = Net::Amazon->new(token => $cfg->{'na_token'},
+                                  max_pages => 1,
                                   cache => $cache);
 
         my $pw_search = uri_escape("author: $author and binding: hardcover and language: english");
@@ -50,7 +52,7 @@ sub author_search {
 
             #$c->log->debug("**********Error:", $response->message());
             #$c->stash->{error_msg} = "Error: " . $response->message();
-            print "Error: " . $response->message();
+            return "Error: " . $response->message();
         }
 
     }    # unless cache
