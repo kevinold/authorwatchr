@@ -4,11 +4,6 @@ use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 
 __PACKAGE__->config(
-    schema_class => 'AW::Schema',
-    connect_info => [
-        'dbi:SQLite:aw.db',
-        
-    ],
 );
 
 =head1 NAME
