@@ -8,20 +8,23 @@ $(document).ready( function() {
     });
 </script>
 
-<div id="form">
+<div id="signup">
 [% formbuilder.start -%]
 <!--<input id="_submitted_default" name="_submitted_default" type="hidden" value="1" />-->
+<fieldset>
+<ul>
 [% FOREACH field IN formbuilder.fields -%]
-<p>
+<li>
     <label>
         <span [% IF field.required %]class="required"[%END%]>[%field.label%]</span>
     </label>
     [% field.field %]
         <span></span>
-    </p>
+</li>
 [% END %]
-<div id="submit">[% formbuilder.submit %]</div>
-<div id="reset">[% formbuilder.reset %]</div>
+<li>[% formbuilder.submit %]</li>
+</ul>
+</fieldset>
 [% formbuilder.end %]
 </div>
 
