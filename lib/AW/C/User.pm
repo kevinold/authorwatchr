@@ -244,7 +244,7 @@ sub change_password : Local Form {
             if ($c->user_exists()) {
                 if ($c->req->param('new_pw') eq $c->req->param('new_pw_again')) {
                     $c->log->debug('new password set');
-                    my $user = $c->model('DB::User')->find($c->user->id);
+                    my $user = $c->model('DB::Users')->find($c->user->id);
                     $user->password($c->req->param('new_pw_again'));
                     $user->update();
                     $c->stash->{message} = 'Password Changed';
