@@ -3,7 +3,7 @@ use inc::Module::Install;
 name 'AW';
 all_from 'lib/AW.pm';
 
-requires 'Catalyst::Runtime' => '5.7010';
+requires 'Catalyst::Runtime' => '5.7015';
 requires 'Catalyst::Plugin::ConfigLoader';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
