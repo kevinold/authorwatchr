@@ -32,6 +32,7 @@ requires 'Catalyst::View::TT';
 requires 'Catalyst::Plugin::XMLRPC';
 #requires 'Catalyst::Plugin::Captcha';
 requires 'YAML';
+requires 'Catalyst::Plugin::Unicode';
 
 build_requires 'SQL::Translator';
 

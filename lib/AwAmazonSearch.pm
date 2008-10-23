@@ -29,7 +29,7 @@ sub author_search {
                                   max_pages => 1,
                                   cache => $cache);
 
-        my $pw_search = uri_escape("author: $author and binding: hardcover and language: english");
+        my $pw_search = "author: $author and binding: hardcover and language: english";
 
         # sort param can be one of the items at:
         # http://search.cpan.org/~boumenot/Net-Amazon-0.49/lib/Net/Amazon/Request/Sort.pm#Sorting_Books_Results

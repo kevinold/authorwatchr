@@ -33,6 +33,7 @@ use Catalyst qw/
     Session::State::Cookie
     SubRequest
     RedirectAndDetach
+    Unicode
     /;
 
 our $VERSION = '0.01';
