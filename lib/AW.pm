@@ -20,7 +20,6 @@ use Catalyst::Runtime '5.70';
 #    Captcha
 use Catalyst qw/
     ConfigLoader
-    FormBuilder
     Static::Simple
     StackTrace
 
