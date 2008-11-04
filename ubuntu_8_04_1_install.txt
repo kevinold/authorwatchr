@@ -1,0 +1,11 @@
+Need to install the following upon fresh Ubuntu 8.10 install:
+apt-get make curl sqlite3 libsqlite3-dev libxml2-dev
+
+perl -MCPAN -e 'install Module::Install'
+
+For Git:
+
+apt-get build-essential libexpat-dev libssl-dev tk
+
+To install all perl modules:
+perl Makefile.PL --defaultdeps
