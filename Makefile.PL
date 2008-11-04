@@ -44,7 +44,6 @@ requires 'Catalyst::Plugin::Textile';
 requires 'Catalyst::Plugin::SubRequest';
 requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Authentication::Store::DBIx::Class';
-requires 'Catalyst::Plugin::Authentication::Credential::Password';
 requires 'Catalyst::Plugin::RedirectAndDetach';
 requires 'Catalyst::Model::DBIC::Schema';
 requires 'Catalyst::Model::ISBNDB';
