@@ -24,6 +24,7 @@ requires 'Net::Amazon' => '0.43';
 requires 'WWW::Google::SiteMap' => '1.09';
 requires 'Log::Log4perl';
 requires 'DBD::SQLite';
+requires 'Moose';
 
 #requires '';
 requires 'Catalyst::Runtime' => '5.7015';
