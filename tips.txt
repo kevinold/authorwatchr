@@ -1,3 +1,6 @@
+# Test user/pw
+kold/kold
+
 # Debug sql statements
 $c->model('AwDB::UserAuthors')->storage->debug(1);
 

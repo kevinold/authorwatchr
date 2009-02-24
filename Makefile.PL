@@ -3,10 +3,32 @@ use inc::Module::Install;
 name 'AW';
 all_from 'lib/AW.pm';
 
-requires 'Catalyst::Runtime' => '5.7010';
-requires 'Catalyst::Plugin::ConfigLoader';
+#non-catalyst modules
+requires 'DateTime' => 0.4305;
+requires 'HTML::Lint';
+requires 'Data::Visitor';
+requires 'Tie::IxHash';
+requires 'LWP::Simple';
+requires 'DBIx::Class';
+requires 'URI::Escape';
+requires 'YAML';
+requires 'Config::Any::YAML';
+requires 'XML::XPath';
+requires 'Test::Pod::Coverage';
+requires 'XML::Feed';
+requires 'HTML::Element';
+requires 'HTML::Scrubber';
+requires 'WebService::ISBNDB' => '0.33';
+requires 'Text::Sentence';
+requires 'Net::Amazon' => '0.43';
+requires 'WWW::Google::SiteMap' => '1.09';
+requires 'Log::Log4perl';
+requires 'DBD::SQLite';
+requires 'Moose';
+
+#requires '';
+requires 'Catalyst::Runtime' => '5.7015';
 requires 'Catalyst::Plugin::Static::Simple';
-requires 'Catalyst::Action::RenderView';
 requires 'Catalyst::Plugin::PageCache';
 requires 'Catalyst::Plugin::Cache::Store::FastMmap';
 requires 'Catalyst::Controller::FormBuilder';
@@ -21,8 +43,7 @@ requires 'Catalyst::Plugin::Session::State::Cookie';
 requires 'Catalyst::Plugin::Textile';
 requires 'Catalyst::Plugin::SubRequest';
 requires 'Catalyst::Plugin::Authentication';
-requires 'Catalyst::Plugin::Authentication::Store::DBIx::Class';
-requires 'Catalyst::Plugin::Authentication::Credential::Password';
+requires 'Catalyst::Authentication::Store::DBIx::Class';
 requires 'Catalyst::Plugin::RedirectAndDetach';
 requires 'Catalyst::Model::DBIC::Schema';
 requires 'Catalyst::Model::ISBNDB';
@@ -31,28 +52,11 @@ requires 'Catalyst::View::Mason';
 requires 'Catalyst::View::TT';
 requires 'Catalyst::Plugin::XMLRPC';
 #requires 'Catalyst::Plugin::Captcha';
-requires 'YAML';
+requires 'Catalyst::Plugin::Unicode';
+requires 'Catalyst::Plugin::ConfigLoader';
+requires 'Catalyst::Action::RenderView';
 
 build_requires 'SQL::Translator';
-
-#non-catalyst modules
-requires 'XML::XPath';
-requires 'Config::Any::YAML';
-requires 'XML::Feed';
-requires 'DateTime';
-requires 'Test::Pod::Coverage';
-requires 'LWP::Simple';
-requires 'URI::Escape';
-requires 'HTML::Element';
-requires 'HTML::Scrubber';
-requires 'WebService::ISBNDB' => '0.33';
-requires 'Text::Sentence';
-requires 'Net::Amazon' => '0.43';
-requires 'WWW::Google::SiteMap' => '1.09';
-requires 'Log::Log4perl';
-requires 'DBD::SQLite';
-#requires '';
-
 
 catalyst;
 

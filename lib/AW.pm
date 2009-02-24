@@ -20,19 +20,18 @@ use Catalyst::Runtime '5.70';
 #    Captcha
 use Catalyst qw/
     ConfigLoader
-    FormBuilder
     Static::Simple
     StackTrace
 
     Cache
     Authentication
-    Authentication::Credential::Password
 
     Session
     Session::Store::DBIC
     Session::State::Cookie
     SubRequest
     RedirectAndDetach
+    Unicode
     /;
 
 our $VERSION = '0.01';
