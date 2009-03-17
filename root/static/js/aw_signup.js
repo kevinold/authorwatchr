@@ -41,7 +41,7 @@ var aw_signup = {
    checkPass : function() {
         $("#default #password")
         .blur(function(){
-            var jqLabel = $("#default#password").next('span');
+            var jqLabel = $("#default #password").next('span');
             if ( this.value.length > 2 ) {
                 jqLabel.html('Ok');
                 jqLabel.attr("class","valid");
