@@ -80,6 +80,7 @@ sub default : Local Form {
                         $user->username($username);
                         $user->password($c->req->param('password'));
                         $user->active(1);
+                        $user->status(1);
                         $user->insert;
 
                         $c->forward('success');
