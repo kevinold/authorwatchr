@@ -9,16 +9,24 @@ use lib "$FindBin::Bin/../lib";
 use Data::Dumper;
 use LWP::Simple;
 use AW::Schema;
+use Cache::FileCache;
+use AwAmazonSearch;
+
 
 my $dsn = "dbi:SQLite:$FindBin::Bin/../aw.db";
 my $cfg = Config::Any::General->load( "$FindBin::Bin/../aw_dev.conf" ) || die $!;
+my $cache = new Cache::FileCache( $cfg->{cache}->{backend} );
+
+#warn Dumper($cache);
 #warn Dumper($cfg);
 
 my $schema = AW::Schema->connect( $dsn );
 my $uas = $schema->resultset('UserAuthors')->search(undef, { select => { distinct => 'author_id' }, as => 'author_id' });
 
 while (my $ua = $uas->next) {
-    print $ua->author_id, "\n";
+    my $aid = $ua->author_id;
+    print $aid, "\n";
+    AwAmazonSearch->new->author_search("$aid", $cache);
 }
 
 #my $url = 'http://localhost:3000/search?author=harlan+coben';

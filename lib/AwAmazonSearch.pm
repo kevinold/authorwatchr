@@ -7,7 +7,6 @@ use lib "$FindBin::Bin/../lib";
 use URI::Escape;
 use Net::Amazon;
 use Data::Dumper;
-use AW;
 
 #use Catalyst::Test 'AW';
 #has 'balance' => (isa => 'Int', is => 'rw', default => 0);
