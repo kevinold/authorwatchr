@@ -1,4 +1,4 @@
-package AW::V::TT;
+package AW::View::TT;
 
 use strict;
 use base 'Catalyst::View::TT';
@@ -23,7 +23,7 @@ __PACKAGE__->config({
 
 =head1 NAME
 
-AW::V::TT - TT View for AW
+AW::View::TT - TT View for AW
 
 =head1 DESCRIPTION
 

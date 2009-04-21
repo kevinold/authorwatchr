@@ -69,7 +69,7 @@ __PACKAGE__->deny_access_unless(
 =cut
 
 #
-# IMPORTANT: Please look into AW::C::Root for more
+# IMPORTANT: Please look into AW::Controller::Root for more
 #
 
 =head1 NAME
@@ -86,7 +86,7 @@ Catalyst based application.
 
 =head1 SEE ALSO
 
-L<AW::C::Root>, L<Catalyst>
+L<AW::Controller::Root>, L<Catalyst>
 
 =head1 AUTHOR
 

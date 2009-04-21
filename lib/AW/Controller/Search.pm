@@ -1,4 +1,4 @@
-package AW::C::Search;
+package AW::Controller::Search;
 
 use strict;
 use warnings;
@@ -14,7 +14,7 @@ use AwAmazonSearch;
 
 =head1 NAME
 
-AW::C::Search - Catalyst Controller
+AW::Controller::Search - Catalyst Controller
 
 =head1 SYNOPSIS
 

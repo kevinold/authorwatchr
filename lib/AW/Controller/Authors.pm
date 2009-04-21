@@ -1,4 +1,4 @@
-package AW::C::Authors;
+package AW::Controller::Authors;
 
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use HTML::Element;
 
 =head1 NAME
 
-AW::C::Authors - Catalyst Controller
+AW::Controller::Authors - Catalyst Controller
 
 =head1 SYNOPSIS
 

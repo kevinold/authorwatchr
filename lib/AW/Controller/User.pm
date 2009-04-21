@@ -1,4 +1,4 @@
-package AW::C::User;
+package AW::Controller::User;
 
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use Data::Dumper;
 
 =head1 NAME
 
-AW::C::User - Catalyst Controller
+AW::Controller::User - Catalyst Controller
 
 =head1 DESCRIPTION
 

@@ -1,21 +1,18 @@
-package AW::V::JSON;
+package AW::Model::ISBNDB;
 
 use strict;
-use base 'Catalyst::View::JSON';
+use warnings;
+use base 'Catalyst::Model::ISBNDB';
 
-__PACKAGE__->config(allow_callback => 1);
+__PACKAGE__->config(access_key => 'FXPTYHMD');
 
 =head1 NAME
 
-AW::V::JSON - Catalyst JSON View
-
-=head1 SYNOPSIS
-
-See L<AW>
+AW::Model::ISBNDB - Catalyst Model
 
 =head1 DESCRIPTION
 
-Catalyst JSON View.
+Catalyst Model for the ISBNdb.com Webservice.
 
 =head1 AUTHOR
 

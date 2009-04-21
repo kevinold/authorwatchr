@@ -1,4 +1,4 @@
-package AW::C::Root;
+package AW::Controller::Root;
 
 use strict;
 use warnings;
@@ -13,7 +13,7 @@ __PACKAGE__->config->{namespace} = '';
 
 =head1 NAME
 
-AW::C::Root - Root Controller for this Catalyst based application
+AW::Controller::Root - Root Controller for this Catalyst based application
 
 =head1 SYNOPSIS
 
@@ -137,9 +137,9 @@ sub end : ActionClass('RenderView') {
     #}
 
     if ($c->stash->{template} =~ /tt.*$/) {
-        $c->detach('AW::V::TT');
+        $c->detach('AW::View::TT');
     } else {
-        $c->forward('AW::V::Mason');
+        $c->forward('AW::View::Mason');
     }
 }
 =cut 

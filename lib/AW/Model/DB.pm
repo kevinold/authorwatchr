@@ -1,4 +1,4 @@
-package AW::M::DB;
+package AW::Model::DB;
 
 use strict;
 use base 'Catalyst::Model::DBIC::Schema';
@@ -8,7 +8,7 @@ __PACKAGE__->config(
 
 =head1 NAME
 
-AW::M::DB - Catalyst DBIC Schema Model
+AW::Model::DB - Catalyst DBIC Schema Model
 =head1 SYNOPSIS
 
 See L<AW>

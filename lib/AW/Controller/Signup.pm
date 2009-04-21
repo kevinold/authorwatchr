@@ -1,4 +1,4 @@
-package AW::C::Signup;
+package AW::Controller::Signup;
 
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use base 'Catalyst::Controller::FormBuilder';
 
 =head1 NAME
 
-AW::C::Signup - Catalyst Controller
+AW::Controller::Signup - Catalyst Controller
 
 =head1 DESCRIPTION
 

@@ -2,5 +2,5 @@ use strict;
 use warnings;
 use Test::More tests => 1;
 
-BEGIN { use_ok 'AW::V::Mason' }
+BEGIN { use_ok 'AW::View::Mason' }
 
