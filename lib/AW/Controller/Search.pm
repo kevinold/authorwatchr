@@ -113,16 +113,16 @@ sub rss :Path('rss') :Args(0) {
 
     my $count;
     # Process the entries
-    foreach my $prop ($c->stash->{records}->properties) {
-        next unless $prop->year;
-        next if $prop->year < $c->config->{active_year};
+    foreach my $prop (@{$c->stash->{records}}) {
         my $feed_entry = XML::Feed::Entry->new('RSS');
-        $feed_entry->title($prop->ProductName. ' by ' . $prop->author);
+        $feed_entry->title($prop->ProductName . ' by ' . $prop->author);
         $feed_entry->content($prop->ProductDescription);
         $feed->add_entry($feed_entry);
         $count++;
     }
 
+    $c->stash->{template} = undef;
+    $c->log->debug('in rss b4 rss write', $c->stash->{template});
     $c->res->content_type('application/rss+xml');
     $c->res->body($feed->as_xml);
 

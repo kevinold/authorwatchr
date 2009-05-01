@@ -41,16 +41,21 @@ sub author_search {
                                   );
 
         if ($response->is_success()) {
-            $records = $response;
 
-            #$c->log->debug("**********RUNNING AMAZON QUERY", Dumper($records));
+            # Check that the title has the following criteria:
+            #  - Must have hyphens in ReleaseDate
+            #  - Look into a variable that might tell if it is a reprint, maybe an "original street date"
+            foreach my $prop ($response->properties) {
+                next if $prop->year < 2009;
+                next unless $prop->ReleaseDate =~ /-/;
+                next unless $prop->{xmlref}->{Offers}->{Offer}->{OfferListing}->{Availability} eq 'Not yet published';
+                push @{$records}, $prop;
+            }
+
             $cache->set($authcachekey, $records);
             warn "setting cache for: $authcachekey";
-            #$c->log->debug("**********After cache set", Dumper($c->cache->get($authcachekey)));
         } else {
 
-            #$c->log->debug("**********Error:", $response->message());
-            #$c->stash->{error_msg} = "Error: " . $response->message();
             return "Error: " . $response->message();
         }
 
