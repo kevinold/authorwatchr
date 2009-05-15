@@ -67,22 +67,31 @@ sub process_page {
         $p->get_token();
         my $genres = $p->get_trimmed_text();
 
-        if ($genres) {
-            my @genres = split /,/, $genres;
-            @genres = map { AwUtil::trim($_) } @genres;
-            foreach my $g (@genres) {
-                print "g: <", $g, ">\n";
-                $schema->resultset('Genres')->find_or_create({ display_name => $g });
-            }
-        }
 
         if ($af) {
             print $text, "\n";
             my ($lname, $fname) = split /,/, $text;
             ($lname, $fname) = map { AwUtil::trim($_) } $lname, $fname;
             my $disp_name = "$fname $lname";
-            my $norm = AwUtil::normalize($disp_name);
-            $schema->resultset('AuthorsYP')->find_or_create({ id => $norm, display_name => $disp_name});
+            my $auth_norm = AwUtil::normalize($disp_name);
+
+            # Add author to authorsyp table
+            $schema->resultset('AuthorsYP')->find_or_create({ id => $auth_norm, display_name => $disp_name});
+
+            if ($genres) {
+                my @genres = split /,/, $genres;
+                @genres = map { AwUtil::trim($_) } @genres;
+                foreach my $g (@genres) {
+
+                    #print "g: <", $g, ">\n";
+                    # Add genre to genre table and get it's id
+                    my $genre_id = $schema->resultset('Genres')->find_or_create({display_name => $g})->id;
+
+                    # Link author and genre
+                    $schema->resultset('GenreAuthors')->find_or_create({genre_id => $genre_id, author_id => $auth_norm});
+                }
+            }
+
         }
         $af = 1 if $text =~ /authors found/;
     }
