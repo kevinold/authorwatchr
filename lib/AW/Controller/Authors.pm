@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use base 'Catalyst::Controller';
 use HTML::Element;
+use Data::Dumper;
 
 =head1 NAME
 
@@ -34,26 +35,29 @@ sub default : Private {
 
 sub isbnauthor : Local {
     my ( $self, $c ) = @_;
+    
+    my $body;
+    my $book = $c->model('ISBNDB')->search_books( {isbn =>'0385490992'} );
+    $body = $book->first->get_title;
 
-    my $book = $c->model('ISBNDB')->find_book( '0312340427' );
-    $c->response->body("$book->get_id");
-=pod
-    my @authors = $c->model('ISBNDB')->search_authors({ name => 'John Grisham' });
+    my $authors = $c->model('ISBNDB')->search_authors({ name => 'John Grisham' });
 
     my @elements;
     # if returned, parse through them and build html
-    if ( @authors ) {
+    if ( $authors ) {
 
-        foreach my $auth ( @authors ) {
+        #print $authors->get_total_results, " books found.\n";
+        while (my $auth = $authors->next) {
             my $name = $auth->get_name;
             push @elements, HTML::Element->new('li')->push_content($name);    
         }
 
-        $c->res->body( HTML::Element->new('ul')->push_content(@elements)->as_HTML );
+        $body .= HTML::Element->new('ul')->push_content(@elements)->as_HTML;
     } else {
-        $c->response->body("<ul></ul>");
+        $body .= "<ul></ul>";
     }
-=cut
+
+    $c->response->body($body);
 }
 
 
