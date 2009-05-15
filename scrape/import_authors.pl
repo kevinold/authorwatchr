@@ -20,7 +20,7 @@ my @letters = qw(L M N O P Q R S T U V W X Y Z);
 foreach my $letter (@letters) {
 
     $agent->get('http://authoryellowpages.com');
-    $agent->form(1) if $agent->forms and scalar @{ $agent->forms };
+    $agent->forms(1) if $agent->forms and scalar @{ $agent->forms };
     $agent->form_name('b295');
     { local $^W; $agent->current_form->value( 'letter', "$letter" ); };
     $agent->submit();
