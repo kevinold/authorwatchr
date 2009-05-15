@@ -6,7 +6,7 @@ use warnings;
 use base 'DBIx::Class::Schema';
 use FindBin;
 use lib "$FindBin::Bin/../lib";
-our $VERSION = 0.003;
+our $VERSION = 0.004;
 
 __PACKAGE__->load_classes;
 
