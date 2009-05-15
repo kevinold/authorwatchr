@@ -1,14 +1,19 @@
 #!/usr/bin/perl -w
+
 use strict;
 use WWW::Mechanize;
 use WWW::Mechanize::FormFiller;
 use URI::URL;
 use HTML::TokeParser;
-use lib ('/home/kevin/projects/authorwatch/lib');
-use AwDB;
+use FindBin;
+use lib "$FindBin::Bin/../lib";
+use Data::Dumper;
+use AW::Schema;
+use AwUtil;
 
-my $schema = AwDB->connect('dbi:mysql:database=authorwatch;host=kold.homelinux.com;port=3306','root','kevin');
+my $dsn = "dbi:SQLite:$FindBin::Bin/../aw.db";
 
+my $schema = AW::Schema->connect( $dsn );
 
 my $agent = WWW::Mechanize->new( autocheck => 1 );
 my $formfiller = WWW::Mechanize::FormFiller->new();
@@ -56,11 +61,28 @@ sub process_page {
     my $p  = HTML::TokeParser->new("$page.html");
     while ( my $token = $p->get_tag("b") ) {
         my $text = $p->get_trimmed_text("/b");
+        # go down 3 tokens to and get the genres if they are there
+        $p->get_token();
+        $p->get_token();
+        $p->get_token();
+        my $genres = $p->get_trimmed_text();
+
+        if ($genres) {
+            my @genres = split /,/, $genres;
+            @genres = map { AwUtil::trim($_) } @genres;
+            foreach my $g (@genres) {
+                print "g: <", $g, ">\n";
+                $schema->resultset('Genres')->find_or_create({ display_name => $g });
+            }
+        }
+
         if ($af) {
-            #print $text, "\n";
+            print $text, "\n";
             my ($lname, $fname) = split /,/, $text;
-            map { s/^\s+//g; s/\s+$//g; } $lname, $fname;
-            $schema->resultset('Authors')->find_or_create({ first_name => $fname, last_name => $lname });
+            ($lname, $fname) = map { AwUtil::trim($_) } $lname, $fname;
+            my $disp_name = "$fname $lname";
+            my $norm = AwUtil::normalize($disp_name);
+            $schema->resultset('AuthorsYP')->find_or_create({ id => $norm, display_name => $disp_name});
         }
         $af = 1 if $text =~ /authors found/;
     }

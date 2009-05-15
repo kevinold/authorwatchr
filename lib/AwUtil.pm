@@ -30,4 +30,11 @@ sub urlify_author {
     return $name;
 }
 
+# Trim function.
+sub trim {
+    my $string = shift;
+    $string =~ s/^\s+|\s+$//g;
+    return $string;
+}
+
 1;
