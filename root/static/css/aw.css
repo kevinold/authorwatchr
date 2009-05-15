@@ -385,3 +385,7 @@ a.feed_btn {
     margin: 5px;
 }
 
+.fp_authors_box {
+    float: left;
+    padding: 20px 20px 0 0;
+}

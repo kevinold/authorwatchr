@@ -98,6 +98,15 @@ sub index : Private {
     #$c->log->debug("from cache: ", Dumper($c->cache->get($cache_key))) if $c->cache->get($cache_key);
 
     $c->stash->{authors} = $authors;
+
+    #[$c->model('DB::GenreAuthors')->search({genre_id => 21}, {rows => 10, order_by => 'random()'})->all];
+    
+    $c->stash->{romance_authors} =
+      [$c->model('DB::GenreAuthors')->search({genre_id => 21}, { join => 'authors', prefetch => 'authors' })->all];
+
+    $c->stash->{fiction_authors} =
+      [$c->model('DB::GenreAuthors')->search({genre_id => 2}, { join => 'authors', prefetch => 'authors' })->all];
+
 }
 
 
