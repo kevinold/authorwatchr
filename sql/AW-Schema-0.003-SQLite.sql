@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Fri May 15 14:00:24 2009
+-- Created on Fri May 15 14:28:33 2009
 -- 
 
 
@@ -34,8 +34,9 @@ CREATE TABLE authors_orig (
 DROP TABLE authors_yp;
 
 CREATE TABLE authors_yp (
-  id INTEGER PRIMARY KEY NOT NULL,
-  display_name varchar(128) NOT NULL
+  id varchar(128) NOT NULL,
+  display_name varchar(128) NOT NULL,
+  PRIMARY KEY (id)
 );
 
 --
