@@ -27,7 +27,7 @@ sub cu : Local {    # For Ajax username lookups
     my $user = 0;    # assume user does not exist answering the question "Does this user exist?"
     if (defined $c->req->params->{username}) {
 
-        $user = $c->model('DB::User')->search({username => $c->req->params->{username}});
+        $user = $c->model('DB::Users')->search({username => $c->req->params->{username}});
 
         if ($user == 0) {
 
@@ -67,7 +67,7 @@ sub default : Local Form {
 
                     # Find or Create user
                     my $user;
-                    $user = $c->model('DB::User')->find_or_new(
+                    $user = $c->model('DB::Users')->find_or_new(
                         {username => $username,
 
                          #             email_address => $email_address,
@@ -122,7 +122,7 @@ sub newuser : Local {
         if ( $password eq $confirmpassword ) {
             # Find or Create user
             my $user;
-            $user = $c->model('DB::User')->find_or_new(
+            $user = $c->model('DB::Users')->find_or_new(
                 {   
                     username => $username,
                     email_address => $email_address,

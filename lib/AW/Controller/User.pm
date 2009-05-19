@@ -210,10 +210,10 @@ sub edit_profile_commit : Local Form {
         my $user;
 
         if ( defined $id ) {
-            $user = $c->model('DB::User')->find($id);
+            $user = $c->model('DB::Users')->find($id);
         }
         else {
-            $user = $c->model('DB::User')->new( {} );
+            $user = $c->model('DB::Users')->new( {} );
         }
 
         $user->email_address( $c->req->params->{email_address} );
