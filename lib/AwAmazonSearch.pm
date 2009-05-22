@@ -23,7 +23,7 @@ sub author_search {
 
     my $records;
     unless ($records = $cache->get($authcachekey)) {
-        #Log::Log4perl->easy_init($DEBUG);
+        Log::Log4perl->init("$FindBin::Bin/../log.conf") if $ENV{DBIC_TRACE};
         my $ua = Net::Amazon->new(token => $cfg->{'na_token'},
                                   max_pages => 1,
                                   cache => $cache);
